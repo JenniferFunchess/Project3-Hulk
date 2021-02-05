@@ -4,9 +4,56 @@ h1 {
   font-weight: 800;
 }
 
+.input-field > label {
+  color: white;
+  text-transform: uppercase;
+  font-size: 20px;
+}
+
+.input-field {
+  color: white;
+  text-transform: uppercase;
+}
+
+.helper-text {
+  color: white;
+  text-transform: uppercase;
+  font-size: 16px;
+}
+
+.input-field .helper-text {
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.input-field input[type="text"]:focus + label {
+  color: #d43d0e !important;
+}
+
+.star-20 {
+  width: 20px;
+}
+
+.styled-button {
+  width: 160px;
+  height: 60px;
+  color: white;
+  text-transform: uppercase;
+  border: none;
+}
+
 #student-button {
   background-image: url(https://lh3.googleusercontent.com/O_O0RDSM62-zVSWViayDPWPQFhHom3N648OVvhuzvYycvETeWPKr-Uo4c7_ChM7z5a2zEyzv8rZnfALXKpxNOi335gm-bvdhCYrBm5_lDaxgX6fTzs4GdYmUW-Y_kuv0JAz-TH8NSrks9_6b3KWEt6myl2T7ZN8E--E4LQHynXC7T502X99R9MvP-o4UciAT6XHIV49BZJVyddObTLWCcgFN8NG7J41dWYatJripuVC1fPZOFjYyv6eUKTosIwfvqWWE28pE2idpghPjxvyuLilLGnwz6BXkQ7JDmoMUQ4YqSYQ7ELVFPyG8jJFbgKbSb93W1HEJ91Uj02wIwCBc0nv0Zc_asmKFRj9cp_ztS0YvEFWLj_28ECvlXOt965Rg45Lan6wckmKiGesyDxON8L_dVe7XCEQ_DnynsrjpQNDdiycCwXAXwyLmSuEjADVrGk-8POjQ61fwqjAIBBqovzpxklPh2R-YQJk150bFk4HXPOA-Tp2KUnxIZLpFaJJbyeVi1AGD5HkuS7cen2yh0djFwGa4XfE6PlALPsTMUaR9iG9yqGlLONNBUmCMMkmvlbngVh14Q6EusdRUXIaurMwJadCOfATpWAoyRNM8u3WGnB3kw_o7_b69QNZKcm25Bj3ChFe239jmY8zrw-7VVtztIY27oECXCEpjNQ9qFdORfutctjmuZi350Ebb=w162-h59-no?authuser=0) !important;
   width: 162px;
   height: 60px;
   border: 0;
+}
+
+#first_name,
+#last_name,
+#username {
+  color: white;
+  border-bottom: 3px solid #fff;
+  text-transform: uppercase;
 }

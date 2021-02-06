@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./style.css";
 
-const studentLogin = ({ handleFormSubmit }) => {
+const StudentLogin = ({ handleFormSubmit }) => {
     const [username, setUsername] = useState("");
     const [classcode, setClassCode] = useState("");
 
@@ -67,4 +67,4 @@ const studentLogin = ({ handleFormSubmit }) => {
     );
 };
 
-export default studentLogin;
+export default StudentLogin;

@@ -1,33 +1,33 @@
-import React from 'react';
+import React, { useState } from "react";
 
-const signUpForm = ({ handleFormSubmit }) => {
-    const [username, setUsername] = useState("");
+const SignUp = ({ handleFormSubmit }) => {
+    const [password, setPassword] = useState("");
     const [email, setEmail] = useState("");
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [teacherNickname, setTeacherNickname] = useState("");
 
-const signup = () => {
     return (
+        <>
         <div className="container">
             <div className = "row">
             <div className="col s10 offset-s1"id ="container">
             <div className="row">
             <form
-        className="col s12"
-        onSubmit={(e) => {
-          handleFormSubmit(e, {
-            firstName,
-            lastName,
-            email,
-            password,
-            teacherNickname,
-          });
-        }}
-      >
-        <div className="row">
-          <div className="input-field col s6">
-            <input
+                className="col s12"
+                onSubmit={(e) => {
+                 handleFormSubmit(e, {
+                  firstName,
+                  lastName,
+                 email,
+                 password,
+                 teacherNickname,
+                });
+             }}
+            >
+            <div className="row">
+             <div className="input-field col s6">
+             <input
               placeholder="First Name"
               id="firstName"
               type="text"
@@ -38,8 +38,8 @@ const signup = () => {
               }}
             />
             <label htmlFor="firstName">First Name</label>
-          </div>
-          <div className="input-field col s6">
+            </div>
+             <div className="input-field col s6">
             <input
               placeholder="Last Name"
               id="lastName"
@@ -51,10 +51,10 @@ const signup = () => {
               }}
             />
             <label htmlFor="lastName">Last Name</label>
-          </div>
-        </div>
-        <div className="row">
-          <div className="input-field col s12">
+            </div>
+            </div>
+            <div className="row">
+            <div className="input-field col s12">
             <input
               placeholder="Enter Email"
               id="email"
@@ -66,10 +66,10 @@ const signup = () => {
               }}
             />
             <label htmlFor="email">Enter Email</label>
-          </div>
-        </div>
-        <div className="row">
-          <div className="input-field col s12">
+            </div>
+             </div>
+             <div className="row">
+            <div className="input-field col s12">
             <input
               placeholder="Enter Password"
               id="password"
@@ -99,13 +99,19 @@ const signup = () => {
           </div>
         </div>
       </form>
+      <div className="row">
+          <div className="col s12">
+            <button className="waves-effect waves-light btn">
+              SIGN UP
+            </button>
+          </div>
+        </div>
             </div>
             </div>
             </div>
         </div>
-            
-        
+        </>
     );
 };
 
-export default signup;
+export default SignUp;

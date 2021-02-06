@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import home from "./containers/Home/home";
 import signup from "./containers/Signup/signup";
 import Navbar from "../src/components/Navbar/Navbar";
+import TeacherLogin from "./containers/Login/TeacherLogin/teacherlogin";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
         <Switch> 
          <Route exact path="/" component={home} />
          <Route exact path="/signup" component={signup} />
+         <Route exact path="/teacherlogin" component={TeacherLogin} />
         </Switch>
       </Router>
     </div>

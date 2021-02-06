@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./style.css";
 
 const SignUp = ({ handleFormSubmit }) => {
     const [password, setPassword] = useState("");
@@ -101,7 +102,7 @@ const SignUp = ({ handleFormSubmit }) => {
       </form>
       <div className="row">
           <div className="col s12">
-            <button className="waves-effect waves-light btn">
+            <button className="waves-effect red darken-1 btn">
               SIGN UP
             </button>
           </div>

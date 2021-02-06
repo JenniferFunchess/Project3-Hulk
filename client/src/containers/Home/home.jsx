@@ -1,12 +1,14 @@
 import React from 'react';
 import starIcon from "../../images/star-45px.png";
-import schoolIcon from "../../images/school-icon.png";
+import schoolIcon from "../../images/school.png";
+import "./style.css";
 
 const home = () => {
     return (
         <div className= "container">
             <div className="row">
-            <div className="col s6"><img src={schoolIcon} class="school" alt="yellow school"/>
+            <div className="col s6"><img src={schoolIcon} className="school" alt="yellow school"/>
+            </div>
             <div className="col s6" id ="homeRight">
                 <div className="row" id = "homeStars">
                     <img src={starIcon} class="stars" alt="gold star"/>
@@ -16,7 +18,7 @@ const home = () => {
                     <img src={starIcon} class="stars" alt="gold star"/>
                 </div>
                 <div className="row" id="homeName">
-                    ON TRACK APP
+                ON TRACK APP
                 </div>
                 <div className="row" id="rowTagline">
                     REWARD STUDENTS FOR POSITIVE BEHAVIOR IN CLASS
@@ -25,7 +27,6 @@ const home = () => {
                     <button className = "waves-effect red darken-1 btn">SIGN UP</button>
                 </div>
             </div>
-        </div>
         </div>
         </div>
     );

@@ -2,7 +2,7 @@ html {
   background-color: #0c91c4;
 }
 
-#school {
+.school {
   position: absolute;
   left: 0;
   bottom: 0;
@@ -10,31 +10,22 @@ html {
   width: 50%;
 }
 
-#homeRight {
-  margin-top: 5%;
-}
-
 #homeStars {
-  margin-left: 20%;
+  margin-left: 40%;
 }
 
 #homeName {
   color: white;
   font-size: 75px;
-  margin-left: auto;
-  margin-right: auto;
+  margin-left: 15%;
 }
 
 #rowTagline {
   color: white;
   font-size: 20px;
-  margin-left: auto;
-  margin-right: auto;
+  margin-left: 15%;
 }
 
 #signUpButton {
-  height: 150px;
-  width: 150px;
-  margin-left: auto;
-  margin-right: auto;
+  margin-left: 50%;
 }

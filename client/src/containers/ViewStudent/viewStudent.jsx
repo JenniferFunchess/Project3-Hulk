@@ -12,7 +12,7 @@ function ViewStudent() {
 
       <div className="row">
         <div className="col s3">
-          <h1>Student Name </h1>
+          <h1>Student Name</h1>
           <hr></hr>
           <h3 className="display-name">Display Name</h3>
           <h1>

@@ -58,6 +58,7 @@ const TeacherLogin = ({ handleFormSubmit }) => {
             </button>
           </div>
         </div>
+        <div id ="forgotpassword">Forgot Password?</div>
             </div>
             </div>
             </div>

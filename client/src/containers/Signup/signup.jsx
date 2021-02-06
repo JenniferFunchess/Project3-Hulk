@@ -2,7 +2,7 @@ import React from 'react';
 
 const signUpForm = ({ handleFormSubmit }) => {
     const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
+    const [email, setEmail] = useState("");
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [teacherNickname, setTeacherNickname] = useState("");
@@ -19,7 +19,7 @@ const signup = () => {
           handleFormSubmit(e, {
             firstName,
             lastName,
-            username
+            email,
             password,
             teacherNickname,
           });
@@ -28,108 +28,74 @@ const signup = () => {
         <div className="row">
           <div className="input-field col s6">
             <input
-              placeholder="Product Title"
-              id="title"
+              placeholder="First Name"
+              id="firstName"
               type="text"
-              name="title"
-              value={title}
+              name="firstName"
+              value={firstName}
               onChange={(e) => {
-                setTitle(e.target.value);
+                setFirstName(e.target.value);
               }}
             />
-            <label htmlFor="title">Product Title</label>
+            <label htmlFor="firstName">First Name</label>
           </div>
           <div className="input-field col s6">
             <input
-              placeholder="Product Price"
-              id="price"
+              placeholder="Last Name"
+              id="lastName"
               type="text"
-              name="price"
-              value={price}
+              name="lastName"
+              value={lastName}
               onChange={(e) => {
-                setPrice(e.target.value);
+                setLastName(e.target.value);
               }}
             />
-            <label htmlFor="price">Product Price</label>
+            <label htmlFor="lastName">Last Name</label>
           </div>
         </div>
         <div className="row">
           <div className="input-field col s12">
             <input
-              placeholder="Product Description"
-              id="description"
-              type="text"
-              name="description"
-              value={description}
+              placeholder="Enter Email"
+              id="email"
+              type="email"
+              name="email"
+              value={email}
               onChange={(e) => {
-                setDescription(e.target.value);
+                setEmail(e.target.value);
               }}
             />
-            <label htmlFor="description">Product Description</label>
+            <label htmlFor="email">Enter Email</label>
           </div>
         </div>
         <div className="row">
           <div className="input-field col s12">
             <input
-              placeholder="Product Image"
-              id="imageURL"
-              type="text"
-              name="imageURL"
-              value={imageURL}
+              placeholder="Enter Password"
+              id="password"
+              type="password"
+              name="password"
+              value={password}
               onChange={(e) => {
-                setImageURL(e.target.value);
+                setPassword(e.target.value);
               }}
             />
-            <label htmlFor="imageURL">Product Image</label>
+            <label htmlFor="password">Enter Password</label>
           </div>
         </div>
         <div className="row">
           <div className="input-field col s12">
             <input
-              placeholder="Product Category"
-              id="category"
+              placeholder="Name Students Call You"
+              id="teacherNickname"
               type="text"
-              name="category"
-              value={category}
+              name="teacherNickname"
+              value={teacherNickname}
               onChange={(e) => {
-                setCategory(e.target.value);
+                setTeacherNickname(e.target.value);
               }}
             />
-            <label htmlFor="category">Product Category</label>
-          </div>
-        </div>
-        <div className="row">
-          <div className="input-field col s6">
-            <input
-              placeholder="Product Quantity"
-              id="quantity"
-              type="number"
-              name="quantity"
-              value={quantity}
-              onChange={(e) => {
-                setQuantity(e.target.value);
-              }}
-            />
-            <label htmlFor="quantity">Product Quantity</label>
-          </div>
-          <div className="input-field col s6">
-            <label>
-              <input
-                type="checkbox"
-                checked={featured}
-                onChange={() => {
-                  setFeatured(!featured);
-                }}
-              />
-              <span>Featured?</span>
-            </label>
-          </div>
-        </div>
-        <div className="row">
-          <div className="col s12">
-            <button className="waves-effect waves-light btn">
-              Create New Product
-            </button>
+            <label htmlFor="teacherNickname">Teacher Nickname</label>
           </div>
         </div>
       </form>

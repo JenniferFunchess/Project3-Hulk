@@ -1,0 +1,31 @@
+html {
+  background-color: #0c91c4;
+}
+
+.school {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 60%;
+  width: 50%;
+}
+
+#homeStars {
+  margin-left: 40%;
+}
+
+#homeName {
+  color: white;
+  font-size: 75px;
+  margin-left: 15%;
+}
+
+#rowTagline {
+  color: white;
+  font-size: 20px;
+  margin-left: 15%;
+}
+
+#signUpButton {
+  margin-left: 50%;
+}

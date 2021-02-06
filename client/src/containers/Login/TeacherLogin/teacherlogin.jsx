@@ -1,12 +1,9 @@
 import React, { useState } from "react";
 import "./style.css";
 
-const SignUp = ({ handleFormSubmit }) => {
+const TeacherLogin = ({ handleFormSubmit }) => {
     const [password, setPassword] = useState("");
     const [email, setEmail] = useState("");
-    const [firstName, setFirstName] = useState("");
-    const [lastName, setLastName] = useState("");
-    const [teacherNickname, setTeacherNickname] = useState("");
 
     return (
         <>
@@ -18,42 +15,11 @@ const SignUp = ({ handleFormSubmit }) => {
                 className="col s12"
                 onSubmit={(e) => {
                  handleFormSubmit(e, {
-                  firstName,
-                  lastName,
                  email,
                  password,
-                 teacherNickname,
                 });
              }}
             >
-            <div className="row">
-             <div className="input-field col s6">
-             <input
-              placeholder="First Name"
-              id="firstName"
-              type="text"
-              name="firstName"
-              value={firstName}
-              onChange={(e) => {
-                setFirstName(e.target.value);
-              }}
-            />
-            <label htmlFor="firstName">First Name</label>
-            </div>
-             <div className="input-field col s6">
-            <input
-              placeholder="Last Name"
-              id="lastName"
-              type="text"
-              name="lastName"
-              value={lastName}
-              onChange={(e) => {
-                setLastName(e.target.value);
-              }}
-            />
-            <label htmlFor="lastName">Last Name</label>
-            </div>
-            </div>
             <div className="row">
             <div className="input-field col s12">
             <input
@@ -84,29 +50,15 @@ const SignUp = ({ handleFormSubmit }) => {
             <label htmlFor="password">Enter Password</label>
           </div>
         </div>
-        <div className="row">
-          <div className="input-field col s12">
-            <input
-              placeholder="Name Students Call You"
-              id="teacherNickname"
-              type="text"
-              name="teacherNickname"
-              value={teacherNickname}
-              onChange={(e) => {
-                setTeacherNickname(e.target.value);
-              }}
-            />
-            <label htmlFor="teacherNickname">Teacher Nickname</label>
-          </div>
-        </div>
       </form>
       <div className="row">
           <div className="col s12">
             <button className="waves-effect red darken-1 btn">
-              SIGN UP
+              LOGIN
             </button>
           </div>
         </div>
+        <div id ="forgotpassword">Forgot Password?</div>
             </div>
             </div>
             </div>
@@ -115,4 +67,4 @@ const SignUp = ({ handleFormSubmit }) => {
     );
 };
 
-export default SignUp;
+export default TeacherLogin;

@@ -1,0 +1,33 @@
+.second-row {
+    /* background-color: gray; */
+}
+
+.blueBox {
+    background-color: #0C91C4;
+    color: white;
+    font-weight: 500;
+}
+
+.redColor {
+    color: #D43D0E;
+    font-weight: 575;
+    /* color: #D43D0E; */
+    
+}
+
+.centered {
+    text-align: center;
+}
+
+.uploadButton {
+    background-color: #D43D0E;
+    color: white;
+}
+
+.greenColor {
+    /* background-color: green; */
+}
+
+.descriptionText {
+    font-size: 10px;
+}

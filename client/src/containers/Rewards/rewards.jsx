@@ -9,9 +9,9 @@ const Rewards = ({ handleFormSubmit }) => {
   return (
     <div>
       <h1>Rewards + Add Rewards</h1>
-      <div class="container">
+      <div className="container">
         <FormComponent>
-          <div class="row">
+          <div className="row">
             <div className="col s6">
               <ul>
                 <li>This is a reward category</li>
@@ -23,7 +23,7 @@ const Rewards = ({ handleFormSubmit }) => {
             </div>
             <div className="col s6">
               <h5>Add a Reward Category and How Many Stars</h5>
-              <div className="input-field col s6">
+              <div className="input-field col s12">
                 <form
                   onSubmit={(e) => {
                     handleFormSubmit(e, {
@@ -35,15 +35,15 @@ const Rewards = ({ handleFormSubmit }) => {
                   <input
                     id="rewardCategory"
                     type="text"
-                    value={rewardCategory}
                     className="validate"
+                    value={rewardCategory}
                     onChange={(e) => {
                       setrewardCategory(e.target.value);
                     }}
                   />
                   <label for="rewardCategory">Reward Category</label>
 
-                  <div className="input-field col s6">
+                  <div className="input-field col s12">
                     <input
                       id="starCount"
                       type="text"

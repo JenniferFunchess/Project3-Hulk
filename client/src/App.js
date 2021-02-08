@@ -6,6 +6,7 @@ import TeacherLogin from "./containers/Login/TeacherLogin/teacherlogin";
 import StudentLogin from "./containers/Login/StudentLogin/studentlogin";
 import AddStudent from "./containers/Add-Student/add-student";
 import ViewStudent from "./containers/ViewStudent/viewStudent";
+import Rewards from "./containers/Rewards/rewards";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
          <Route exact path="/studentlogin" component={StudentLogin} />
           <Route path="/add-student" component={AddStudent} />
           <Route path="/view-student" component={ViewStudent}/>
+          <Route path="/rewards" component={Rewards}/>
         </Switch>
       </Router>
     </div>

@@ -7,6 +7,11 @@ const TeacherLogin = ({ handleFormSubmit }) => {
 
     return (
         <>
+         <div className="row">
+                    <div className="col m12" id="teacherlogin">
+                        <h1>Teacher Login</h1>
+                    </div>
+                </div>
         <div className="container">
             <div className = "row">
             <div className="col s10 offset-s1"id ="container">

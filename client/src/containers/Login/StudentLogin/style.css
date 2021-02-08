@@ -1,14 +1,11 @@
 #container {
-  margin-top: 10%;
-  background-color: #0c91c4;
-  margin-bottom: 10%;
-  color: white;
-  padding: 5%;
-}
-
-/* html {
+  margin-top: -15%;
   background-color: white;
-} */
+  margin-bottom: 10%;
+  color: #0c91c4;
+  padding: 5%;
+  border-style: ridge;
+}
 
 button {
   margin-left: 40%;
@@ -17,4 +14,8 @@ button {
 #forgotpassword {
   font-size: 20px;
   margin-left: 33%;
+}
+
+h1 {
+  color: white;
 }

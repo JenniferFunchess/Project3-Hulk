@@ -1,9 +1,9 @@
 #container {
-  margin-top: 10%;
   background-color: #0c91c4;
   margin-bottom: 10%;
   color: white;
   padding: 5%;
+  border-style: ridge;
 }
 
 button {
@@ -13,4 +13,8 @@ button {
 #forgotpassword {
   font-size: 20px;
   margin-left: 33%;
+}
+
+h1 {
+  color: white;
 }

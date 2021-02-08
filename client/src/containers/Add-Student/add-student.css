@@ -50,8 +50,8 @@ h1 {
   border: 0;
 }
 
-#first_name,
-#last_name,
+#firstName,
+#lastName,
 #username {
   color: white;
   border-bottom: 3px solid #fff;

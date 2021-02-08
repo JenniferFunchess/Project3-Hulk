@@ -1,30 +1,67 @@
-import React from "react";
+import React, { useState } from "react";
 import FormComponent from "../../components/Form/form";
 import "./add-student.css";
 
-function AddStudent() {
+const AddStudent = ({ handleFormSubmit }) => {
+  const [firstName, setfirstName] = useState("");
+  const [lastName, setlastName] = useState("");
+  const [username, setusername] = useState("");
+
   return (
     <div>
+      <div className="row">
+        <h1>Add a Student</h1>
+      </div>
       <div className="container">
-        <div className="row">
-          <h1>Add a Student</h1>
-        </div>
         <FormComponent>
-          <div class="row">
-            <form class="col s12">
-              <div class="row">
-                <div class="input-field col s6">
-                  <input id="first_name" type="text" className="validate" />
-                  <label for="first_name">First Name</label>
+          <div className="row">
+            <form
+              className="col s12"
+              onSubmit={(e) => {
+                handleFormSubmit(e, {
+                  firstName,
+                  lastName,
+                  username,
+                });
+              }}
+            >
+              <div className="row">
+                <div classNames="input-field col s6">
+                  <input
+                    id="firstName"
+                    type="text"
+                    className="validate"
+                    value={firstName}
+                    onChange={(e) => {
+                      setfirstName(e.target.value);
+                    }}
+                  />
+                  <label for="firstName">First Name</label>
                 </div>
                 <div className="input-field col s6">
-                  <input id="last_name" type="text" className="validate" />
-                  <label for="last_name">Last Name</label>
+                  <input
+                    id="lastName"
+                    type="text"
+                    className="validate"
+                    value={firstName}
+                    onChange={(e) => {
+                      setlastName(e.target.value);
+                    }}
+                  />
+                  <label for="lastName">Last Name</label>
                 </div>
               </div>
               <div className="row">
                 <div className="input-field col s12">
-                  <input id="username" type="text" className="validate" />
+                  <input
+                    id="username"
+                    type="text"
+                    className="validate"
+                    value={firstName}
+                    onChange={(e) => {
+                      setusername(e.target.value);
+                    }}
+                  />
                   <label for="username">Username</label>
                   <div className="helper-text">
                     <img
@@ -53,7 +90,7 @@ function AddStudent() {
       </div>
     </div>
   );
-}
+};
 
 const styles = {
   button: {

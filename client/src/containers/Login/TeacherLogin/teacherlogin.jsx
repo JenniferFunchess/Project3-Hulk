@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./style.css";
+import "./teacherloginstyle.css";
 
 const TeacherLogin = ({ handleFormSubmit }) => {
     const [password, setPassword] = useState("");

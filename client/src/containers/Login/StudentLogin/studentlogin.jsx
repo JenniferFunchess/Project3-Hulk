@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./style.css";
+import "./studentloginstyle.css";
 
 const StudentLogin = ({ handleFormSubmit }) => {
     const [username, setUsername] = useState("");

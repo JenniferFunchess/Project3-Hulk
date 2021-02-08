@@ -1,7 +1,7 @@
 import React from 'react';
 import starIcon from "../../images/star-45px.png";
 import schoolIcon from "../../images/school.png";
-import "./style.css";
+import "./homestyle.css";
 
 const home = () => {
     return (

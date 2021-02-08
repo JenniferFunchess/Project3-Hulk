@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./style.css";
+import "./signupstyle.css";
 
 const SignUp = ({ handleFormSubmit }) => {
     const [password, setPassword] = useState("");
@@ -10,6 +10,11 @@ const SignUp = ({ handleFormSubmit }) => {
 
     return (
         <>
+         <div className="row">
+                    <div className="col m12" id="teachersignup">
+                        <h1>Teacher Signup</h1>
+                    </div>
+                </div>
         <div className="container">
             <div className = "row">
             <div className="col s10 offset-s1"id ="container">

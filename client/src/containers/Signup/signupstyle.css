@@ -1,5 +1,5 @@
 .container {
-  margin-top: 10%;
+  margin-top: 5%;
   background-color: #0c91c4;
   margin-bottom: 10%;
   color: white;
@@ -8,4 +8,8 @@
 
 button {
   margin-left: 40%;
+}
+
+#teachersignup {
+  color: white;
 }

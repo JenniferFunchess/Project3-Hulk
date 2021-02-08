@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import "./rewards.css";
 import FormComponent from "../../components/Form/form";
 
-const Rewards = () => {
+const Rewards = ({ handleFormSubmit }) => {
+  const [rewardCategory, setrewardCategory] = useState("");
+  const [starCount, setstarCount] = useState("");
+
   return (
     <div>
       <h1>Rewards + Add Rewards</h1>
@@ -19,16 +22,44 @@ const Rewards = () => {
               </ul>
             </div>
             <div className="col s6">
-                <h5>Add a Reward Category and How Many Stars</h5>
-                <div className="input-field col s9">
-                <input id="reward_category" type="text" className="validate" />
-                  <label for="reward_category">Reward Category</label>
+              <h5>Add a Reward Category and How Many Stars</h5>
+              <div className="input-field col s6">
+                <form
+                  onSubmit={(e) => {
+                    handleFormSubmit(e, {
+                      rewardCategory,
+                      starCount,
+                    });
+                  }}
+                >
+                  <input
+                    id="rewardCategory"
+                    type="text"
+                    value={rewardCategory}
+                    className="validate"
+                    onChange={(e) => {
+                      setrewardCategory(e.target.value);
+                    }}
+                  />
+                  <label for="rewardCategory">Reward Category</label>
+
+                  <div className="input-field col s6">
+                    <input
+                      id="starCount"
+                      type="text"
+                      value={starCount}
+                      className="validate"
+                      onChange={(e) => {
+                        setstarCount(e.target.value);
+                      }}
+                    />
+                    <label for="starCount">Star Count</label>
                   </div>
-              
-                  <div className="input-field col s33">
-                  <input id="star_count" type="text" className="validate" />
-                  <label for="star_count">Star Count</label>
-                  </div>
+                </form>
+              </div>
+              <button className="waves-effect red darken-1 btn">
+                ADD CATEGORY
+              </button>
             </div>
           </div>
         </FormComponent>

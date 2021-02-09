@@ -3,13 +3,16 @@ html {
 }
 
 .school {
-  position: absolute;
+  position: fixed;
   left: 0;
   bottom: 0;
   height: 60%;
   width: 50%;
 }
 
+#homeRight {
+  margin-top: -10%;
+}
 #homeStars {
   margin-left: 40%;
 }

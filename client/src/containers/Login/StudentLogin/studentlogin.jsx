@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./style.css";
+import "./studentloginstyle.css";
 
 const StudentLogin = ({ handleFormSubmit }) => {
     const [username, setUsername] = useState("");
@@ -7,6 +7,11 @@ const StudentLogin = ({ handleFormSubmit }) => {
 
     return (
         <>
+        <div className="row">
+                    <div className="col m12" id="teacherlogin">
+                        <h1>Student Login</h1>
+                    </div>
+                </div>
         <div className="container">
             <div className = "row">
             <div className="col s10 offset-s1"id ="container">

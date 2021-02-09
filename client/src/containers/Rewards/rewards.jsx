@@ -1,10 +1,29 @@
 import React, { useState } from "react";
+import axios from "axios";
 import "./rewards.css";
 import FormComponent from "../../components/Form/form";
 
-const Rewards = ({ handleFormSubmit }) => {
+const Rewards = () => {
   const [rewardCategory, setrewardCategory] = useState("");
   const [starCount, setstarCount] = useState("");
+
+  const handleFormSubmit = (e, rewards) => {
+    console.log("Success");
+    e.preventDefault();
+    axios
+      .post("/api/rewards", rewards)
+      .then((response) => {
+        console.log(response.data);
+        // history.push("/rewards");
+      })
+      .catch((err) => {
+        console.log(err);
+        // alert.setAlert({
+        //   message: "Failed to create new category.",
+        //   type: "danger",
+        // });
+      });
+  };
 
   return (
     <div>
@@ -13,13 +32,53 @@ const Rewards = ({ handleFormSubmit }) => {
         <FormComponent>
           <div className="row">
             <div className="col s6">
-              <ul>
-                <li>This is a reward category</li>
-                <li>This is a reward category</li>
-                <li>This is a reward category</li>
-                <li>This is a reward category</li>
-                <li>This is a reward category</li>
-              </ul>
+              {/* <ul>
+                <li>
+                  <a className="btn-floating btn-large waves-effect waves-light red">
+                    <i className="material-icons">delete</i>
+                  </a>
+                  <a className="btn-floating btn-large waves-effect waves-light red">
+                    <i className="material-icons">edit</i>
+                  </a>
+                  This is a reward category
+                </li>
+                <li>
+                  <a className="btn-floating btn-large waves-effect waves-light red">
+                    <i className="material-icons">delete</i>
+                  </a>
+                  <a className="btn-floating btn-large waves-effect waves-light red">
+                    <i className="material-icons">edit</i>
+                  </a>
+                  This is a reward category
+                </li>
+                <li>
+                  <a className="btn-floating btn-large waves-effect waves-light red">
+                    <i className="material-icons">delete</i>
+                  </a>
+                  <a className="btn-floating btn-large waves-effect waves-light red">
+                    <i className="material-icons">edit</i>
+                  </a>
+                  This is a reward category
+                </li>
+                <li>
+                  <a className="btn-floating btn-large waves-effect waves-light red">
+                    <i className="material-icons">delete</i>
+                  </a>
+                  <a className="btn-floating btn-large waves-effect waves-light red">
+                    <i className="material-icons">edit</i>
+                  </a>
+                  This is a reward category
+                </li>
+                <li>
+                  <a className="btn-floating btn-large waves-effect waves-light red">
+                    <i className="material-icons">delete</i>
+                  </a>
+                  <a className="btn-floating btn-large waves-effect waves-light red">
+                    <i className="material-icons">edit</i>
+                  </a>
+                  This is a reward category
+                </li>
+              </ul> */}
             </div>
             <div className="col s6">
               <h5>Add a Reward Category and How Many Stars</h5>
@@ -55,11 +114,11 @@ const Rewards = ({ handleFormSubmit }) => {
                     />
                     <label for="starCount">Star Count</label>
                   </div>
+                  <button className="waves-effect red darken-1 btn">
+                    ADD CATEGORY
+                  </button>
                 </form>
               </div>
-              <button className="waves-effect red darken-1 btn">
-                ADD CATEGORY
-              </button>
             </div>
           </div>
         </FormComponent>

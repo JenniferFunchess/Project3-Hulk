@@ -28,6 +28,10 @@ connection.on("error", (err) => {
   console.log("Mongoose connection error: ", err);
 });
 
+const rewardController = require("./controllers/rewardController");
+
+app.use("/api/rewards", rewardController);
+
 app.get("/api/config", (req, res) => {
   res.json({
     success: true,

@@ -9,7 +9,6 @@ function ViewStudent() {
         View Student
       </h1>
      
-
       <div className="row">
         <div className="col s3">
           <h1>Student Name</h1>
@@ -26,7 +25,7 @@ function ViewStudent() {
         <div className="col s9">
             
           <FormComponent>
-            <row>
+             <div class="row">
               <div className="col s6">
                 <ul>
                   <li className="star-categories">Asking a tough question</li>
@@ -42,7 +41,7 @@ function ViewStudent() {
                 <button class="waves-effect waves-light btn" id="add-category-btn">Category</button>
                 <button class="waves-effect waves-light btn" id="add-star-btn">Add Star</button>
               </div>
-            </row>
+            </div>
           </FormComponent>
         </div>
       </div>

@@ -3,12 +3,12 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const rewardSchema = new Schema({
-  name: {
+  rewardCategory: {
     type: String,
     trim: true,
     required: "Enter a reward name",
   },
-  requiredStars: {
+  starCount: {
     type: Number,
     required: "Assign a star value",
   },

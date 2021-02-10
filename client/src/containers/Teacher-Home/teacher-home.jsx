@@ -6,7 +6,7 @@ const TeacherHome = () => {
   return (
     <div className="container">
       <div className="row">
-        <h1>Teacher Home Page!</h1>
+        <h1>Teacher Home Page</h1>
       </div>
       <div className="row">
         <div className="col s12 m4">

@@ -62,7 +62,7 @@ const AddStudent = () => {
                     id="lastName"
                     type="text"
                     className="validate"
-                    value={firstName}
+                    value={lastName}
                     onChange={(e) => {
                       setlastName(e.target.value);
                     }}
@@ -76,7 +76,7 @@ const AddStudent = () => {
                     id="username"
                     type="text"
                     className="validate"
-                    value={firstName}
+                    value={username}
                     onChange={(e) => {
                       setusername(e.target.value);
                     }}
@@ -100,7 +100,7 @@ const AddStudent = () => {
             <button
               type="submit"
               className="styled-button"
-              style={styles.button}
+              // style={styles.button}
             >
               Add Student
             </button>

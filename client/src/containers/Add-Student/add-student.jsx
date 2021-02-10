@@ -1,11 +1,30 @@
 import React, { useState } from "react";
+import axios from "axios";
 import FormComponent from "../../components/Form/form";
 import "./add-student.css";
 
-const AddStudent = ({ handleFormSubmit }) => {
+const AddStudent = () => {
   const [firstName, setfirstName] = useState("");
   const [lastName, setlastName] = useState("");
   const [username, setusername] = useState("");
+
+  const handleFormSubmit = (e, addstudent) => {
+    console.log("Success");
+    e.preventDefault();
+    axios
+      .post("/api/addstudent", addstudent)
+      .then((response) => {
+        console.log(response.data);
+        // history.push("/rewards");
+      })
+      .catch((err) => {
+        console.log(err);
+        // alert.setAlert({
+        //   message: "Failed to create new category.",
+        //   type: "danger",
+        // });
+      });
+  };
 
   return (
     <div>

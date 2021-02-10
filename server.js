@@ -29,8 +29,10 @@ connection.on("error", (err) => {
 });
 
 const rewardController = require("./controllers/rewardController");
+const addstudentController = require("./controllers/addstudentController");
 
 app.use("/api/rewards", rewardController);
+app.use("/api/addstudent", addStudentController);
 
 app.get("/api/config", (req, res) => {
   res.json({

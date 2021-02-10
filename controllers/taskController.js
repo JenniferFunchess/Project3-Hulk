@@ -1,13 +1,12 @@
 const express = require("express");
-const { default: Rewards } = require("../client/src/containers/Rewards/rewards.jsx");
 const router = express.Router();
-const Reward = require("../models/Reward.js")
+const Task = require("../models/Task.js")
 
 
 router.get("/", (req, res) => {
-  Reward.find()
-    .then((rewards) => {
-      res.json(rewards);
+  Task.find()
+    .then((tasks) => {
+      res.json(tasks);
     })
     .catch((err) => {
       console.log(err);
@@ -16,9 +15,9 @@ router.get("/", (req, res) => {
 });
 
 router.get("/:id", (req, res) => {
-  Reward.findById(req.params.id)
-    .then((foundReward) => {
-      res.json(foundReward);
+  Task.findById(req.params.id)
+    .then((foundTask) => {
+      res.json(foundTask);
     })
     .catch((err) => {
       console.log(err);
@@ -28,11 +27,11 @@ router.get("/:id", (req, res) => {
 
 router.post("/", (req, res) => {
     console.log(req.body);
-    Reward.create(req.body)
-    .then((newRewards) => {
-      console.log(newRewards);
+    Task.create(req.body)
+    .then((newTasks) => {
+      console.log(newTasks);
       console.log("Success");
-      res.json(newRewards);
+      res.json(newTasks);
     }).catch(err => {
       console.log(err);
       res.status(500).end();
@@ -40,7 +39,7 @@ router.post("/", (req, res) => {
 });
 
 router.put("/:id", (req, res) => {
-  Reward.findByIdAndUpdate(req.params.id, req.body, { new: true }).then(
+  Task.findByIdAndUpdate(req.params.id, req.body, { new: true }).then(
     (updatedObject) => {
       res.json(updatedObject);
     }
@@ -48,7 +47,7 @@ router.put("/:id", (req, res) => {
 });
 
 router.delete("/:id", (req, res) => {
-  Reward.findByIdAndDelete(req.params.id).then((result) => {
+  Task.findByIdAndDelete(req.params.id).then((result) => {
     res.json(result);
   });
 });

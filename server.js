@@ -29,8 +29,17 @@ connection.on("error", (err) => {
 });
 
 const rewardController = require("./controllers/rewardController");
+const taskController = require("./controllers/taskController");
+const studentController = require("./controllers/studentController");
+const teacherController = require("./controllers/teacherController");
 
 app.use("/api/rewards", rewardController);
+app.use("/api/tasks", taskController);
+app.use("/api/students", studentController);
+app.use("/api/teachers", teacherController);
+
+
+
 
 app.get("/api/config", (req, res) => {
   res.json({

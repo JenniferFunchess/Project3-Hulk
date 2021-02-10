@@ -19,13 +19,17 @@ const ViewClass = () => {
                   alt="Student Profile Picture"
                   style={{ width: "100%" }}
                 />
-                <span className="card-title">Title</span>
-                <Link to="/view-student" className="btn-floating halfway-fab waves-effect waves-light red">
+                <Link
+                  to="/view-student"
+                  className="btn-floating halfway-fab waves-effect waves-light red"
+                >
                   <i className="material-icons">add</i>
                 </Link>
               </div>
               <div className="card-content">
-                <p className="student-name">Student Name</p>
+                <p className="first-name">First Name: </p>
+                <p className="last-name">Last Name: </p>
+                <p className="user-name">User Name: </p>
               </div>
             </div>
           </div>
@@ -37,13 +41,17 @@ const ViewClass = () => {
                   alt="Student Profile Picture"
                   style={{ width: "100%" }}
                 />
-                <span className="card-title">Title</span>
-                <Link to="/view-student" className="btn-floating halfway-fab waves-effect waves-light red">
+                <Link
+                  to="/view-student"
+                  className="btn-floating halfway-fab waves-effect waves-light red"
+                >
                   <i className="material-icons">add</i>
                 </Link>
               </div>
               <div className="card-content">
-                <p className="student-name">Student Name</p>
+                <p className="first-name">First Name: </p>
+                <p className="last-name">Last Name: </p>
+                <p className="user-name">User Name: </p>
               </div>
             </div>
           </div>
@@ -55,13 +63,17 @@ const ViewClass = () => {
                   alt="Student Profile Picture"
                   style={{ width: "100%" }}
                 />
-                <span className="card-title">Title</span>
-                <Link to="/view-student" className="btn-floating halfway-fab waves-effect waves-light red">
+                <Link
+                  to="/view-student"
+                  className="btn-floating halfway-fab waves-effect waves-light red"
+                >
                   <i className="material-icons">add</i>
                 </Link>
               </div>
               <div className="card-content">
-                <p className="student-name">Student Name</p>
+                <p className="first-name">First Name: </p>
+                <p className="last-name">Last Name: </p>
+                <p className="user-name">User Name: </p>
               </div>
             </div>
           </div>
@@ -75,13 +87,17 @@ const ViewClass = () => {
                   alt="Student Profile Picture"
                   style={{ width: "100%" }}
                 />
-                <span className="card-title">Title</span>
-                <Link to="/view-student" className="btn-floating halfway-fab waves-effect waves-light red">
+                <Link
+                  to="/view-student"
+                  className="btn-floating halfway-fab waves-effect waves-light red"
+                >
                   <i className="material-icons">add</i>
                 </Link>
               </div>
               <div className="card-content">
-                <p className="student-name">Student Name</p>
+                <p className="first-name">First Name: </p>
+                <p className="last-name">Last Name: </p>
+                <p className="user-name">User Name: </p>
               </div>
             </div>
           </div>
@@ -93,13 +109,17 @@ const ViewClass = () => {
                   alt="Student Profile Picture"
                   style={{ width: "100%" }}
                 />
-                <span className="card-title">Title</span>
-                <Link to="/view-student" className="btn-floating halfway-fab waves-effect waves-light red">
+                <Link
+                  to="/view-student"
+                  className="btn-floating halfway-fab waves-effect waves-light red"
+                >
                   <i className="material-icons">add</i>
                 </Link>
               </div>
               <div className="card-content">
-                <p className="student-name">Student Name</p>
+                <p className="first-name">First Name: </p>
+                <p className="last-name">Last Name: </p>
+                <p className="user-name">User Name: </p>
               </div>
             </div>
           </div>
@@ -111,13 +131,17 @@ const ViewClass = () => {
                   alt="Student Profile Picture"
                   style={{ width: "100%" }}
                 />
-                <span className="card-title">Title</span>
-                <Link to="/view-student" className="btn-floating halfway-fab waves-effect waves-light red">
+                <Link
+                  to="/view-student"
+                  className="btn-floating halfway-fab waves-effect waves-light red"
+                >
                   <i className="material-icons">add</i>
                 </Link>
               </div>
               <div className="card-content">
-                <p className="student-name">Student Name</p>
+                <p className="first-name">First Name: </p>
+                <p className="last-name">Last Name: </p>
+                <p className="user-name">User Name: </p>
               </div>
             </div>
           </div>

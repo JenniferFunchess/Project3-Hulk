@@ -2,6 +2,9 @@
 .container {
   background-color: white;
 } */
-.student-name {
+.first-name, .last-name, .user-name {
   color: black;
 }
+/* .last-name {
+    text-align: center;
+} */

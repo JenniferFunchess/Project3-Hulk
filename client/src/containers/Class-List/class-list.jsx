@@ -8,7 +8,7 @@ const ViewClass = () => {
     <div>
       <div className="container">
         <div className="row">
-          <h1>Class List</h1>
+          <h1>Class List!</h1>
         </div>
         <div className="row">
           <div className="col s12 m4">

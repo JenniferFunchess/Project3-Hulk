@@ -1,13 +1,12 @@
 const express = require("express");
-const { default: Rewards } = require("../client/src/containers/Rewards/rewards.jsx");
 const router = express.Router();
-const Reward = require("../models/Reward.js")
+const Student = require("../models/Student.js")
 
 
 router.get("/", (req, res) => {
-  Reward.find()
-    .then((rewards) => {
-      res.json(rewards);
+  Student.find()
+    .then((students) => {
+      res.json(students);
     })
     .catch((err) => {
       console.log(err);
@@ -16,9 +15,9 @@ router.get("/", (req, res) => {
 });
 
 router.get("/:id", (req, res) => {
-  Reward.findById(req.params.id)
-    .then((foundReward) => {
-      res.json(foundReward);
+  Student.findById(req.params.id)
+    .then((foundStudent) => {
+      res.json(foundStudent);
     })
     .catch((err) => {
       console.log(err);
@@ -28,11 +27,11 @@ router.get("/:id", (req, res) => {
 
 router.post("/", (req, res) => {
     console.log(req.body);
-    Reward.create(req.body)
-    .then((newRewards) => {
-      console.log(newRewards);
+    Student.create(req.body)
+    .then((newStudents) => {
+      console.log(newStudents);
       console.log("Success");
-      res.json(newRewards);
+      res.json(newStudents);
     }).catch(err => {
       console.log(err);
       res.status(500).end();
@@ -40,7 +39,7 @@ router.post("/", (req, res) => {
 });
 
 router.put("/:id", (req, res) => {
-  Reward.findByIdAndUpdate(req.params.id, req.body, { new: true }).then(
+  Student.findByIdAndUpdate(req.params.id, req.body, { new: true }).then(
     (updatedObject) => {
       res.json(updatedObject);
     }
@@ -48,7 +47,7 @@ router.put("/:id", (req, res) => {
 });
 
 router.delete("/:id", (req, res) => {
-  Reward.findByIdAndDelete(req.params.id).then((result) => {
+  Student.findByIdAndDelete(req.params.id).then((result) => {
     res.json(result);
   });
 });

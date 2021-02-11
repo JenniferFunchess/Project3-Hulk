@@ -8,6 +8,16 @@ const studentSchema = new Schema({
     trim: true,
     required: "Enter a name or username",
   },
+  firstName: {
+    type: String,
+    trim: true,
+    required: "Enter a first name",
+  },
+  lastName: {
+    type: String,
+    trim: true,
+    required: "Enter a last name",
+  },
   starTotal: {
     type: Number,
     default: 0,

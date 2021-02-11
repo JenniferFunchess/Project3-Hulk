@@ -1,5 +1,4 @@
 const express = require("express");
-const { default: Rewards } = require("../client/src/containers/Rewards/rewards.jsx");
 const router = express.Router();
 const Reward = require("../models/Reward.js")
 

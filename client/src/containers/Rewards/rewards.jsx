@@ -86,7 +86,7 @@ const Rewards = () => {
                     />
                     <label for="starCount">Star Count</label>
                   </div>
-                  <button className="waves-effect red darken-1 btn">
+                  <button className="waves-effect red darken-1 btn add-category-btn">
                     ADD CATEGORY
                   </button>
                 </form>

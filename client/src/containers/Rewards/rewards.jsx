@@ -53,16 +53,23 @@ const Rewards = () => {
                       {" "}
                       ({reward.starCount} stars)
                     </h5>
-                    <a className="btn-floating btn-small waves-effect waves-light red"                       onClick={async () => {
-                      const rewardCategory = prompt("Please enter the new value")
+                    <a
+                      className="btn-floating btn-small waves-effect waves-light red"
+                      onClick={async () => {
+                        const setrewardCategory = prompt(
+                          "Please enter the new value"
+                        );
+                        const setstarCount = prompt(
+                          "Please enter the new value"
+                        );
                         await axios.put("/api/rewards/" + reward._id, {
                           // values that will be updated
-                        
+                          rewardCategory: setrewardCategory,
+                          starCount: setstarCount,
                         });
                         setUpdateDate(new Date());
                       }}
                     >
-
                       <FontAwesomeIcon icon={faEdit} />
                     </a>
                     <a

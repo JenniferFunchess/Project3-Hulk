@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./rewards.css";
 import FormComponent from "../../components/Form/form";
@@ -8,6 +8,15 @@ import { faEdit, faTrash, faStar } from "@fortawesome/free-solid-svg-icons";
 const Rewards = () => {
   const [rewardCategory, setrewardCategory] = useState("");
   const [starCount, setstarCount] = useState("");
+  const [rewards, setRewards] = useState([]);
+  const [updateDate, setUpdateDate] = useState(new Date());
+
+  useEffect(() => {
+    (async () => {
+      const { data } = await axios.get("/api/rewards");
+      setRewards(data);
+    })();
+  }, [updateDate]);
 
   const handleFormSubmit = (e, rewards) => {
     console.log("Success");
@@ -35,21 +44,39 @@ const Rewards = () => {
           <div className="row">
             <div className="col s6">
               <ul>
-                <li>
-                  <h5 className="reward-list-item">
-                    <FontAwesomeIcon icon={faStar} /> {rewardCategory} 
-                  </h5>
-                  <h5 className="reward-list-item"> ({starCount} stars)</h5>
-                  <a className="btn-floating btn-small waves-effect waves-light red">
-                    <FontAwesomeIcon icon={faEdit} />
-                  </a>
-                  <a
-                    className="btn-floating btn-small
+                {rewards.map((reward) => (
+                  <li key={reward._id}>
+                    <h5 className="reward-list-item">
+                      <FontAwesomeIcon icon={faStar} /> {reward.rewardCategory}
+                    </h5>
+                    <h5 className="reward-list-item">
+                      {" "}
+                      ({reward.starCount} stars)
+                    </h5>
+                    <a className="btn-floating btn-small waves-effect waves-light red"                       onClick={async () => {
+                      const rewardCategory = prompt("Please enter the new value")
+                        await axios.put("/api/rewards/" + reward._id, {
+                          // values that will be updated
+                        
+                        });
+                        setUpdateDate(new Date());
+                      }}
+                    >
+
+                      <FontAwesomeIcon icon={faEdit} />
+                    </a>
+                    <a
+                      className="btn-floating btn-small
                    waves-effect waves-light red"
-                  >
-                    <FontAwesomeIcon icon={faTrash} />
-                  </a>
-                </li>
+                      onClick={async () => {
+                        await axios.delete("/api/rewards/" + reward._id);
+                        setUpdateDate(new Date());
+                      }}
+                    >
+                      <FontAwesomeIcon icon={faTrash} />
+                    </a>
+                  </li>
+                ))}
               </ul>
             </div>
             <div className="col s6">
@@ -75,7 +102,7 @@ const Rewards = () => {
                       setrewardCategory(e.target.value);
                     }}
                   />
-                  <label for="rewardCategory">Reward Category</label>
+                  <label htmlFor="rewardCategory">Reward Category</label>
 
                   <div className="input-field col s12">
                     <input
@@ -87,7 +114,7 @@ const Rewards = () => {
                         setstarCount(e.target.value);
                       }}
                     />
-                    <label for="starCount">Star Count</label>
+                    <label htmlFor="starCount">Star Count</label>
                   </div>
                   <button className="waves-effect red darken-1 btn add-category-btn">
                     ADD CATEGORY

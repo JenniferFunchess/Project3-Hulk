@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import axios from "axios";
 import "./rewards.css";
 import FormComponent from "../../components/Form/form";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEdit, faTrash, faStar } from "@fortawesome/free-solid-svg-icons";
 
 const Rewards = () => {
   const [rewardCategory, setrewardCategory] = useState("");
@@ -32,53 +34,23 @@ const Rewards = () => {
         <FormComponent>
           <div className="row">
             <div className="col s6">
-              {/* <ul>
+              <ul>
                 <li>
-                  <a className="btn-floating btn-large waves-effect waves-light red">
-                    <i className="material-icons">delete</i>
+                  <h5 class="reward-list-item">
+                    <FontAwesomeIcon icon={faStar} />
+                    This is a reward category
+                  </h5>
+                  <a className="btn-floating btn-small waves-effect waves-light red">
+                    <FontAwesomeIcon icon={faEdit} />
                   </a>
-                  <a className="btn-floating btn-large waves-effect waves-light red">
-                    <i className="material-icons">edit</i>
+                  <a
+                    className="btn-floating btn-small
+                   waves-effect waves-light red"
+                  >
+                    <FontAwesomeIcon icon={faTrash} />
                   </a>
-                  This is a reward category
                 </li>
-                <li>
-                  <a className="btn-floating btn-large waves-effect waves-light red">
-                    <i className="material-icons">delete</i>
-                  </a>
-                  <a className="btn-floating btn-large waves-effect waves-light red">
-                    <i className="material-icons">edit</i>
-                  </a>
-                  This is a reward category
-                </li>
-                <li>
-                  <a className="btn-floating btn-large waves-effect waves-light red">
-                    <i className="material-icons">delete</i>
-                  </a>
-                  <a className="btn-floating btn-large waves-effect waves-light red">
-                    <i className="material-icons">edit</i>
-                  </a>
-                  This is a reward category
-                </li>
-                <li>
-                  <a className="btn-floating btn-large waves-effect waves-light red">
-                    <i className="material-icons">delete</i>
-                  </a>
-                  <a className="btn-floating btn-large waves-effect waves-light red">
-                    <i className="material-icons">edit</i>
-                  </a>
-                  This is a reward category
-                </li>
-                <li>
-                  <a className="btn-floating btn-large waves-effect waves-light red">
-                    <i className="material-icons">delete</i>
-                  </a>
-                  <a className="btn-floating btn-large waves-effect waves-light red">
-                    <i className="material-icons">edit</i>
-                  </a>
-                  This is a reward category
-                </li>
-              </ul> */}
+              </ul>
             </div>
             <div className="col s6">
               <h5>Add a Reward Category and How Many Stars</h5>

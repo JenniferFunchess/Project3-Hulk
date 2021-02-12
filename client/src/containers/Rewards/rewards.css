@@ -2,6 +2,24 @@
   padding: 0px;
 }
 
+.btn-floating {
+  margin: 1%;
+}
+
+.reward-list-item {
+  vertical-align: middle;
+  font-size: 20px;
+  display: inline;
+}
+
+.fa-star {
+  color: #ffde59;
+}
+
+.add-category-btn {
+  display: block;
+}
+
 #rewardCategory,
 #starCount {
   color: white;

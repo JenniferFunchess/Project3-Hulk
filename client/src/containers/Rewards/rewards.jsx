@@ -37,10 +37,9 @@ const Rewards = () => {
               <ul>
                 <li>
                   <h5 className="reward-list-item">
-                    <FontAwesomeIcon icon={faStar} /> Asking a tough question in
-                    class 
+                    <FontAwesomeIcon icon={faStar} /> {rewardCategory} 
                   </h5>
-                  <h5 className="reward-list-item"> (5 Stars)</h5>
+                  <h5 className="reward-list-item"> ({starCount} stars)</h5>
                   <a className="btn-floating btn-small waves-effect waves-light red">
                     <FontAwesomeIcon icon={faEdit} />
                   </a>

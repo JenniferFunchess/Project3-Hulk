@@ -62,6 +62,11 @@ const Rewards = () => {
                         const setstarCount = prompt(
                           "Please enter the new value"
                         );
+                        if (!Number(setstarCount)) {
+                          alert("Your star count must be a number.");
+                        } else {
+                          alert("Your reward category and star count have been updated!")
+                        }
                         await axios.put("/api/rewards/" + reward._id, {
                           // values that will be updated
                           rewardCategory: setrewardCategory,

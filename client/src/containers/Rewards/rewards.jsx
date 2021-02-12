@@ -36,10 +36,11 @@ const Rewards = () => {
             <div className="col s6">
               <ul>
                 <li>
-                  <h5 class="reward-list-item">
-                    <FontAwesomeIcon icon={faStar} />
-                    This is a reward category
+                  <h5 className="reward-list-item">
+                    <FontAwesomeIcon icon={faStar} /> Asking a tough question in
+                    class 
                   </h5>
+                  <h5 className="reward-list-item"> (5 Stars)</h5>
                   <a className="btn-floating btn-small waves-effect waves-light red">
                     <FontAwesomeIcon icon={faEdit} />
                   </a>
@@ -61,6 +62,9 @@ const Rewards = () => {
                       rewardCategory,
                       starCount,
                     });
+                    if (!Number(starCount)) {
+                      alert("Your star count must be a number");
+                    }
                   }}
                 >
                   <input

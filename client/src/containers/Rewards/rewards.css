@@ -7,8 +7,9 @@
 }
 
 .reward-list-item {
-  display: inline;
   vertical-align: middle;
+  font-size: 20px;
+  display: inline;
 }
 
 .fa-star {

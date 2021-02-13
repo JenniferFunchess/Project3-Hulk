@@ -25,6 +25,7 @@
   },
   "homepage": "https://github.com/JenniferFunchess/Project3-Hulk#readme",
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.34",
     "@fortawesome/react-fontawesome": "^0.1.14",
     "concurrently": "^5.3.0",
     "express": "^4.17.1",

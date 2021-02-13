@@ -6,7 +6,7 @@ import TeacherLogin from "./containers/Login/TeacherLogin/teacherlogin";
 import StudentLogin from "./containers/Login/StudentLogin/studentlogin";
 import AddStudent from "./containers/Add-Student/add-student";
 import ViewStudent from "./containers/ViewStudent/viewStudent";
-import Rewards from "./containers/Rewards/Rewards";
+import Rewards from "./containers/Rewards/rewards";
 import ViewList from "./containers/Class-List/class-list";
 import TeacherHome from "./containers/Teacher-Home/teacher-home";
 

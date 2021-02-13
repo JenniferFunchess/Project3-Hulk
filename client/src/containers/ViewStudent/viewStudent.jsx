@@ -1,6 +1,5 @@
 import React from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
 import FormComponent from "../../components/Form/form";
 import "./viewStudent.css";
 

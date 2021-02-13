@@ -9,11 +9,11 @@ const SignUp = () => {
   const [lastName, setLastName] = useState("");
   const [teacherNickname, setTeacherNickname] = useState("");
 
-  const handleFormSubmit = (e, newStudents) => {
+  const handleFormSubmit = (e, newTeacher) => {
     console.log("Success");
     e.preventDefault();
     axios
-      .post("/api/students", newStudents)
+      .post("/api/signup", newTeacher)
       .then((response) => {
         console.log(response.data);
         // history.push("/rewards");

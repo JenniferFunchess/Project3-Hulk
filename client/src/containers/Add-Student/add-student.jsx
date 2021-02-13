@@ -1,12 +1,32 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import FormComponent from "../../components/Form/form";
 import "./add-student.css";
+import Navbar from '../../components/Navbar/Navbar';
 
 const AddStudent = () => {
+
+  const url = window.location.href;
+  const urlArray = url.split('/');
+  const teacherId = urlArray[urlArray.length-1];
+  console.log(teacherId);
+  const [teacher, setTeacher] = useState("");
+
   const [firstName, setfirstName] = useState("");
   const [lastName, setlastName] = useState("");
   const [username, setusername] = useState("");
+
+  useEffect(() => {
+    axios.get(`/api/signup/${teacherId}`)
+    .then((response) => {
+      console.log('Teacher get route worked');
+      setTeacher(response.data);
+      console.log(response.data);
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+}, []);
 
   const handleFormSubmit = (e, newStudents) => {
     console.log("Success");
@@ -27,6 +47,8 @@ const AddStudent = () => {
   };
 
   return (
+    <>
+    <Navbar classCode={teacher.classCode} login={false}/>
     <div>
       <div className="row">
         <h1>Add a Student</h1>
@@ -99,6 +121,7 @@ const AddStudent = () => {
         </FormComponent>
       </div>
     </div>
+    </>
   );
 };
 

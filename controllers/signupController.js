@@ -15,4 +15,15 @@ router.post("/", (req, res) => {
     })
 });
 
+router.get("/:id", (req, res) => {
+  Signup.findById(req.params.id)
+    .then((foundTeacher) => {
+      res.json(foundTeacher);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(404).end();
+    });
+});
+
 module.exports = router;

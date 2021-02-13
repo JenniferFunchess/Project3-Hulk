@@ -34,6 +34,7 @@ const Rewards = () => {
         //   type: "danger",
         // });
       });
+      setUpdateDate(new Date());
   };
 
   return (

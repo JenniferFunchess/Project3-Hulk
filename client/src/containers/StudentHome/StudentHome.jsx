@@ -7,12 +7,18 @@ import { faEdit, faTrash, faStar } from "@fortawesome/free-solid-svg-icons";
 
 function StudentHome(props) {
 
+    const url = window.location.href;
+    console.log(url);
+    const urlArray = url.split('/');
+    const studentId = urlArray[urlArray.length-1];
+    console.log(studentId);
+
     const [student, setStudent] = useState("");
     const [rewards, setRewards] = useState([]);
     const [tasks, setTasks] = useState([]);
 
     useEffect(() => {
-    axios.get(`/api/students/602733e29197bd23a47b8872`) // add /${props.studentId}?
+    axios.get(`/api/students/${studentId}`) // add /${props.studentId}? 602733e29197bd23a47b8872
     .then((response) => {
         console.log('student worked');
         console.log(response.data);
@@ -103,7 +109,7 @@ function StudentHome(props) {
                             {rewards.map((reward => (
                                 <div className="col s12">
                                 <h5><FontAwesomeIcon icon={faStar} />{reward.rewardCategory} ({reward.starCount} Stars)</h5>
-                            </div>
+                                </div>
                             )))}
                             
                             {/* <div className="col s12">

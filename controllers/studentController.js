@@ -14,8 +14,8 @@ router.get("/", (req, res) => {
     });
 });
 
-router.get("/:id", (req, res) => {
-  Student.findById(req.params.id)
+router.get("/:_id", (req, res) => {
+  Student.findById(req.params._id)
     .then((foundStudent) => {
       res.json(foundStudent);
     })

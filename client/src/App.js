@@ -9,6 +9,7 @@ import ViewStudent from "./containers/ViewStudent/viewStudent";
 import Rewards from "./containers/Rewards/Rewards";
 import ViewList from "./containers/Class-List/class-list";
 import TeacherHome from "./containers/Teacher-Home/teacher-home";
+import StudentHome from './containers/StudentHome/StudentHome';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route exact path="/studentlogin" component={StudentLogin} />
           <Route exact path="/teacherhome" component={TeacherHome} />
           <Route exact path="/classlist" component={ViewList} />
+          <Route exact path="/student-home" component={StudentHome} />
           <Route path="/add-student" component={AddStudent} />
           <Route path="/view-student" component={ViewStudent} />
           <Route path="/rewards" component={Rewards} />

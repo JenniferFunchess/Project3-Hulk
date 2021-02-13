@@ -2,16 +2,20 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import Star from '../../components/Star/star';
 import './style.css';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEdit, faTrash, faStar } from "@fortawesome/free-solid-svg-icons";
 
 function StudentHome(props) {
 
     const [student, setStudent] = useState("");
-    const [rewards, setRewards] = useState("");
+    const [rewards, setRewards] = useState([]);
     const [tasks, setTasks] = useState([]);
 
     useEffect(() => {
-    axios.get(`/api/students/${props.studentId}`)
+    axios.get(`/api/students/602733e29197bd23a47b8872`) // add /${props.studentId}?
     .then((response) => {
+        console.log('student worked');
+        console.log(response.data);
         setStudent(response.data);
     })
     .catch((err) => {
@@ -73,41 +77,44 @@ function StudentHome(props) {
                                 </div>
                             {/* </div> */}
                             <div className="col s12 greenColor">
-                                <span className="descriptionText">ASKING A TOUGH QUESTION</span><Star large={false}></Star><span>2</span>
+                                <span className="descriptionText">ASKING A TOUGH QUESTION</span><FontAwesomeIcon icon={faStar} /><span>2</span>
                             </div>
                             <div className="col s12 greenColor">
-                                <span className="descriptionText">Zoom Camera on All Class</span><Star large={false}></Star><span>2</span>
+                                <span className="descriptionText">Zoom Camera on All Class</span><FontAwesomeIcon icon={faStar} /><span>2</span>
                             </div>
                             <div className="col s12 greenColor">
-                                <span className="descriptionText">Submitting Homework on Time</span><Star large={false}></Star><span>1</span>
+                                <span className="descriptionText">Submitting Homework on Time</span><FontAwesomeIcon icon={faStar} /><span>1</span>
                             </div>
                             <div className="col s12 greenColor">
-                                <span className="descriptionText">Extra Credit</span><Star large={false}></Star><span>3</span>
+                                <span className="descriptionText">Extra Credit</span><FontAwesomeIcon icon={faStar} /><span>3</span>
                             </div>
                             <div className="col s12 greenColor">
-                                <span className="descriptionText">Listening in Class</span><Star large={false}></Star><span>3</span>
+                                <span className="descriptionText">Listening in Class</span><FontAwesomeIcon icon={faStar} /><span>3</span>
                             </div>
                         </div>
                         <div className="col s6">
                             <div className="col s12">
-                            <Star large={true}></Star><span>11</span>
+                            <FontAwesomeIcon icon={faStar} /><span>{rewards.length}</span>
                             </div>
                             <div className="col s12">
                                 <h5>Use Stars!!!</h5>
                                 <hr></hr>
                             </div>
-                            <div className="col s12">
-                                <Star large={false}></Star><p>Extra Reading Time (10 Stars)</p>
+                            {rewards.map((reward => (
+                                <div className="col s12">
+                                <h5><FontAwesomeIcon icon={faStar} />{reward.rewardCategory} ({reward.starCount} Stars)</h5>
+                            </div>
+                            )))}
+                            
+                            {/* <div className="col s12">
+                                <FontAwesomeIcon icon={faStar} /><p>Snack from Teacher (10 Stars)</p>
                             </div>
                             <div className="col s12">
-                                <Star large={false}></Star><p>Snack from Teacher (10 Stars)</p>
+                                <FontAwesomeIcon icon={faStar} /><p>Prize Jar (10 Stars)</p>
                             </div>
                             <div className="col s12">
-                                <Star large={false}></Star><p>Prize Jar (10 Stars)</p>
-                            </div>
-                            <div className="col s12">
-                                <Star large={false}></Star><p>Free Homework Pass(15 Stars)</p>
-                            </div>
+                                <FontAwesomeIcon icon={faStar} /><p>Free Homework Pass(15 Stars)</p>
+                            </div> */}
                         </div>
                     </div> 
               </div>

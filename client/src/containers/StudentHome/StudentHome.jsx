@@ -12,7 +12,7 @@ function StudentHome(props) {
     const [tasks, setTasks] = useState([]);
 
     useEffect(() => {
-    axios.get(`/api/students/602733e29197bd23a47b8872`) // add /${props.studentId}?
+    axios.get(`/api/students/${props.studentid}`) // add /${props.studentId}?
     .then((response) => {
         console.log('student worked');
         console.log(response.data);

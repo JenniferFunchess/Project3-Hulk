@@ -7,12 +7,13 @@ const AddStudent = () => {
   const [firstName, setfirstName] = useState("");
   const [lastName, setlastName] = useState("");
   const [username, setusername] = useState("");
+  const [students, setStudents] = useState([]);
 
-  const handleFormSubmit = (e, newStudents) => {
+  const handleFormSubmit = (e, students) => {
     console.log("Success");
     e.preventDefault();
     axios
-      .post("/api/students", newStudents)
+      .post("/api/students", students)
       .then((response) => {
         console.log(response.data);
         // history.push("/rewards");

@@ -10,13 +10,6 @@ const ViewClass = () => {
         </div>
         <div className="row">
           <Card />
-          <Card />
-          <Card />
-        </div>
-        <div className="row">
-          <Card />
-          <Card />
-          <Card />
         </div>
       </div>
     </div>

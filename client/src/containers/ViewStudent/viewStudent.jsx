@@ -119,9 +119,9 @@ const ViewStudentPage = ({
                     <option value="4">Extra Credit</option>
                     <option value="5">Listening in Class</option>
                   </select>
-                  {/* <button class="waves-effect waves-light btn" id="add-star-btn">
+                  <button class="waves-effect waves-light btn" id="add-star-btn">
                   Add Star
-                </button> */}
+                </button>
                   {/* <FontAwesomeIcon icon={["fas", "fa-plus"]} onclick={} /> */}
                 </div>
               </div>

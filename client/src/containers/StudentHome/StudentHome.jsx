@@ -5,7 +5,7 @@ import './style.css';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit, faTrash, faStar } from "@fortawesome/free-solid-svg-icons";
 
-function StudentHome(props) {
+function StudentHome() {
 
     const url = window.location.href;
     console.log(url);

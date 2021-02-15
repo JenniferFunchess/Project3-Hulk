@@ -1,24 +1,49 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import FormComponent from "../../components/Form/form";
 import "./viewStudent.css";
+import Navbar from '../../components/Navbar/Navbar';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faStar } from "@fortawesome/free-solid-svg-icons";
 
-const ViewStudentPage = ({
-  _id,
-  username,
-  firstName,
-  lastName,
-  starTotal,
-  imageUrl,
-  classCode,
-  tasksCompleted,
-  getStudents,
-}) => {
+const ViewStudentPage = () => {
+
+  const url = window.location.href;
+  const urlArray = url.split('/');
+  const studentId = urlArray[urlArray.length-1];
+  console.log(studentId);
+  const [student, setStudent] = useState("");
+
+  useEffect(() => {
+    axios.get(`/api/students/${studentId}`)
+    .then((response) => {
+      console.log('View Student get route worked');
+      setStudent(response.data);
+      console.log(response.data);
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+}, []);
+
+//   ({
+//   _id,
+//   username,
+//   firstName,
+//   lastName,
+//   starTotal,
+//   imageUrl,
+//   classCode,
+//   tasksCompleted,
+//   getStudents,
+// }) => {
   const deleteStudent = (id) => {
     axios
       .delete(`/api/students/${id}`)
-      .then(() => {
-        getStudents();
+      .then((result) => {
+        // res.json(result);
+        // getStudents();
+        // redirect to class list page
       })
       .catch((err) => {
         console.log(err);
@@ -27,22 +52,22 @@ const ViewStudentPage = ({
 
   return (
     <div>
+      <Navbar/>
       <h1>View Student</h1>
 
       <div className="row">
         <div className="col s3">
-          <h1>Student Name</h1>
+          <h1>{student.firstName} {student.lastName}</h1>
           <hr></hr>
-          <h3 className="display-name">Display Name</h3>
+          <h3 className="display-name">{student.username}</h3>
           <h1>
-            <img src="https://lh3.googleusercontent.com/HbWvsMRoIL7p_QkLEhH6pHKgCfImoXRBkhpGh_zGn9GVs8qhg_rmSJ7_MQS1lAWTLPHnuovKCpajt3rX87pl8lqAdJ_wI9BRYI9VeraZ4fQghUk80KcyAr9aGSC8GbZOc6_BsTiJMMqbNBlWJZealABXTyeeRHswoEiqHds6T_bx1GLji3J2sc1DYemBWHOkv4vxWSz2ZTWus2p-OL6ko0OwbgbvgxlGw2K1GQwYLm9lZHHr_6KRNQiHcOJL6iE11PQIcwFj__7UI4WBEUr4vEaV-wkDvVurvheLgj-oTqRTG5GTk7q8fA1tvirRZaOhttskRD-61cFNlzfdVYAiESiPavhS7PXZERpceIVsATtJnzURDe3jKyl2FcjFbeibwFJuvjaRULWgMBcOVySrYIaHavRcuaExjeWu9l4if-mvuDNB_TdM82UI651e5FUpRZpBJJOJxaqPvI5OHcmgUlzvrComtrouElnPNVh8OkDTp97k01cf2MvHSaQtlHMWfS5kGWOq6nHND9jQA6lcPpatC-x3AKYDFLwgA34BgqXuBZ1dqRMm2zytPFALWt4ha9eJLYjBB3f1SYEuFb1Ozn1_zJlBEDpmKM05F10lv7OaQUXNHAeZu4U3XAoLnH3rCCM6a3dspK5W-B8Es5G-M1_g_FwZFzPlPRUh4r0nS9j4syUS4PVH_jFRFANd=w45-h43-no?authuser=0" />
-            11
+          <FontAwesomeIcon icon={faStar} />{student.starTotal}
           </h1>
           <button
             className="waves-effect waves-light btn"
             id="delete-student-btn"
             onClick={() => {
-              deleteStudent(_id);
+              deleteStudent(studentId); //might be easier to just reference the studentId variable?
             }}
           >
             Delete

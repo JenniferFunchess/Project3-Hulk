@@ -5,7 +5,7 @@ import './style.css';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit, faTrash, faStar } from "@fortawesome/free-solid-svg-icons";
 
-function StudentHome() {
+function StudentHome(props) {
 
     const url = window.location.href;
     console.log(url);
@@ -18,7 +18,7 @@ function StudentHome() {
     const [tasks, setTasks] = useState([]);
 
     useEffect(() => {
-    axios.get(`/api/students`) // add /${props.studentId}? 602733e29197bd23a47b8872
+    axios.get(`/api/students/${props.studentId}`) // add /${props.studentId}? 602733e29197bd23a47b8872
     .then((response) => {
         console.log('student worked');
         console.log(response.data);

@@ -27,7 +27,7 @@ const Card = () => {
             <div className="card-image">
               <img
                 src={StudentProfile}
-                alt="Student Profile Picture"
+                alt="Student Profile"
                 style={{ width: "100%" }}
               />
               <Link

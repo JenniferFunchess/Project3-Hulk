@@ -4,6 +4,8 @@ import Star from '../../components/Star/star';
 import './style.css';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit, faTrash, faStar } from "@fortawesome/free-solid-svg-icons";
+import Modal from "../../components/Modal/Modal";
+
 
 function StudentHome(props) {
 
@@ -12,7 +14,7 @@ function StudentHome(props) {
     const [tasks, setTasks] = useState([]);
 
     useEffect(() => {
-    axios.get(`/api/students/602733e29197bd23a47b8872`) // add /${props.studentId}?
+    axios.get(`/api/students/`) // add /${props.studentId}?
     .then((response) => {
         console.log('student worked');
         console.log(response.data);
@@ -94,7 +96,7 @@ function StudentHome(props) {
                         </div>
                         <div className="col s6">
                             <div className="col s12">
-                            <FontAwesomeIcon icon={faStar} /><span>{rewards.length}</span>
+                            <FontAwesomeIcon icon={faStar} /><span className="rewards-length">{rewards.length}</span>
                             </div>
                             <div className="col s12">
                                 <h5>Use Stars!!!</h5>
@@ -102,7 +104,7 @@ function StudentHome(props) {
                             </div>
                             {rewards.map((reward => (
                                 <div className="col s12">
-                                <h5><FontAwesomeIcon icon={faStar} />{reward.rewardCategory} ({reward.starCount} Stars)</h5>
+                               <h5><FontAwesomeIcon icon={faStar} />{reward.rewardCategory} ({reward.starCount} Stars)<Modal></Modal></h5>
                             </div>
                             )))}
                             

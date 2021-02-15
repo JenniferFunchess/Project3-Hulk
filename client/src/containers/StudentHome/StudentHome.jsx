@@ -13,16 +13,16 @@ function StudentHome(props) {
     const studentId = urlArray[urlArray.length-1];
     console.log(studentId);
 
-    const [student, setStudent] = useState("");
+    const [students, setStudents] = useState("");
     const [rewards, setRewards] = useState([]);
     const [tasks, setTasks] = useState([]);
 
     useEffect(() => {
-    axios.get(`/api/students/${studentId}`) // add /${props.studentId}? 602733e29197bd23a47b8872
+    axios.get(`/api/students/${props.studentId}`) // add /${props.studentId}? 602733e29197bd23a47b8872
     .then((response) => {
         console.log('student worked');
         console.log(response.data);
-        setStudent(response.data);
+        setStudents(response.data);
     })
     .catch((err) => {
         console.log(err);
@@ -59,14 +59,14 @@ function StudentHome(props) {
                     <div className="col s3">
                         <div className="row">
                             <div className="col s12 second-row">
-                                <h3 className="redColor second-row">{student.firstName} {student.lastName}</h3> {/*insert prop for student id in the h3 tag*/}
+                                <h3 className="redColor second-row">{students.firstName} {students.lastName}</h3> {/*insert prop for student id in the h3 tag*/}
                                 <hr></hr>
                             </div>
                             
                         </div>
                         <div className="row">
                             <div className="col s12 second-row">
-                                <h5 className="redColor second-row">{student.username}</h5> {/*insert prop for student id in the h5 tag*/}
+                                <h5 className="redColor second-row">{students.username}</h5> {/*insert prop for student id in the h5 tag*/}
                             </div>
                         </div>
                     </div>

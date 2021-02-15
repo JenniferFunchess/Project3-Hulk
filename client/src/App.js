@@ -15,15 +15,14 @@ function App() {
   return (
     <div className="App">
       <Router>
-        <Navbar login={false} />
         <Switch>
           <Route exact path="/" component={home} />
           <Route exact path="/signup" component={signup} />
           <Route exact path="/teacherlogin" component={TeacherLogin} />
           <Route exact path="/studentlogin" component={StudentLogin} />
-          <Route exact path="/teacherhome" component={TeacherHome} />
+          <Route path="/teacherhome" component={TeacherHome} />
           <Route exact path="/classlist" component={ViewList} />
-          <Route exact path="/student-home" component={StudentHome} />
+          <Route path="/student-home" component={StudentHome} />
           <Route path="/add-student" component={AddStudent} />
           <Route path="/view-student" component={ViewStudent} />
           <Route path="/rewards" component={Rewards} />

@@ -17,9 +17,9 @@ const ViewStudentPage = ({
   tasksCompleted,
   getStudents,
 }) => {
-  const deleteStudent = (id) => {
+  const deleteStudent = () => {
     axios
-      .delete(`/api/students/${id}`)
+      .delete(`/api/students/${studentId}`)
       .then(() => {
         getStudents();
       })
@@ -28,6 +28,11 @@ const ViewStudentPage = ({
       });
   };
 
+  const url = window.location.href;
+    console.log(url);
+    const urlArray = url.split('/');
+    const studentId = urlArray[urlArray.length-1];
+    console.log(studentId);
   const [student, setStudent] = useState("");
   const [tasks, setTasks] = useState([]);
   const history = useHistory();

@@ -31,7 +31,7 @@ const Card = () => {
                 style={{ width: "100%" }}
               />
               <Link
-                to="/view-student"
+                to={`/view-student/${student._id}`}
                 className="btn-floating halfway-fab waves-effect waves-light red"
               >
                 <i className="material-icons">add</i>

@@ -36,7 +36,7 @@ function App() {
           <Route exact path="/classlist" component={ViewList} />
           <Route path="/student-home" component={StudentHome} />
           <Route path="/add-student" component={AddStudent} />
-          <Route path="/view-student" component={ViewStudent} />
+          <Route path="/view-student/:id" component={ViewStudent} />
           <Route path="/rewards" component={Rewards} />
         </Switch>
       </Router>

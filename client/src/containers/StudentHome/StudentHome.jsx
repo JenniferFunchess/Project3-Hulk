@@ -18,11 +18,7 @@ function StudentHome(props) {
     const [tasks, setTasks] = useState([]);
 
     useEffect(() => {
-<<<<<<< HEAD
-        axios.get(`/api/students/${studentId}`) // add /${props.studentId}? 602733e29197bd23a47b8872
-=======
     axios.get(`/api/students/${props.studentId}`) // add /${props.studentId}? 602733e29197bd23a47b8872
->>>>>>> 88132aae991bc7fede2114e9372e067ebf21d45e
     .then((response) => {
         console.log('student worked');
         console.log(response.data);

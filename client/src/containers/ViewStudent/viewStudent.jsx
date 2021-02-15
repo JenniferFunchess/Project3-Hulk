@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import axios from "axios";
 import FormComponent from "../../components/Form/form";
 import "./viewStudent.css";
@@ -15,11 +15,14 @@ const ViewStudentPage = ({
   tasksCompleted,
   getStudents,
 }) => {
+  const {id} = useParams();
+  const history = useHistory();
+  console.log(id);
   const deleteStudent = (studentid) => {
     axios
       .delete(`/api/students/${studentid}`)
       .then(() => {
-        getStudents();
+        history.push('/classlist');
       })
       .catch((err) => {
         console.log(err);
@@ -32,13 +35,12 @@ const ViewStudentPage = ({
   const studentId = urlArray[urlArray.length - 1];
   console.log(studentId);
 
-  const [student, setStudent] = useState("");
+  const [student, setStudent] = useState({});
   const [tasks, setTasks] = useState([]);
-  const history = useHistory();
 
   useEffect(() => {
     axios
-      .get(`/api/students/${studentid}`) // add /${props.studentId}?
+      .get(`/api/students/${id}`) // add /${props.studentId}?
       .then((response) => {
         console.log("student worked");
         console.log(response.data);
@@ -82,7 +84,7 @@ const ViewStudentPage = ({
               id="delete-student-btn"
               onClick={() => {
                 history.push("/classlist");
-                deleteStudent(studentid);
+                deleteStudent(student._id);
               }}
             >
               Delete

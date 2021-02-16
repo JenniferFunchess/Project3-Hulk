@@ -53,25 +53,28 @@ router.delete("/:id", (req, res) => {
   });
 });
 
-router.post("/redeem/:id", (req, res) => {
+router.post("/redeem/:id/student/:studentId", (req, res) => {
   // find the reward by its id
   Reward.findById(req.params.id).then((foundReward) => {
     // pull the students star amount from the database
     // todo: Change findOne when authentication is added
-    Student.findOne().then((student) => {
+    Student.findById(req.params.studentId).then((student) => {
       student.starTotal;
       // compare the two (verify that the students star amount is greater than or equal to the reward star amount)
       if (student.starTotal >= foundReward.starCount) {
         //We will send email to teacher
         //Deduct star amount from student
-        Student.findByIdAndUpdate(student._id, {
-          starTotal: student.starTotal - foundReward.starCount,
-        }).then(() => {
-          res.end();
+        Student.findByIdAndUpdate(
+          student._id,
+          {
+            starTotal: student.starTotal - foundReward.starCount,
+          },
+          { new: true }
+        ).then((updatedStudent) => {
+          res.json(updatedStudent);
         });
-      }
-      else {
-        res.status(500).send('Student does not have enough stars')
+      } else {
+        res.status(500).send("Student does not have enough stars");
       }
     });
   });

@@ -36,6 +36,8 @@ class Modal extends Component {
   render() {
     return (
       <div className="modal-btn">
+        {/* TODO: Write a ternary statement. If the student stars greater than reward stars, display the button.
+        BUT, else display something positive, "Keep going, you're almost there!" */}
         <button
           className="waves-effect waves-light btn modal-trigger"
           data-target="modal1"
@@ -65,9 +67,14 @@ class Modal extends Component {
             <a
               className="modal-close waves-effect waves-green btn-flat"
               onClick={async () => {
-                axios.post("/api/rewards/redeem/:id", {}).catch((err) => {
-                  console.log(err);
-                });
+                axios
+                  .post(
+                    `/api/rewards/redeem/${this.props.reward._id}/student/${this.props.student._id}`,
+                    {}
+                  )
+                  .catch((err) => {
+                    console.log(err);
+                  });
               }}
             >
               Yes

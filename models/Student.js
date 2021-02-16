@@ -31,6 +31,7 @@ const studentSchema = new Schema({
   },
   tasksCompleted: {
     type: Array,
+    default: [0,0,0,0,0],
   },
 });
 

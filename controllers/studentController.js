@@ -46,6 +46,15 @@ router.put("/:id", (req, res) => {
   );
 });
 
+router.put("/:id/stars", (req, res) => {
+  Student.findByIdAndUpdate(req.params.id, {$set: {tasksCompleted: req.body}}, { new: true }).then(
+    (updatedObject) => {
+      console.log(updatedObject);
+      res.json(updatedObject);
+    }
+  );
+});
+
 router.delete("/:id", (req, res) => {
   Student.findByIdAndDelete(req.params.id).then((result) => {
     res.json(result);

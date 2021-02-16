@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import M from "materialize-css";
 import "materialize-css/dist/css/materialize.min.css";
-import "./modal.css";
-
+import "./Modal.css";
+import axios from "axios";
 class Modal extends Component {
   componentDidMount() {
     const options = {
@@ -35,13 +35,17 @@ class Modal extends Component {
 
   render() {
     return (
-      <div>
+      <div className="modal-btn">
+        {/* TODO: Write a ternary statement. If the student stars greater than reward stars, display the button.
+        BUT, else display something positive, "Keep going, you're almost there!" */}
         <button
           className="waves-effect waves-light btn modal-trigger"
           data-target="modal1"
         >
-          Modal
+          Use Stars
         </button>
+
+        <a href="#" className="modal-trigger" data-target="modal1"></a>
 
         <div
           ref={(Modal) => {
@@ -58,13 +62,23 @@ class Modal extends Component {
             <span aria-hidden="true">×</span>
           </button>
           <div className="modal-content">
-            <h4>Modal Header</h4>
-            <p>
-              Cotton candy apple pie sesame snaps sweet. Cake jujubes
-              marshmallow sesame snaps pie candy. Dessert muffin muffin dragée
-              cake sweet bear claw.
-            </p>
-            <a className="modal-close waves-effect waves-green btn-flat">Yes</a>
+            <h4>Email Teacher?</h4>
+            <p>Do you want to email your teacher to use your stars?</p>
+            <a
+              className="modal-close waves-effect waves-green btn-flat"
+              onClick={async () => {
+                axios
+                  .post(
+                    `/api/rewards/redeem/${this.props.reward._id}/student/${this.props.student._id}`,
+                    {}
+                  )
+                  .catch((err) => {
+                    console.log(err);
+                  });
+              }}
+            >
+              Yes
+            </a>
             <a className="modal-close waves-effect waves-red btn-flat disagree-btn">
               No
             </a>

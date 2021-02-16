@@ -4,7 +4,11 @@ import Star from "../../components/Star/star";
 import "./style.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit, faTrash, faStar } from "@fortawesome/free-solid-svg-icons";
+
+import Navbar from '../../components/Navbar/Navbar';
+
 import Modal from "../../components/Modal/Modal";
+
 
 function StudentHome(props) {
   const [student, setStudent] = useState("");
@@ -54,6 +58,7 @@ function StudentHome(props) {
 
   return (
     <div>
+      <Navbar teacher={false} login={false} classCode={studentId.classCode}/>
       {/* <div className="container"> */}
       <div className="row">
         <div className="col s12">

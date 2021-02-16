@@ -15,14 +15,14 @@ const ViewStudentPage = ({
   tasksCompleted,
   getStudents,
 }) => {
-  const {id} = useParams();
+  const { id } = useParams();
   const history = useHistory();
   console.log(id);
   const deleteStudent = (studentid) => {
     axios
       .delete(`/api/students/${studentid}`)
       .then(() => {
-        history.push('/classlist');
+        history.push("/classlist");
       })
       .catch((err) => {
         console.log(err);
@@ -36,29 +36,57 @@ const ViewStudentPage = ({
   console.log(studentId);
 
   const [student, setStudent] = useState({});
-  const [tasks, setTasks] = useState([]);
+  const [starsArray, setStarsArray] = useState([0,0,0,0,0]);
 
-  useEffect(() => {
+  const getStudent = () => {
     axios
       .get(`/api/students/${id}`) // add /${props.studentId}?
       .then((response) => {
         console.log("student worked");
         console.log(response.data);
         setStudent(response.data);
+        // setStarsArray(response.data.tasksCompleted);
       })
       .catch((err) => {
         console.log(err);
       });
+  }
+
+  const getStars = () => {
+    axios
+      .get(`/api/students/${id}`) // add /${props.studentId}?
+      .then((response) => {
+        console.log("student worked");
+        console.log(response.data);
+        // setStudent(response.data);
+        setStarsArray(response.data.tasksCompleted);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
+  useEffect(() => {
+   getStudent();
+   getStars();
+  }, []);
+
+  const addStar = (index) => {
+    console.log(index);
+    const tempArray = [...starsArray]
+    tempArray[index] = starsArray[index]+1;
+    setStarsArray([...tempArray]);
 
     axios
-      .get("/api/students")
+      .put(`/api/students/${id}/stars`, starsArray)
       .then((response) => {
-        setTasks(response.data);
+        console.log(response.data);
+        getStudent();
       })
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  };
 
   return (
     <>
@@ -71,14 +99,10 @@ const ViewStudentPage = ({
             <h3 className="display-name">
               {student.firstName} {student.lastName}
             </h3>
-            {tasks.map((tasks) => (
-              <div className="col s12">
-                <h5>
-                  <FontAwesomeIcon icon={faStar} />
-                  {tasks.name} ({tasks.stars} Stars)
-                </h5>
-              </div>
-            ))}
+            <div className="col s12">
+              <FontAwesomeIcon icon={faStar} />
+              <span>{starsArray.reduce((total, index) => total+index, 0)}</span>
+            </div>
             <button
               className="waves-effect waves-light btn"
               id="delete-student-btn"
@@ -96,36 +120,80 @@ const ViewStudentPage = ({
               <div class="row">
                 <div className="col s6">
                   <ul>
-                    <li className="star-categories">ASKING A TOUGH QUESTION</li>
+                    <li className="star-categories">
+                      ASKING A TOUGH QUESTION{" "}
+                      <button
+                        class="waves-effect waves-light btn"
+                        id="add-star-btn"
+                        onClick={() => addStar(0)}
+                      >
+                        Add Star
+                      </button>
+                    </li>
                     <li className="star-categories">
                       Zoom Camera on All Class
+                      <button
+                        class="waves-effect waves-light btn"
+                        id="add-star-btn"
+                        onClick={() => addStar(1)}
+                      >
+                        Add Star
+                      </button>
                     </li>
                     <li className="star-categories">
                       Submitting Homework on Time
+                      <button
+                        class="waves-effect waves-light btn"
+                        id="add-star-btn"
+                        onClick={() => addStar(2)}
+                      >
+                        Add Star
+                      </button>
                     </li>
-                    <li className="star-categories">Extra Credit</li>
-                    <li className="star-categories">Listening in Class</li>
+                    <li className="star-categories">
+                      Extra Credit
+                      <button
+                        class="waves-effect waves-light btn"
+                        id="add-star-btn"
+                        onClick={() => addStar(3)}
+                      >
+                        Add Star
+                      </button>
+                    </li>
+                    <li className="star-categories">
+                      Listening in Class
+                      <button
+                        class="waves-effect waves-light btn"
+                        id="add-star-btn"
+                        onClick={() => addStar(4)}
+                      >
+                        Add Star
+                      </button>
+                    </li>
                   </ul>
                 </div>
 
-                <div className="col s6">
+                {/* <div className="col s6">
                   <h4 className="add-star-header">Add Star</h4>
                   <label>Select Category</label>
-                  <select class="browser-default">
+                  <select class="browser-default" onChange={setCategory}>
                     <option value="" disabled selected>
                       Choose your Category
                     </option>
-                    <option value="1">ASKING A TOUGH QUESTION</option>
-                    <option value="2">Zoom Camera on All Class</option>
-                    <option value="3">Submitting Homework on Time</option>
-                    <option value="4">Extra Credit</option>
-                    <option value="5">Listening in Class</option>
+                    <option value={0}>ASKING A TOUGH QUESTION</option>
+                    <option value={1}>Zoom Camera on All Class</option>
+                    <option value={2}>Submitting Homework on Time</option>
+                    <option value={3}>Extra Credit</option>
+                    <option value={4}>Listening in Class</option>
                   </select>
-                  <button class="waves-effect waves-light btn" id="add-star-btn">
-                  Add Star
-                </button>
-                  {/* <FontAwesomeIcon icon={["fas", "fa-plus"]} onclick={} /> */}
-                </div>
+                  <button
+                    class="waves-effect waves-light btn"
+                    id="add-star-btn"
+                    onClick={() => addStar(category)}
+                  >
+                    Add Star
+                  </button>
+                </div> */}
               </div>
             </FormComponent>
           </div>

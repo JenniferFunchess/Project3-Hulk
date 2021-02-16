@@ -8,14 +8,11 @@ p {
 
 .waves-effect {
   background: #dc3c4d;
-  width: 200px;
-  border-radius: 0%;
 }
 
 .btn {
   font-size: 20px;
-  height: 60px;
-  display: inline-flex;
+  display: inline;
   align-items: center;
   justify-content: center;
 }
@@ -33,11 +30,10 @@ p {
 .waves-green {
   margin: 2%;
   color: white;
-  height: 50px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-size: 20px;
+  font-size: 14px;
 }
 
 .modal-overlay {
@@ -56,4 +52,8 @@ p {
 
 .disagree-btn {
   background: #ff914d;
+}
+
+.modal-btn {
+  margin: 1%;
 }

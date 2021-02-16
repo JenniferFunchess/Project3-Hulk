@@ -3,15 +3,6 @@ import M from "materialize-css";
 import "materialize-css/dist/css/materialize.min.css";
 import "./Modal.css";
 import axios from "axios";
-
-// axios.get('/api/rewards')
-// .then((response) => {
-//     setRewards(response.data);
-// })
-// .catch((err) => {
-//     console.log(err);
-// });
-
 class Modal extends Component {
   componentDidMount() {
     const options = {
@@ -74,7 +65,7 @@ class Modal extends Component {
             <a
               className="modal-close waves-effect waves-green btn-flat"
               onClick={async () => {
-                axios.post("/redeem/:id", {}).catch((err) => {
+                axios.post("/api/rewards/redeem/:id", {}).catch((err) => {
                   console.log(err);
                 });
               }}

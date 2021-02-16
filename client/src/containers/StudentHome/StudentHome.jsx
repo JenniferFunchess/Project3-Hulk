@@ -96,7 +96,7 @@ function StudentHome(props) {
                         </div>
                         <div className="col s6">
                             <div className="col s12">
-                            <FontAwesomeIcon icon={faStar} /><span className="rewards-length">{rewards.length}</span>
+                            <FontAwesomeIcon icon={faStar} /><span className="rewards-length">{student.starTotal}</span>
                             </div>
                             <div className="col s12">
                                 <h5>Use Stars!!!</h5>

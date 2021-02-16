@@ -33,12 +33,14 @@ const taskController = require("./controllers/taskController");
 const studentController = require("./controllers/studentController");
 const teacherController = require("./controllers/teacherController");
 const signupController = require("./controllers/signupController");
+const AuthController = require("./controllers/authController");
 
 app.use("/api/rewards", rewardController);
 app.use("/api/tasks", taskController);
 app.use("/api/students", studentController);
 app.use("/api/teachers", teacherController);
 app.use("/api/signup", signupController);
+app.use("/api/auth", AuthController);
 
 
 

@@ -1,9 +1,32 @@
-import React from "react";
+import React, { useEffect, useState } from 'react';
 import StudentProfile from "../../images/school.png";
 import { Link } from "react-router-dom";
+import Navbar from '../../components/Navbar/Navbar';
+import axios from 'axios';
 
 const TeacherHome = () => {
+
+    const url = window.location.href;
+    const urlArray = url.split('/');
+    const teacherId = urlArray[urlArray.length-1];
+    console.log(teacherId);
+
+    const [teacher, setTeacher] = useState("");
+
+    useEffect(() => {
+        axios.get(`/api/signup/${teacherId}`)
+        .then((response) => {
+          console.log('Teacher get route worked');
+          setTeacher(response.data);
+          console.log(response.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        })
+    }, []);
   return (
+    <>
+    <Navbar classCode={teacher.classCode} login={false}></Navbar>
     <div className="container">
       <div className="row">
         <h1>Teacher Home Page</h1>
@@ -14,7 +37,7 @@ const TeacherHome = () => {
             <div className="card-image">
               <img
                 src={StudentProfile}
-                alt="Student Profile Picture"
+                alt="Student Profile"
                 style={{ width: "100%" }}
               />
               <Link
@@ -34,7 +57,7 @@ const TeacherHome = () => {
             <div className="card-image">
               <img
                 src={StudentProfile}
-                alt="Student Profile Picture"
+                alt="Student Profile"
                 style={{ width: "100%" }}
               />
               <Link
@@ -54,7 +77,7 @@ const TeacherHome = () => {
             <div className="card-image">
               <img
                 src={StudentProfile}
-                alt="Student Profile Picture"
+                alt="Student Profile"
                 style={{ width: "100%" }}
               />
               <Link
@@ -71,6 +94,7 @@ const TeacherHome = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

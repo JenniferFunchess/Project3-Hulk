@@ -2,6 +2,7 @@ import React from 'react';
 import '../Navbar/style.css';
 
 function Navbar(props) {
+
     return (
         <nav>
             <div className="nav-wrapper">
@@ -14,7 +15,7 @@ function Navbar(props) {
                 }
                 {!props.login &&
                     <ul id="nav-mobile" className="right hide-on-med-and-down">
-                    <li className="class-code">Class Code: 12345</li> {/*need API call for class code */}
+                    <li className="class-code">Class Code: {props.classCode}</li> {/*need API call for class code */}
                     <li><a className="nav-link" href="/">Logout</a></li> {/*need logout route here*/}
                 </ul>
                 }

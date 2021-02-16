@@ -9,6 +9,13 @@ const SignUp = () => {
   const [lastName, setLastName] = useState("");
   const [teacherNickname, setTeacherNickname] = useState("");
 
+  const generateClasscode = () => {
+    const code = Math.floor(Math.random()*90000) + 10000;
+    return code;
+  }
+
+  const classCode = generateClasscode();
+
   const handleFormSubmit = (e, newTeacher) => {
     console.log("Success");
     e.preventDefault();
@@ -47,6 +54,7 @@ const SignUp = () => {
                     email,
                     password,
                     teacherNickname,
+                    classCode,
                   });
                 }}
               >

@@ -10,22 +10,33 @@ import Rewards from "./containers/Rewards/rewards";
 import ViewList from "./containers/Class-List/class-list";
 import TeacherHome from "./containers/Teacher-Home/teacher-home";
 import StudentHome from './containers/StudentHome/StudentHome';
+import React, { useState } from "react";
 
 function App() {
+
+  const [token, setToken] = useState("");
+
   return (
     <div className="App">
       <Router>
-        <Navbar login={false} />
         <Switch>
           <Route exact path="/" component={home} />
           <Route exact path="/signup" component={signup} />
-          <Route exact path="/teacherlogin" component={TeacherLogin} />
-          <Route exact path="/studentlogin" component={StudentLogin} />
-          <Route exact path="/teacherhome" component={TeacherHome} />
+          <Route
+              exact
+              path="/teacherlogin"
+              component={(props) => <TeacherLogin {...props} setToken={setToken} />}
+            />
+          <Route
+              exact
+              path="/studentlogin"
+              component={(props) => <StudentLogin {...props} setToken={setToken} />}
+            />
+          <Route path="/teacherhome" component={TeacherHome} token={token}/>
           <Route exact path="/classlist" component={ViewList} />
-          <Route exact path="/student-home" component={StudentHome} />
+          <Route path="/student-home" component={StudentHome} />
           <Route path="/add-student" component={AddStudent} />
-          <Route path="/view-student" component={ViewStudent} />
+          <Route path="/view-student/:id" component={ViewStudent} />
           <Route path="/rewards" component={Rewards} />
         </Switch>
       </Router>

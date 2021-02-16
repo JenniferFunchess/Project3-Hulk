@@ -49,7 +49,7 @@ const AddStudent = () => {
 
   return (
     <>
-    <Navbar classCode={teacher.classCode} login={false}/>
+    <Navbar teacher={true} classCode={teacher.classCode} login={false}/>
     <div>
       <div className="row">
         <h1>Add a Student</h1>

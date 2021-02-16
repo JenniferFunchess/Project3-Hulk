@@ -5,6 +5,7 @@ import FormComponent from "../../components/Form/form";
 import "./viewStudent.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
+import Navbar from '../../components/Navbar/Navbar';
 
 const ViewStudentPage = ({
   studentid,
@@ -90,6 +91,7 @@ const ViewStudentPage = ({
 
   return (
     <>
+    <Navbar teacher={true} login={false} classCode={studentId.classCode}/>
       <div>
         <h1>View Student</h1>
         <div className="row">

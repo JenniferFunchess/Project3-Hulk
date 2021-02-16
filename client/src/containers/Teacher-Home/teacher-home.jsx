@@ -26,7 +26,7 @@ const TeacherHome = () => {
     }, []);
   return (
     <>
-    <Navbar classCode={teacher.classCode} login={false}></Navbar>
+    <Navbar teacher={true} classCode={teacher.classCode} login={false}></Navbar>
     <div className="container">
       <div className="row">
         <h1>Teacher Home Page</h1>

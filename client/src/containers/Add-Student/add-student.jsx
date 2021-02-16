@@ -3,6 +3,7 @@ import axios from "axios";
 import FormComponent from "../../components/Form/form";
 import "./add-student.css";
 import Navbar from '../../components/Navbar/Navbar';
+import { useHistory, Link } from "react-router-dom";
 
 const AddStudent = () => {
 
@@ -10,8 +11,8 @@ const AddStudent = () => {
   const urlArray = url.split('/');
   const teacherId = urlArray[urlArray.length-1];
   console.log(teacherId);
+  const history = useHistory();
   const [teacher, setTeacher] = useState("");
-
   const [firstName, setfirstName] = useState("");
   const [lastName, setlastName] = useState("");
   const [username, setusername] = useState("");
@@ -110,13 +111,15 @@ const AddStudent = () => {
                   </div>
                 </div>
               </div>
-              <button
+              <i
                 type="submit"
                 className="styled-button"
-                // style={styles.button}
+                onClick={() => {
+                  history.push(`/classlist`)
+             }}
               >
                 Add Student
-              </button>
+              </i>
             </form>
           </div>
         </FormComponent>

@@ -7,13 +7,13 @@ import { faEdit, faTrash, faStar } from "@fortawesome/free-solid-svg-icons";
 
 import Navbar from '../../components/Navbar/Navbar';
 
-import Modal from "../../components/Modal/Modal";
+import Modal from "../../components/modal/modal";
 
 
 function StudentHome(props) {
-  const [student, setStudent] = useState("");
+  const [students, setStudents] = useState("");
   const [rewards, setRewards] = useState([]);
-  const [tasks, setTasks] = useState([]);
+//   const [tasks, setTasks] = useState([]);
 
   const url = window.location.href;
   console.log(url);
@@ -21,9 +21,9 @@ function StudentHome(props) {
   const studentId = urlArray[urlArray.length - 1];
   console.log(studentId);
 
-  const [students, setStudents] = useState("");
-  const [rewards, setRewards] = useState([]);
-  const [tasks, setTasks] = useState([]);
+//   const [students, setStudents] = useState("");
+//   const [rewards, setRewards] = useState([]);
+//   const [tasks, setTasks] = useState([]);
 
   useEffect(() => {
     axios
@@ -70,7 +70,7 @@ function StudentHome(props) {
           <div className="row">
             <div className="col s12 second-row">
               <h3 className="redColor second-row">
-                {student.firstName} {student.lastName}
+                {students.firstName} {students.lastName}
               </h3>{" "}
               {/*insert prop for student id in the h3 tag*/}
               <hr></hr>
@@ -78,7 +78,7 @@ function StudentHome(props) {
           </div>
           <div className="row">
             <div className="col s12 second-row">
-              <h5 className="redColor second-row">{student.username}</h5>{" "}
+              <h5 className="redColor second-row">{students.username}</h5>{" "}
               {/*insert prop for student id in the h5 tag*/}
             </div>
           </div>
@@ -128,7 +128,7 @@ function StudentHome(props) {
           <div className="col s6">
             <div className="col s12">
               <FontAwesomeIcon icon={faStar} />
-              <span className="rewards-length">{student.starTotal}</span>
+              <span className="rewards-length">{students.starTotal}</span>
             </div>
             <div className="col s12">
               <h5>Use Stars!!!</h5>
@@ -139,7 +139,7 @@ function StudentHome(props) {
                 <h5>
                   <FontAwesomeIcon icon={faStar} />
                   {reward.rewardCategory} ({reward.starCount} Stars)
-                  <Modal reward={reward} student={student}></Modal>
+                  <Modal reward={reward} students={students}></Modal>
                 </h5>
               </div>
             ))}

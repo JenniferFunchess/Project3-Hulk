@@ -62,6 +62,7 @@ const AddStudent = () => {
           <div className="row">
             <form
               className="col s12"
+              id="white-form"
               onSubmit={(e) => {
                 handleFormSubmit(e, {
                   firstName,
@@ -74,6 +75,7 @@ const AddStudent = () => {
               <div className="row">
                 <div classNames="input-field col s12">
                   <input
+                  placeholder="First Name"
                     id="firstName"
                     type="text"
                     className="validate"
@@ -82,12 +84,13 @@ const AddStudent = () => {
                       setfirstName(e.target.value);
                     }}
                   />
-                  <label htmlFor="firstName">First Name</label>
+                  <label htmlFor="firstName"></label>
                 </div>
               </div>
               <div className="row">
                 <div className="input-field col s12">
                   <input
+                  placeholder="Last Name"
                     id="lastName"
                     type="text"
                     className="validate"
@@ -96,12 +99,13 @@ const AddStudent = () => {
                       setlastName(e.target.value);
                     }}
                   />
-                  <label htmlFor="lastName">Last Name</label>
+                  <label htmlFor="lastName"></label>
                 </div>
               </div>
               <div className="row">
                 <div className="input-field col s12">
                   <input
+                    placeholder="Username"
                     id="username"
                     type="text"
                     className="validate"
@@ -110,7 +114,7 @@ const AddStudent = () => {
                       setusername(e.target.value);
                     }}
                   />
-                  <label htmlFor="username">Username</label>
+                  <label htmlFor="username"></label>
                   <div className="helper-text">
                     {/* (Student will login with this) */}
                   </div>

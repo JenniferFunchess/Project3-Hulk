@@ -5,24 +5,24 @@ h1 {
 }
 
 .input-field > label {
-  color: white;
+  color: black;
   text-transform: uppercase;
   font-size: 20px;
 }
 
 .input-field {
-  color: white;
+  color: black;
   text-transform: uppercase;
 }
 
 .helper-text {
-  color: white;
+  color: black;
   text-transform: uppercase;
   font-size: 16px;
 }
 
 .input-field .helper-text {
-  color: white;
+  color: black;
   text-transform: uppercase;
   letter-spacing: 1px;
 }
@@ -44,8 +44,11 @@ h1 {
 
 #firstName,
 #lastName,
-#username {
-  color: white;
-  border-bottom: 3px solid #fff;
+#username,
+#email,
+#password,
+#teacherNickname {
+  color: black;
+  border-bottom: 3px solid black;
   text-transform: uppercase;
 }

@@ -113,7 +113,7 @@ const AddStudent = () => {
               </div>
               <i
                 type="submit"
-                className="styled-button"
+                className="waves-effect red darken-1 btn"
                 onClick={() => {
                   history.push(`/classlist`)
              }}

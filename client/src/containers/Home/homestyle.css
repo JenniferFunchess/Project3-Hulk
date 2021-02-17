@@ -24,7 +24,7 @@ html {
 
 #homeName {
   font-family: "Seymour One", sans-serif;
-  color: orange;
+  color: red;
   font-size: 55px;
   margin-left: 15%;
   margin-top: -7%;
@@ -40,9 +40,5 @@ html {
 }
 
 #signUpButton {
-  margin-left: 10%;
-}
-
-#signUpButtonTwo {
   margin-left: 10%;
 }

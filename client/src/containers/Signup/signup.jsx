@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import "./signupstyle.css";
 import axios from "axios";
+import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 
 const SignUp = () => {
   const [password, setPassword] = useState("");
@@ -10,9 +12,9 @@ const SignUp = () => {
   const [teacherNickname, setTeacherNickname] = useState("");
 
   const generateClasscode = () => {
-    const code = Math.floor(Math.random()*90000) + 10000;
+    const code = Math.floor(Math.random() * 90000) + 10000;
     return code;
-  }
+  };
 
   const classCode = generateClasscode();
 
@@ -34,19 +36,48 @@ const SignUp = () => {
       });
   };
 
+  const containerVariants = {
+    hidden: {
+      opacity: 0,
+      x: "100vw",
+      transition: {
+        staggerChildren: 0.5,
+      },
+    },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        type: "spring",
+        mass: 0.4,
+        damping: 8,
+        staggerChildren: 0.4,
+        when: "beforeChildren",
+      },
+    },
+  };
+
   return (
     <>
-      <div className="row">
-        <div className="col m12" id="teachersignup">
+      <div className="row" id="teachersignup">
+        <div className="col m12">
           <h1>Teacher Signup</h1>
         </div>
       </div>
-      <div className="container">
+      <motion.div
+        className="container"
+        id="signupcontainer"
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+      >
         <div className="row">
-          <div className="col s10 offset-s1" id="container">
+          <div
+            // className="col s10 offset-s1"
+            className="no-borderRadiusImportant"
+          >
             <div className="row">
               <form
-                className="col s12"
                 onSubmit={(e) => {
                   handleFormSubmit(e, {
                     firstName,
@@ -131,18 +162,27 @@ const SignUp = () => {
                     <label htmlFor="teacherNickname">Teacher Nickname</label>
                   </div>
                 </div>
-                <div className="row">
+                <div className="row center-align">
                   <div className="col s12">
-                    <button className="waves-effect red darken-1 btn">
-                      SIGN UP
-                    </button>
+                    <Link to="/teacher/:id">
+                      <motion.button
+                        className="waves-effect red darken-1 btn"
+                        whileHover={{
+                          scale: 1.5,
+                          textShadow: "0px 0px 8px rgb(255,255,255)",
+                          boxShadow: "0px 0px 8px rgb(255,255,255)",
+                        }}
+                      >
+                        SIGN UP
+                      </motion.button>
+                    </Link>
                   </div>
                 </div>
               </form>
             </div>
           </div>
         </div>
-      </div>
+      </motion.div>
     </>
   );
 };

@@ -20,18 +20,6 @@ const StudentLogin = ({ setToken }) => {
       })
       .then((response) => {
         console.log(response.data);
-        // jwt.verify(
-        //   response.data.token,
-        //   process.env.REACT_APP_JWT_SIGNATURE,
-        //   (err, decoded) => {
-        //     if (err) {
-        //       console.log(err);
-        //     } else {
-        //       setToken(response.data.token);
-        //       history.push("/");
-        //     }
-        //   }
-        // );
       })
       .catch((err) => {
         console.log(err);

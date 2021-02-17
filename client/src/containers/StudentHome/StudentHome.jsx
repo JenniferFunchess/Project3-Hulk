@@ -4,7 +4,6 @@ import "./style.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import Navbar from '../../components/Navbar/Navbar';
-
 import Modal from "../../components/modal/modal";
 
 

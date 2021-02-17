@@ -2,16 +2,13 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import FormComponent from "../../components/Form/form";
 import "./add-student.css";
-import Navbar from '../../components/Navbar/Navbar';
-import { useHistory, Link } from "react-router-dom";
+import Navbar from "../../components/Navbar/Navbar";
 
 const AddStudent = () => {
-
   const url = window.location.href;
-  const urlArray = url.split('/');
-  const teacherId = urlArray[urlArray.length-1];
+  const urlArray = url.split("/");
+  const teacherId = urlArray[urlArray.length - 1];
   console.log(teacherId);
-  const history = useHistory();
   const [teacher, setTeacher] = useState("");
   const [firstName, setfirstName] = useState("");
   const [lastName, setlastName] = useState("");
@@ -19,18 +16,19 @@ const AddStudent = () => {
   // const [students, setStudents] = useState([]);
 
   useEffect(() => {
-    axios.get(`/api/signup/${teacherId}`)
-    .then((response) => {
-      console.log('Teacher get route worked');
-      setTeacher(response.data);
-      console.log(response.data);
-    })
-    .catch((err) => {
-      console.log(err);
-    })
-}, []);
+    axios
+      .get(`/api/signup/${teacherId}`)
+      .then((response) => {
+        console.log("Teacher get route worked");
+        setTeacher(response.data);
+        console.log(response.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
 
-const classCode = teacher.classCode;
+  const classCode = teacher.classCode;
 
   const handleFormSubmit = (e, students) => {
     console.log("Success");
@@ -52,16 +50,17 @@ const classCode = teacher.classCode;
 
   return (
     <>
-    <Navbar teacher={true} classCode={teacher.classCode} login={false}/>
-    <div>
-      <div className="row">
-        <h1>Add a Student</h1>
-      </div>
-      <div className="container">
-        <FormComponent>
+      <Navbar teacher={true} classCode={teacher.classCode} login={false} />
+      <div>
+        <div className="row">
+          <h1>Add a Student</h1>
+        </div>
+        <div className="container">
+          <FormComponent>
           <div className="row">
             <form
               className="col s12"
+              id="white-form"
               onSubmit={(e) => {
                 handleFormSubmit(e, {
                   firstName,
@@ -72,8 +71,9 @@ const classCode = teacher.classCode;
               }}
             >
               <div className="row">
-                <div classNames="input-field col s6">
+                <div classNames="input-field col s12">
                   <input
+                  placeholder="First Name"
                     id="firstName"
                     type="text"
                     className="validate"
@@ -82,10 +82,11 @@ const classCode = teacher.classCode;
                       setfirstName(e.target.value);
                     }}
                   />
-                  <label for="firstName">First Name</label>
+                  <label htmlFor="firstName"></label>
                 </div>
                 <div className="input-field col s12">
                   <input
+                  placeholder="Last Name"
                     id="lastName"
                     type="text"
                     className="validate"
@@ -94,12 +95,13 @@ const classCode = teacher.classCode;
                       setlastName(e.target.value);
                     }}
                   />
-                  <label for="lastName">Last Name</label>
+                  <label htmlFor="lastName"></label>
                 </div>
               </div>
               <div className="row">
                 <div className="input-field col s12">
                   <input
+                    placeholder="Username"
                     id="username"
                     type="text"
                     className="validate"
@@ -108,26 +110,35 @@ const classCode = teacher.classCode;
                       setusername(e.target.value);
                     }}
                   />
-                  <label for="username">Username</label>
+                  <label htmlFor="username"></label>
                   <div className="helper-text">
                     {/* (Student will login with this) */}
                   </div>
                 </div>
               </div>
-              <i
+              <a
                 type="submit"
-                className="waves-effect red darken-1 btn"
-                onClick={() => {
-                  history.push(`/classlist`)
-             }}
+                href="/teacherhome"
+                className="btn halfway-fab waves-effect waves-light red"
+                // style={styles.button}
               >
-                Add Student
-              </i>
+                Home
+                <i className="material-icons">home</i>
+              </a>
+              <button
+                type="submit"
+                href= "/classlist" // FIX FOR LATER
+                className="btn halfway-fab waves-effect waves-light red"
+                // style={styles.button}
+              >
+                Submit
+                <i className="material-icons">check</i>
+              </button>
             </form>
           </div>
-        </FormComponent>
+          </FormComponent>
+        </div>
       </div>
-    </div>
     </>
   );
 };

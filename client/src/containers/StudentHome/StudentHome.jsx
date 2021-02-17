@@ -22,13 +22,10 @@ function StudentHome(props) {
   const studentId = urlArray[urlArray.length - 1];
   console.log(studentId);
 
-  // const [students, setStudents] = useState("");
-  // const [rewards, setRewards] = useState([]);
-  // const [tasks, setTasks] = useState([]);
 
   useEffect(() => {
     axios
-      .get(`/api/students/${studentId}`) // add /${props.studentId}? 602733e29197bd23a47b8872
+      .get(`/api/students/${studentId}`) 
       .then((response) => {
         console.log("student worked");
         console.log(response.data);
@@ -37,39 +34,30 @@ function StudentHome(props) {
       .catch((err) => {
         console.log(err);
       });
-    //might be wrong, but running a for loop through the tasks id array
-    //to run a get route for each task
-    //hoping the "...response.data" appends to the tasks useState array
-    // for (let i = 0; i < student.tasks.length; i++) {
-    //     axios.get(`/api/tasks/${student.tasks[i]}`)
-    //     .then((response) => {
-    //         setTasks(...response.data);
-    //     })
-    // }
+    
 
     axios
       .get("/api/rewards")
       .then((response) => {
         setRewards(response.data);
-        setBooleanArray(student, response.data);
       })
       .catch((err) => {
         console.log(err);
       });
   }, []);
 
-  const setBooleanArray = (studentStarTotal, rewardObj) => {
-    // const booleanArray = [];
-    // for (let i = 0; i < rewardArray.length; i++) {
-    //   if (rewardArray[i] - studentStarTotal >= 0) {
-    //     booleanArray.push(true);
-    //   } else {
-    //     booleanArray.push(false);
-    //   }
-    // }
+  const redeemable = (student, studentStarTotal, rewardObj) => {
+    const newStudent = {};
+    newStudent.username = student.username;
+    newStudent.firstName = student.firstName;
+    newStudent.lastName = student.lastName;
+    newStudent.starTotal = student.starTotal - rewardObj.starCount;
+    newStudent.imageUrl = student.imageUrl;
+    newStudent.classCode = student.classCode;
+    newStudent.tasksCompleted = student.tasksCompleted;
+    
+    setStudent(newStudent);
     return studentStarTotal - rewardObj.starCount >= 0 ? true: false
-
-    // setCanRedeem(booleanArray);
   }
 
   return (
@@ -155,7 +143,7 @@ function StudentHome(props) {
                 <h5>
                   <FontAwesomeIcon icon={faStar} />
                   {reward.rewardCategory} ({reward.starCount} Stars)
-                  <Modal redeemValue={setBooleanArray(student.starTotal, reward.starCount)} reward={reward} student={student}></Modal>
+                  <Modal redeemValue={redeemable(student.starTotal, reward.starCount)} reward={reward} student={student}></Modal>
                 </h5>
               </div>
             ))}

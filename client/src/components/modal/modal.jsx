@@ -69,14 +69,22 @@ class Modal extends Component {
             <a
               className="modal-close waves-effect waves-green btn-flat"
               onClick={async () => {
-                axios
-                  .post(
-                    `/api/rewards/redeem/${this.props.reward._id}/student/${this.props.student._id}`,
-                    {}
-                  )
-                  .catch((err) => {
-                    console.log(err);
-                  });
+                // axios
+                //   .post(
+                //     `/api/rewards/redeem/${this.props.reward._id}/student/${this.props.student._id}`,
+                //     {}
+                //   )
+                //   .catch((err) => {
+                //     console.log(err);
+                //   });
+                axios.put(`/api/students/${this.props.student._id}`, this.props.student)
+                .then((response) => {
+                  console.log(response.data);
+                  // history.push(`/student-home/${response.data._id}`); //not sure if this is needed
+                })
+                .catch((err) => {
+                  console.log(err);
+                });
               }}
             >
               Yes

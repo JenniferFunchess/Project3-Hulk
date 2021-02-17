@@ -84,8 +84,18 @@ const TeacherLogin = ({ handleFormSubmit }) => {
                     <label htmlFor="password">Enter Password</label>
                   </div>
                 </div>
-              </form>
-              <div className="row center-align">
+                <row className="row">
+                  <div className="col s12">COPPA PRIVACY POLICY GOES HERE</div>
+                </row>
+                <row className="row">
+                  <p>
+                    <label>
+                      <input type="checkbox" />
+                      <span>Check to agree to Terms</span>
+                    </label>
+                  </p>
+                </row>
+                <div className="row center-align">
                 <div className="col s12">
                   <Link to="/teacher/id:">
                     <motion.button
@@ -101,6 +111,7 @@ const TeacherLogin = ({ handleFormSubmit }) => {
                   </Link>
                 </div>
               </div>
+              </form>
             </div>
           </div>
         </div>

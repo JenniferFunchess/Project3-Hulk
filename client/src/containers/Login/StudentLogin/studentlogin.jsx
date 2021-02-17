@@ -115,22 +115,33 @@ const StudentLogin = ({ setToken }) => {
                     <label htmlFor="classcode">Enter Classcode</label>
                   </div>
                 </div>
+                <row className="row">
+                  <div className="col s12">COPPA PRIVACY POLICY GOES HERE</div>
+                </row>
+                <row className="row">
+                  <p>
+                    <label>
+                      <input type="checkbox" />
+                      <span>Check to agree to Terms</span>
+                    </label>
+                  </p>
+                </row>
                 <div className="row center-align">
-                <div className="col s12">
-                  <Link to="/student/id:">
-                    <motion.button
-                      className="waves-effect red darken-1 btn"
-                      whileHover={{
-                        scale: 1.5,
-                        textShadow: "0px 0px 8px rgb(255,255,255)",
-                        boxShadow: "0px 0px 8px rgb(255,255,255)",
-                      }}
-                    >
-                      LOGIN
-                    </motion.button>
-                  </Link>
+                  <div className="col s12">
+                    <Link to="/student/id:">
+                      <motion.button
+                        className="waves-effect red darken-1 btn"
+                        whileHover={{
+                          scale: 1.5,
+                          textShadow: "0px 0px 8px rgb(255,255,255)",
+                          boxShadow: "0px 0px 8px rgb(255,255,255)",
+                        }}
+                      >
+                        LOGIN
+                      </motion.button>
+                    </Link>
+                  </div>
                 </div>
-              </div>
               </form>
             </div>
           </div>

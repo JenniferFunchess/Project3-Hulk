@@ -7,7 +7,7 @@ import Navbar from '../../components/Navbar/Navbar';
 import Modal from "../../components/modal/modal";
 
 
-function StudentHome() {
+function StudentHome(props) {
   const [student, setStudent] = useState("");
   const [rewards, setRewards] = useState([]);
 

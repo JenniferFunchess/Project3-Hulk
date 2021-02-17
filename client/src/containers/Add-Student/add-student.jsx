@@ -3,15 +3,14 @@ import axios from "axios";
 import FormComponent from "../../components/Form/form";
 import "./add-student.css";
 import Navbar from "../../components/Navbar/Navbar";
-import { Link } from "react-router-dom";
 
 const AddStudent = () => {
   const url = window.location.href;
   const urlArray = url.split("/");
   const teacherId = urlArray[urlArray.length - 1];
   console.log(teacherId);
+  const history = useHistory();
   const [teacher, setTeacher] = useState("");
-
   const [firstName, setfirstName] = useState("");
   const [lastName, setlastName] = useState("");
   const [username, setusername] = useState("");
@@ -86,8 +85,6 @@ const AddStudent = () => {
                   />
                   <label htmlFor="firstName"></label>
                 </div>
-              </div>
-              <div className="row">
                 <div className="input-field col s12">
                   <input
                   placeholder="Last Name"
@@ -131,6 +128,7 @@ const AddStudent = () => {
               </a>
               <button
                 type="submit"
+                href= "/classlist" // FIX FOR LATER
                 className="btn halfway-fab waves-effect waves-light red"
                 // style={styles.button}
               >

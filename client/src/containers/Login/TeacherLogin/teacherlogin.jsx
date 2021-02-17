@@ -1,9 +1,32 @@
 import React, { useState } from "react";
 import "./teacherloginstyle.css";
+import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 
 const TeacherLogin = ({ handleFormSubmit }) => {
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
+
+  const containerVariants = {
+    hidden: {
+      opacity: 0,
+      x: "100vw",
+      transition: {
+        staggerChildren: 0.5,
+      },
+    },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        type: "spring",
+        mass: 0.4,
+        damping: 8,
+        staggerChildren: 0.4,
+        when: "beforeChildren",
+      },
+    },
+  };
 
   return (
     <>
@@ -12,9 +35,15 @@ const TeacherLogin = ({ handleFormSubmit }) => {
           <h1>Teacher Login</h1>
         </div>
       </div>
-      <div className="container">
+      <motion.div
+        className="container"
+        id="teacherlogincontainer"
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+      >
         <div className="row">
-          <div className="col s10 offset-s1" id="container">
+          <div className="col s10 offset-s1">
             <div className="row">
               <form
                 className="col s12"
@@ -55,19 +84,38 @@ const TeacherLogin = ({ handleFormSubmit }) => {
                     <label htmlFor="password">Enter Password</label>
                   </div>
                 </div>
-              </form>
-              <div className="row">
+                <row className="row">
+                  <div className="col s12">COPPA PRIVACY POLICY GOES HERE</div>
+                </row>
+                <row className="row">
+                  <p>
+                    <label>
+                      <input type="checkbox" />
+                      <span>Check to agree to Terms</span>
+                    </label>
+                  </p>
+                </row>
+                <div className="row center-align">
                 <div className="col s12">
-                  <button className="waves-effect red darken-1 btn">
-                    LOGIN
-                  </button>
+                  <Link to="/teacher/id:">
+                    <motion.button
+                      className="waves-effect red darken-1 btn"
+                      whileHover={{
+                        scale: 1.5,
+                        textShadow: "0px 0px 8px rgb(255,255,255)",
+                        boxShadow: "0px 0px 8px rgb(255,255,255)",
+                      }}
+                    >
+                      LOGIN
+                    </motion.button>
+                  </Link>
                 </div>
               </div>
-              <div id="forgotpassword">Forgot Password?</div>
+              </form>
             </div>
           </div>
         </div>
-      </div>
+      </motion.div>
     </>
   );
 };

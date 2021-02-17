@@ -33,7 +33,7 @@ router.post("/", (req, res) => {
   });
 });
 
-router.post("/login", (req, res) => {
+router.post("/signup", (req, res) => {
   User.findOne({ email: req.body.email.toLowerCase() }).then((foundUser) => {
     console.log(foundUser);
     bcrypt.compare(req.body.password, foundUser.password).then((result) => {

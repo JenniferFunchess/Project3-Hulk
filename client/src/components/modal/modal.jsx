@@ -4,7 +4,13 @@ import "materialize-css/dist/css/materialize.min.css";
 import "./Modal.css";
 import axios from "axios";
 class Modal extends Component {
+  
+
   componentDidMount() {
+    console.log(`startTotal: ${this.props.student.starTotal}`);
+    console.log(`star count: ${this.props.reward.starCount}`);
+    console.log(`redeemValue: ${this.props.redeemValue}`);
+    // const bool = this.props.student.starTotal - this.props.reward.starCount >= 0 ? true: false;
     const options = {
       onOpenStart: () => {
         console.log("Open Start");

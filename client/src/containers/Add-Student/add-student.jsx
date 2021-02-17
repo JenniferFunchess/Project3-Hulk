@@ -58,80 +58,84 @@ const AddStudent = () => {
           <h1>Add a Student</h1>
         </div>
         <div className="container">
-          {/* <FormComponent> */}
-            <div className="row">
-              <form
-                className="col s12"
-                onSubmit={(e) => {
-                  handleFormSubmit(e, {
-                    firstName,
-                    lastName,
-                    username,
-                    classCode,
-                  });
-                }}>
-              
-                <div className="row">
-                  <div classNames="input-field col s12">
-                    <input
-                      id="firstName"
-                      type="text"
-                      className="validate"
-                      value={firstName}
-                      onChange={(e) => {
-                        setfirstName(e.target.value);
-                      }}
-                    />
-                    <label for="firstName">First Name</label>
-                  </div>
-                  <div className="input-field col s12">
-                    <input
-                      id="lastName"
-                      type="text"
-                      className="validate"
-                      value={lastName}
-                      onChange={(e) => {
-                        setlastName(e.target.value);
-                      }}
-                    />
-                    <label for="lastName">Last Name</label>
+          <FormComponent>
+          <div className="row">
+            <form
+              className="col s12"
+              onSubmit={(e) => {
+                handleFormSubmit(e, {
+                  firstName,
+                  lastName,
+                  username,
+                  classCode,
+                });
+              }}
+            >
+              <div className="row">
+                <div classNames="input-field col s12">
+                  <input
+                    id="firstName"
+                    type="text"
+                    className="validate"
+                    value={firstName}
+                    onChange={(e) => {
+                      setfirstName(e.target.value);
+                    }}
+                  />
+                  <label htmlFor="firstName">First Name</label>
+                </div>
+              </div>
+              <div className="row">
+                <div className="input-field col s12">
+                  <input
+                    id="lastName"
+                    type="text"
+                    className="validate"
+                    value={lastName}
+                    onChange={(e) => {
+                      setlastName(e.target.value);
+                    }}
+                  />
+                  <label htmlFor="lastName">Last Name</label>
+                </div>
+              </div>
+              <div className="row">
+                <div className="input-field col s12">
+                  <input
+                    id="username"
+                    type="text"
+                    className="validate"
+                    value={username}
+                    onChange={(e) => {
+                      setusername(e.target.value);
+                    }}
+                  />
+                  <label htmlFor="username">Username</label>
+                  <div className="helper-text">
+                    {/* (Student will login with this) */}
                   </div>
                 </div>
-                <div className="row">
-                  <div className="input-field col s12">
-                    <input
-                      id="username"
-                      type="text"
-                      className="validate"
-                      value={username}
-                      onChange={(e) => {
-                        setusername(e.target.value);
-                      }}
-                    />
-                    <label for="username">Username</label>
-                    <div className="helper-text">
-                      {/* (Student will login with this) */}
-                    </div>
-                  </div>
-                </div>
-                <button
-                  type="submit"
-                  className="btn halfway-fab waves-effect waves-light red"
-                  // style={styles.button}
-                >
-                  Add Student
-                  <i className="material-icons">add</i>
-                </button>
-                <Link
-                  to={`/teacherhome`}
-                  className="btn halfway-fab waves-effect waves-light red"
-                >
-                  Home
-                  <i className="material-icons">home</i>
-                </Link>
-              </form>
-            </div>
-          {/* </FormComponent> */}
+              </div>
+              <button
+                type="submit"
+                className="btn halfway-fab waves-effect waves-light red"
+                // style={styles.button}
+              >
+                Add Student
+                <i className="material-icons">add</i>
+              </button>
+              <a
+                type="submit"
+                href="/teacherhome"
+                className="btn halfway-fab waves-effect waves-light red"
+                // style={styles.button}
+              >
+                Home
+                <i className="material-icons">home</i>
+              </a>
+            </form>
+          </div>
+          </FormComponent>
         </div>
       </div>
     </>

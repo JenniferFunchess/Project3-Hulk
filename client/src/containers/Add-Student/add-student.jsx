@@ -9,7 +9,6 @@ const AddStudent = () => {
   const urlArray = url.split("/");
   const teacherId = urlArray[urlArray.length - 1];
   console.log(teacherId);
-  const history = useHistory();
   const [teacher, setTeacher] = useState("");
   const [firstName, setfirstName] = useState("");
   const [lastName, setlastName] = useState("");

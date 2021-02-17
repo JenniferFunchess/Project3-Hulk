@@ -116,14 +116,6 @@ const AddStudent = () => {
                   </div>
                 </div>
               </div>
-              <button
-                type="submit"
-                className="btn halfway-fab waves-effect waves-light red"
-                // style={styles.button}
-              >
-                Add Student
-                <i className="material-icons">add</i>
-              </button>
               <a
                 type="submit"
                 href="/teacherhome"
@@ -133,6 +125,14 @@ const AddStudent = () => {
                 Home
                 <i className="material-icons">home</i>
               </a>
+              <button
+                type="submit"
+                className="btn halfway-fab waves-effect waves-light red"
+                // style={styles.button}
+              >
+                Submit
+                <i className="material-icons">check</i>
+              </button>
             </form>
           </div>
           </FormComponent>

@@ -35,20 +35,24 @@ const ViewClass = () => {
       <div className="container">
         <div className="row">
           <h1>Class List</h1>
-          <Link
-            to={`/teacherhome`}
+          <a
+            type="submit"
+            href="/teacherhome"
             className="btn halfway-fab waves-effect waves-light red"
+            // style={styles.button}
           >
-            Home
+            HOME
             <i className="material-icons">home</i>
-          </Link>
-          <Link
-            to={`/add-student`}
+          </a>
+          <a
+            type="submit"
+            href="/add-student"
             className="btn halfway-fab waves-effect waves-light red"
+            // style={styles.button}
           >
-            Add Student
-            <i className="material-icons">group_add</i>
-          </Link>
+            ADD STUDENT
+            <i className="material-icons">add</i>
+          </a>
         </div>
         <div className="row">
           <Card />

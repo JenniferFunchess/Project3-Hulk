@@ -8,6 +8,7 @@ class Modal extends Component {
     const options = {
       onOpenStart: () => {
         console.log("Open Start");
+        console.log(this.props.redeemValue);
       },
       onOpenEnd: () => {
         console.log("Open End");
@@ -61,6 +62,7 @@ class Modal extends Component {
           >
             <span aria-hidden="true">×</span>
           </button>
+          {this.props.redeemValue && 
           <div className="modal-content">
             <h4>Email Teacher?</h4>
             <p>Do you want to email your teacher to use your stars?</p>
@@ -83,6 +85,19 @@ class Modal extends Component {
               No
             </a>
           </div>
+          }
+
+          {!this.props.redeemValue && 
+          <div className="modal-content">
+          <p>You're almost there! Keep earning stars to redeem rewards!</p>
+          
+          <a className="modal-close waves-effect waves-red btn-flat disagree-btn">
+            Ok!
+          </a>
+        </div>
+          
+          }
+          
         </div>
       </div>
     );

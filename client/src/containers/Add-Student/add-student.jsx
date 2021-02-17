@@ -29,6 +29,8 @@ const AddStudent = () => {
     })
 }, []);
 
+const classCode = teacher.classCode;
+
   const handleFormSubmit = (e, students) => {
     console.log("Success");
     e.preventDefault();
@@ -64,6 +66,7 @@ const AddStudent = () => {
                   firstName,
                   lastName,
                   username,
+                  classCode,
                 });
               }}
             >

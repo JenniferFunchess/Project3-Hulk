@@ -7,7 +7,7 @@ import { faStar } from "@fortawesome/free-solid-svg-icons";
 
 import Navbar from '../../components/Navbar/Navbar';
 
-import Modal from "../../components/Modal/Modal";
+import Modal from "../../components/modal/modal";
 
 
 function StudentHome(props) {

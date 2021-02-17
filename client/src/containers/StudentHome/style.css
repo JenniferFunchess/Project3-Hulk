@@ -1,7 +1,3 @@
-.second-row {
-  /* background-color: gray; */
-}
-
 .blueBox {
   background-color: #0c91c4;
   color: white;
@@ -21,10 +17,6 @@
 .uploadButton {
   background-color: #d43d0e;
   color: white;
-}
-
-.greenColor {
-  /* background-color: green; */
 }
 
 .descriptionText {

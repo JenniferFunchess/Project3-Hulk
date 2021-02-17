@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./signupstyle.css";
 import axios from "axios";
+import Navbar from "../../components/Navbar/Navbar";
 
 const SignUp = () => {
   const [password, setPassword] = useState("");

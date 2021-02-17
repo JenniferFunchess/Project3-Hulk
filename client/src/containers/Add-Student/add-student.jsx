@@ -2,13 +2,13 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import FormComponent from "../../components/Form/form";
 import "./add-student.css";
-import Navbar from '../../components/Navbar/Navbar';
+import Navbar from "../../components/Navbar/Navbar";
+import { Link } from "react-router-dom";
 
 const AddStudent = () => {
-
   const url = window.location.href;
-  const urlArray = url.split('/');
-  const teacherId = urlArray[urlArray.length-1];
+  const urlArray = url.split("/");
+  const teacherId = urlArray[urlArray.length - 1];
   console.log(teacherId);
   const [teacher, setTeacher] = useState("");
 
@@ -18,18 +18,19 @@ const AddStudent = () => {
   // const [students, setStudents] = useState([]);
 
   useEffect(() => {
-    axios.get(`/api/signup/${teacherId}`)
-    .then((response) => {
-      console.log('Teacher get route worked');
-      setTeacher(response.data);
-      console.log(response.data);
-    })
-    .catch((err) => {
-      console.log(err);
-    })
-}, []);
+    axios
+      .get(`/api/signup/${teacherId}`)
+      .then((response) => {
+        console.log("Teacher get route worked");
+        setTeacher(response.data);
+        console.log(response.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
 
-const classCode = teacher.classCode;
+  const classCode = teacher.classCode;
 
   const handleFormSubmit = (e, students) => {
     console.log("Success");
@@ -51,80 +52,88 @@ const classCode = teacher.classCode;
 
   return (
     <>
-    <Navbar teacher={true} classCode={teacher.classCode} login={false}/>
-    <div>
-      <div className="row">
-        <h1>Add a Student</h1>
-      </div>
-      <div className="container">
-        <FormComponent>
-          <div className="row">
-            <form
-              className="col s12"
-              onSubmit={(e) => {
-                handleFormSubmit(e, {
-                  firstName,
-                  lastName,
-                  username,
-                  classCode,
-                });
-              }}
-            >
-              <div className="row">
-                <div classNames="input-field col s6">
-                  <input
-                    id="firstName"
-                    type="text"
-                    className="validate"
-                    value={firstName}
-                    onChange={(e) => {
-                      setfirstName(e.target.value);
-                    }}
-                  />
-                  <label for="firstName">First Name</label>
-                </div>
-                <div className="input-field col s6">
-                  <input
-                    id="lastName"
-                    type="text"
-                    className="validate"
-                    value={lastName}
-                    onChange={(e) => {
-                      setlastName(e.target.value);
-                    }}
-                  />
-                  <label for="lastName">Last Name</label>
-                </div>
-              </div>
-              <div className="row">
-                <div className="input-field col s12">
-                  <input
-                    id="username"
-                    type="text"
-                    className="validate"
-                    value={username}
-                    onChange={(e) => {
-                      setusername(e.target.value);
-                    }}
-                  />
-                  <label for="username">Username</label>
-                  <div className="helper-text">
-                    {/* (Student will login with this) */}
+      <Navbar teacher={true} classCode={teacher.classCode} login={false} />
+      <div>
+        <div className="row">
+          <h1>Add a Student</h1>
+        </div>
+        <div className="container">
+          {/* <FormComponent> */}
+            <div className="row">
+              <form
+                className="col s12"
+                onSubmit={(e) => {
+                  handleFormSubmit(e, {
+                    firstName,
+                    lastName,
+                    username,
+                    classCode,
+                  });
+                }}>
+              
+                <div className="row">
+                  <div classNames="input-field col s12">
+                    <input
+                      id="firstName"
+                      type="text"
+                      className="validate"
+                      value={firstName}
+                      onChange={(e) => {
+                        setfirstName(e.target.value);
+                      }}
+                    />
+                    <label for="firstName">First Name</label>
+                  </div>
+                  <div className="input-field col s12">
+                    <input
+                      id="lastName"
+                      type="text"
+                      className="validate"
+                      value={lastName}
+                      onChange={(e) => {
+                        setlastName(e.target.value);
+                      }}
+                    />
+                    <label for="lastName">Last Name</label>
                   </div>
                 </div>
-              </div>
-              <button
-                type="submit"
-                className="styled-button"
-                // style={styles.button}
-              >
-                Add Student
-              </button>
-            </form>
-          </div>
-        </FormComponent>
+                <div className="row">
+                  <div className="input-field col s12">
+                    <input
+                      id="username"
+                      type="text"
+                      className="validate"
+                      value={username}
+                      onChange={(e) => {
+                        setusername(e.target.value);
+                      }}
+                    />
+                    <label for="username">Username</label>
+                    <div className="helper-text">
+                      {/* (Student will login with this) */}
+                    </div>
+                  </div>
+                </div>
+                <button
+                  type="submit"
+                  className="btn halfway-fab waves-effect waves-light red"
+                  // style={styles.button}
+                >
+                  Add Student
+                  <i className="material-icons">add</i>
+                </button>
+                <Link
+                  to={`/teacherhome`}
+                  className="btn halfway-fab waves-effect waves-light red"
+                >
+                  Home
+                  <i className="material-icons">home</i>
+                </Link>
+              </form>
+            </div>
+          {/* </FormComponent> */}
+        </div>
       </div>
-    </div>
     </>
   );
 };

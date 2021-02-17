@@ -1,6 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const path = require("path");
+const sendMail = require("./utils/mailer");
 
 const app = express();
 
@@ -42,9 +43,6 @@ app.use("/api/teachers", teacherController);
 app.use("/api/signup", signupController);
 app.use("/api/auth", AuthController);
 
-
-
-
 app.get("/api/config", (req, res) => {
   res.json({
     success: true,
@@ -53,6 +51,10 @@ app.get("/api/config", (req, res) => {
 
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "client/build/index.html"));
+});
+
+app.post("/api/sendEmail", (req, res) => {
+  sendMail(req, res);
 });
 
 app.listen(PORT, () => {

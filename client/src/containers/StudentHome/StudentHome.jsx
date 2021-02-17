@@ -62,7 +62,7 @@ function StudentHome(props) {
 
   return (
     <div>
-      <Navbar teacher={false} login={false} classCode={student.classCode}/>
+      {/* <Navbar teacher={false} login={false} classCode={student.classCode}/> */}
       {/* <div className="container"> */}
       <div className="row">
         <div className="col s12">

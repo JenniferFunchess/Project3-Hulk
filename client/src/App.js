@@ -29,14 +29,12 @@ function App() {
             )}
           />
           <Route
-            exact
-            path="/studentlogin"
-            component={(props) => (
-              <StudentLogin {...props} setToken={setToken} />
-            )}
-          />
-          <Route path="/teacherhome" component={TeacherHome} token={token} />
-          <Route exact path="/classlist" component={ViewList} />
+              exact
+              path="/studentlogin"
+              component={(props) => <StudentLogin {...props} setToken={setToken} />}
+            />
+          <Route path="/teacherhome" component={TeacherHome} token={token}/>
+          <Route path="/classlist" component={ViewList} />
           <Route path="/student-home" component={StudentHome} />
           <Route path="/add-student" component={AddStudent} />
           <Route path="/view-student/:id" component={ViewStudent} />

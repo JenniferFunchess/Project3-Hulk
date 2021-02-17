@@ -3,32 +3,42 @@ html {
 }
 
 .school {
-  position: fixed;
+  /* position: fixed; */
   left: 0;
   bottom: 0;
   height: 60%;
   width: 50%;
 }
 
-#homeRight {
-  margin-top: -10%;
-}
 #homeStars {
-  margin-left: 40%;
+  margin-top: 15%;
+  margin-left: 35%;
 }
 
-#homeName {
+#homeWelcome {
+  font-family: "Dancing Script", cursive;
   color: white;
   font-size: 75px;
   margin-left: 15%;
 }
 
-#rowTagline {
-  color: white;
-  font-size: 20px;
+#homeName {
+  font-family: "Seymour One", sans-serif;
+  color: red;
+  font-size: 55px;
   margin-left: 15%;
+  margin-top: -7%;
+}
+
+#rowTagline {
+  font-family: "Dancing Script", cursive;
+  color: white;
+  font-size: 25px;
+  margin-left: 15%;
+  margin-top: -5%;
+  font-family: "Open Sans Condensed", sans-serif;
 }
 
 #signUpButton {
-  margin-left: 50%;
+  margin-left: 10%;
 }

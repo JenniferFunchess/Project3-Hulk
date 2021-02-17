@@ -1,17 +1,17 @@
 .nav-wrapper {
-    background-color: #FF914D;
+  background-color: #ff914d;
 }
 
 .left {
-    font-size: 40px;
-    font-weight: 650;
+  font-size: 40px;
+  font-weight: 650;
 }
 
 .class-code {
-    font-size: 20px;
-    font-weight: 350;
+  font-size: 20px;
+  font-weight: 350;
 }
 .nav-link {
-    font-size: 25px;
-    font-weight: 500;
+  font-size: 25px;
+  font-weight: 500;
 }

@@ -5,7 +5,8 @@ import FormComponent from "../../components/Form/form";
 import "./viewStudent.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
-import Navbar from "../../components/Navbar/Navbar";
+import Navbar from '../../components/Navbar/Navbar';
+
 
 const ViewStudentPage = () => {
   const [student, setStudent] = useState({
@@ -40,39 +41,20 @@ const ViewStudentPage = () => {
     getStudent();
   }, [getStudent]);
   const addStar = (index) => {
-    const newStudent = {};
-    
-
     const tempArray = [...student.tasksCompleted];
     tempArray[index] = tempArray[index] + 1;
-
-    newStudent.username = student.username;
-    newStudent.firstName = student.firstName;
-    newStudent.lastName = student.lastName;
-    newStudent.starTotal = student.starTotal + 1;
-    newStudent.imageUrl = student.imageUrl;
-    newStudent.classCode = student.classCode;
-    newStudent.tasksCompleted = tempArray;
     axios
-      .put(`/api/students/${id}`, newStudent)
+      .put(`/api/students/${id}/stars`, tempArray)
       .then(() => {
         getStudent();
       })
       .catch((err) => {
         console.log(err);
       });
-    // axios
-    //   .put(`/api/students/${id}/stars`, tempArray)
-    //   .then(() => {
-    //     getStudent();
-    //   })
-    //   .catch((err) => {
-    //     console.log(err);
-    //   });
   };
   return (
     <>
-    <Navbar teacher={true} login={false} classCode={student.classCode}/>
+    <Navbar teacher={true} login={false} classCode={studentId.classCode}/>
       <div>
         <h1>View Student</h1>
         <div className="row">

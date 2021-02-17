@@ -1,20 +1,16 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-// import Star from "../../components/Star/star";
 import "./style.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
-
 import Navbar from '../../components/Navbar/Navbar';
-
 import Modal from "../../components/modal/modal";
 
 
-function StudentHome(props) {
+function StudentHome() {
   const [student, setStudent] = useState("");
   const [rewards, setRewards] = useState([]);
-  // const [tasks, setTasks] = useState([]);
-  // const [canRedeem, setCanRedeem] = useState([]);
+
 
   const url = window.location.href;
   console.log(url);
@@ -46,18 +42,18 @@ function StudentHome(props) {
       });
   }, []);
 
-  const redeemable = (student, studentStarTotal, rewardObj) => {
+  const redeemable = (studentObj, rewardObj) => {
     const newStudent = {};
-    newStudent.username = student.username;
-    newStudent.firstName = student.firstName;
-    newStudent.lastName = student.lastName;
-    newStudent.starTotal = student.starTotal - rewardObj.starCount;
-    newStudent.imageUrl = student.imageUrl;
-    newStudent.classCode = student.classCode;
-    newStudent.tasksCompleted = student.tasksCompleted;
+    newStudent.username = studentObj.username;
+    newStudent.firstName = studentObj.firstName;
+    newStudent.lastName = studentObj.lastName;
+    newStudent.starTotal = studentObj.starTotal - rewardObj.starCount;
+    newStudent.imageUrl = studentObj.imageUrl;
+    newStudent.classCode = studentObj.classCode;
+    newStudent.tasksCompleted = studentObj.tasksCompleted;
     
-    setStudent(newStudent);
-    return studentStarTotal - rewardObj.starCount >= 0 ? true: false
+    // setStudent(newStudent);
+    return studentObj.starTotal - rewardObj.starCount >= 0 ? true: false;
   }
 
   return (
@@ -143,7 +139,8 @@ function StudentHome(props) {
                 <h5>
                   <FontAwesomeIcon icon={faStar} />
                   {reward.rewardCategory} ({reward.starCount} Stars)
-                  <Modal redeemValue={redeemable(student.starTotal, reward.starCount)} reward={reward} student={student}></Modal>
+                  <Modal redeemValue={redeemable(student, reward)} reward={reward} student={student}></Modal>
+                  {/* redeemable(student, reward) */}
                 </h5>
               </div>
             ))}

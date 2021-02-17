@@ -84,7 +84,7 @@ const classCode = teacher.classCode;
                   />
                   <label for="firstName">First Name</label>
                 </div>
-                <div className="input-field col s6">
+                <div className="input-field col s12">
                   <input
                     id="lastName"
                     type="text"

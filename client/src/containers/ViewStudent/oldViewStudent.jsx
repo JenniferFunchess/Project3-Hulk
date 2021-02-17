@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import axios from "axios";
 import FormComponent from "../../components/Form/form";
@@ -7,16 +7,18 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import Navbar from '../../components/Navbar/Navbar';
 
-
-const ViewStudentPage = () => {
-  const [student, setStudent] = useState({
-    username: "",
-    firstName: "",
-    lastName: "",
-    tasksCompleted: [],
-  });
+const ViewStudentPage = ({
+  studentid,
+  username,
+  firstName,
+  lastName,
+  starTotal,
+  tasksCompleted,
+  getStudents,
+}) => {
   const { id } = useParams();
   const history = useHistory();
+  console.log(id);
   const deleteStudent = (studentid) => {
     axios
       .delete(`/api/students/${studentid}`)
@@ -27,53 +29,69 @@ const ViewStudentPage = () => {
         console.log(err);
       });
   };
-  const getStudent = useCallback(() => {
+
+  const url = window.location.href;
+  console.log(url);
+  const urlArray = url.split("/");
+  const studentId = urlArray[urlArray.length - 1];
+  console.log(studentId);
+
+  const [student, setStudent] = useState({});
+  const [starsArray, setStarsArray] = useState([0,0,0,0,0]);
+
+  const getStudent = () => {
     axios
-      .get(`/api/students/${id}`)
+      .get(`/api/students/${id}`) // add /${props.studentId}?
       .then((response) => {
+        console.log("student worked");
+        console.log(response.data);
         setStudent(response.data);
+        // setStarsArray(response.data.tasksCompleted);
       })
       .catch((err) => {
         console.log(err);
       });
-  }, [id]);
-  useEffect(() => {
-    getStudent();
-  }, [getStudent]);
-  const addStar = (index) => {
-    const newStudent = {};
-    
+  }
 
-    const tempArray = [...student.tasksCompleted];
-    tempArray[index] = tempArray[index] + 1;
-
-    newStudent.username = student.username;
-    newStudent.firstName = student.firstName;
-    newStudent.lastName = student.lastName;
-    newStudent.starTotal = student.starTotal + 1;
-    newStudent.imageUrl = student.imageUrl;
-    newStudent.classCode = student.classCode;
-    newStudent.tasksCompleted = tempArray;
+  const getStars = () => {
     axios
-      .put(`/api/students/${id}`, newStudent)
-      .then(() => {
+      .get(`/api/students/${id}`) // add /${props.studentId}?
+      .then((response) => {
+        console.log("student worked");
+        console.log(response.data);
+        // setStudent(response.data);
+        setStarsArray(response.data.tasksCompleted);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
+  useEffect(() => {
+   getStudent();
+   getStars();
+  }, []);
+
+  const addStar = (index) => {
+    console.log(index);
+    const tempArray = [...starsArray]
+    tempArray[index] = starsArray[index]+1;
+    setStarsArray([...tempArray]);
+
+    axios
+      .put(`/api/students/${id}/stars`, starsArray)
+      .then((response) => {
+        console.log(response.data);
         getStudent();
       })
       .catch((err) => {
         console.log(err);
       });
-    // axios
-    //   .put(`/api/students/${id}/stars`, tempArray)
-    //   .then(() => {
-    //     getStudent();
-    //   })
-    //   .catch((err) => {
-    //     console.log(err);
-    //   });
   };
+
   return (
     <>
-    <Navbar teacher={true} login={false} classCode={student.classCode}/>
+    <Navbar teacher={true} login={false} classCode={studentId.classCode}/>
       <div>
         <h1>View Student</h1>
         <div className="row">
@@ -85,23 +103,20 @@ const ViewStudentPage = () => {
             </h3>
             <div className="col s12">
               <FontAwesomeIcon icon={faStar} />
-              <span>
-                {student.tasksCompleted.reduce(
-                  (total, index) => total + index,
-                  0
-                )}
-              </span>
+              <span>{starsArray.reduce((total, index) => total+index, 0)}</span>
             </div>
             <button
               className="waves-effect waves-light btn"
               id="delete-student-btn"
               onClick={() => {
+                history.push("/classlist");
                 deleteStudent(student._id);
               }}
             >
               Delete
             </button>
           </div>
+
           <div className="col s9">
             <FormComponent>
               <div class="row">
@@ -159,6 +174,7 @@ const ViewStudentPage = () => {
                     </li>
                   </ul>
                 </div>
+
                 {/* <div className="col s6">
                   <h4 className="add-star-header">Add Star</h4>
                   <label>Select Category</label>
@@ -188,4 +204,5 @@ const ViewStudentPage = () => {
     </>
   );
 };
+
 export default ViewStudentPage;

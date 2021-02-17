@@ -164,7 +164,7 @@ const SignUp = () => {
                 </div>
                 <div className="row center-align">
                   <div className="col s12">
-                    <Link to="/teacher/:id">
+                    <Link to="/teacherlogin">
                       <motion.button
                         className="waves-effect red darken-1 btn"
                         whileHover={{

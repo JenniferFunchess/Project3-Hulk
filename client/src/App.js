@@ -9,11 +9,10 @@ import ViewStudent from "./containers/ViewStudent/viewStudent";
 import Rewards from "./containers/Rewards/rewards";
 import ViewList from "./containers/Class-List/class-list";
 import TeacherHome from "./containers/Teacher-Home/teacher-home";
-import StudentHome from './containers/StudentHome/StudentHome';
+import StudentHome from "./containers/StudentHome/StudentHome";
 import React, { useState } from "react";
 
 function App() {
-
   const [token, setToken] = useState("");
 
   return (
@@ -23,10 +22,12 @@ function App() {
           <Route exact path="/" component={home} />
           <Route exact path="/signup" component={signup} />
           <Route
-              exact
-              path="/teacherlogin"
-              component={(props) => <TeacherLogin {...props} setToken={setToken} />}
-            />
+            exact
+            path="/teacherlogin"
+            component={(props) => (
+              <TeacherLogin {...props} setToken={setToken} />
+            )}
+          />
           <Route
               exact
               path="/studentlogin"
@@ -44,4 +45,3 @@ function App() {
   );
 }
 export default App;
-

@@ -3,14 +3,12 @@ import React, { useEffect, useState } from "react";
 import "./style.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
-import Navbar from '../../components/Navbar/Navbar';
-import Modal from "../../components/modal/modal";
-
+import Navbar from "../../components/Navbar/Navbar";
+import Modal from "../../components/Modal/modal";
 
 function StudentHome(props) {
   const [student, setStudent] = useState("");
   const [rewards, setRewards] = useState([]);
-
 
   const url = window.location.href;
   console.log(url);
@@ -18,10 +16,9 @@ function StudentHome(props) {
   const studentId = urlArray[urlArray.length - 1];
   console.log(studentId);
 
-
   useEffect(() => {
     axios
-      .get(`/api/students/${studentId}`) 
+      .get(`/api/students/${studentId}`)
       .then((response) => {
         console.log("student worked");
         console.log(response.data);
@@ -30,7 +27,6 @@ function StudentHome(props) {
       .catch((err) => {
         console.log(err);
       });
-    
 
     axios
       .get("/api/rewards")
@@ -51,14 +47,14 @@ function StudentHome(props) {
     newStudent.imageUrl = studentObj.imageUrl;
     newStudent.classCode = studentObj.classCode;
     newStudent.tasksCompleted = studentObj.tasksCompleted;
-    
+
     // setStudent(newStudent);
-    return studentObj.starTotal - rewardObj.starCount >= 0 ? true: false;
-  }
+    return studentObj.starTotal - rewardObj.starCount >= 0 ? true : false;
+  };
 
   return (
     <div>
-      <Navbar teacher={false} login={false} classCode={student.classCode}/>
+      {/* <Navbar teacher={false} login={false} classCode={student.classCode}/> */}
       {/* <div className="container"> */}
       <div className="row">
         <div className="col s12">
@@ -139,7 +135,11 @@ function StudentHome(props) {
                 <h5>
                   <FontAwesomeIcon icon={faStar} />
                   {reward.rewardCategory} ({reward.starCount} Stars)
-                  <Modal redeemValue={redeemable(student, reward)} reward={reward} student={student}></Modal>
+                  <Modal
+                    redeemValue={redeemable(student, reward)}
+                    reward={reward}
+                    student={student}
+                  ></Modal>
                   {/* redeemable(student, reward) */}
                 </h5>
               </div>
@@ -147,7 +147,7 @@ function StudentHome(props) {
           </div>
         </div>
       </div>
-    </div>     
+    </div>
   );
 }
 

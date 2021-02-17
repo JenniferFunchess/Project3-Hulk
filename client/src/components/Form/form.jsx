@@ -3,7 +3,7 @@ import "./form.css";
 
 const Form = ({ children }) => {
     return (
-        <div className= "blue-form">
+        <div className= "white-form">
             {children}
         </div>
     );

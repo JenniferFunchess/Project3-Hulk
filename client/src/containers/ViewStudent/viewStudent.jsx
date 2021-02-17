@@ -5,8 +5,7 @@ import FormComponent from "../../components/Form/form";
 import "./viewStudent.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
-import Navbar from '../../components/Navbar/Navbar';
-
+import Navbar from "../../components/Navbar/Navbar";
 
 const ViewStudentPage = () => {
   const [student, setStudent] = useState({

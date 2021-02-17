@@ -29,6 +29,24 @@ const ViewClass = () => {
       <div className="container">
         <div className="row">
           <h1>Class List</h1>
+          <a
+            type="submit"
+            href="/teacherhome"
+            className="btn halfway-fab waves-effect waves-light red"
+            // style={styles.button}
+          >
+            HOME
+            <i className="material-icons">home</i>
+          </a>
+          <a
+            type="submit"
+            href="/add-student"
+            className="btn halfway-fab waves-effect waves-light red"
+            // style={styles.button}
+          >
+            ADD STUDENT
+            <i className="material-icons">add</i>
+          </a>
         </div>
         <div className="row">
           <Card />

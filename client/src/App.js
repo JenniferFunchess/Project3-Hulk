@@ -11,6 +11,8 @@ import ViewList from "./containers/Class-List/class-list";
 import TeacherHome from "./containers/Teacher-Home/teacher-home";
 import StudentHome from "./containers/StudentHome/StudentHome";
 import React, { useState } from "react";
+import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
+import Signup from "./containers/Signup/signup";
 
 function App() {
   const [token, setToken] = useState("");
@@ -20,7 +22,11 @@ function App() {
       <Router>
         <Switch>
           <Route exact path="/" component={home} />
-          <Route exact path="/signup" component={signup} />
+          <Route
+            exact
+            path="/signup"
+            component={(props) => <Signup {...props} setToken={setToken} />}
+          />
           <Route
             exact
             path="/teacherlogin"
@@ -29,16 +35,22 @@ function App() {
             )}
           />
           <Route
-              exact
-              path="/studentlogin"
-              component={(props) => <StudentLogin {...props} setToken={setToken} />}
-            />
-          <Route path="/teacherhome" component={TeacherHome} token={token}/>
-          <Route path="/classlist" component={ViewList} />
-          <Route path="/student-home" component={StudentHome} />
-          <Route path="/add-student" component={AddStudent} />
-          <Route path="/view-student/:id" component={ViewStudent} />
-          <Route path="/rewards" component={Rewards} />
+            exact
+            path="/studentlogin"
+            component={(props) => (
+              <StudentLogin {...props} setToken={setToken} />
+            )}
+          />
+          <ProtectedRoute
+            path="/teacherhome"
+            component={TeacherHome}
+            token={token}
+          />
+          <ProtectedRoute path="/classlist" component={ViewList} />
+          <ProtectedRoute path="/student-home" component={StudentHome} />
+          <ProtectedRoute path="/add-student" component={AddStudent} />
+          <ProtectedRoute path="/view-student/:id" component={ViewStudent} />
+          <ProtectedRoute path="/rewards" component={Rewards} />
         </Switch>
       </Router>
     </div>

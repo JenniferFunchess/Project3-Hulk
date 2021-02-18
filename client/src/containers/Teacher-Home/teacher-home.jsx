@@ -24,6 +24,10 @@ const TeacherHome = () => {
           console.log(err);
         })
     }, []);
+    const classListString = '/classlist/' + teacher._id;
+    const addStudentString = '/add-student/' + teacher._id;
+    const addRewardString = '/rewards/' + teacher._id;
+
   return (
     <>
     <Navbar teacher={true} classCode={teacher.classCode} login={false}></Navbar>
@@ -40,12 +44,12 @@ const TeacherHome = () => {
                 alt="Student Profile"
                 style={{ width: "100%" }}
               />
-              <Link
-                to="/add-student"
+              <button
+              onClick={() => {window.location.href = addStudentString}}
                 className="btn-floating halfway-fab waves-effect waves-light red"
               >
                 <i className="material-icons">add</i>
-              </Link>
+              </button>
             </div>
             <div className="card-content">
               <p className="student-name">Add A Student</p>
@@ -60,12 +64,13 @@ const TeacherHome = () => {
                 alt="Student Profile"
                 style={{ width: "100%" }}
               />
-              <Link
-                to="/classlist"
+              <button
+              onClick={() => {window.location.href = classListString}}
+                href={classListString}
                 className="btn-floating halfway-fab waves-effect waves-light red"
               >
                 <i className="material-icons">add</i>
-              </Link>
+              </button>
             </div>
             <div className="card-content">
               <p className="student-name">Class List</p>
@@ -80,12 +85,12 @@ const TeacherHome = () => {
                 alt="Student Profile"
                 style={{ width: "100%" }}
               />
-              <Link
-                to="/rewards"
+              <button
+              onClick={() => {window.location.href = addRewardString}}
                 className="btn-floating halfway-fab waves-effect waves-light red"
               >
                 <i className="material-icons">add</i>
-              </Link>
+              </button>
             </div>
             <div className="card-content">
               <p className="student-name">Class Rewards</p>

@@ -5,7 +5,7 @@ import axios from "axios";
 import { motion } from "framer-motion";
 // import jwt from "jsonwebtoken";
 
-const SignUp = () => {
+const SignUp = ({ setToken }) => {
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [firstName, setFirstName] = useState("");
@@ -165,18 +165,18 @@ const SignUp = () => {
                 </div>
                 <div className="row center-align">
                   <div className="col s12">
-                      <motion.button
-                        className="waves-effect red darken-1 btn"
-                        type = "submit"
-                        href = "/teacherlogin"
-                        whileHover={{
-                          scale: 1.5,
-                          textShadow: "0px 0px 8px rgb(255,255,255)",
-                          boxShadow: "0px 0px 8px rgb(255,255,255)",
-                        }}
-                      >
-                        SIGN UP
-                      </motion.button>
+                    <motion.button
+                      className="waves-effect red darken-1 btn"
+                      type="submit"
+                      href="/teacherlogin"
+                      whileHover={{
+                        scale: 1.5,
+                        textShadow: "0px 0px 8px rgb(255,255,255)",
+                        boxShadow: "0px 0px 8px rgb(255,255,255)",
+                      }}
+                    >
+                      SIGN UP
+                    </motion.button>
                   </div>
                 </div>
               </form>

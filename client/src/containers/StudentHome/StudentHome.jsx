@@ -38,6 +38,8 @@ function StudentHome(props) {
       });
   }, []);
 
+  
+
   const redeemable = (studentObj, rewardObj) => {
     const newStudent = {};
     newStudent.username = studentObj.username;
@@ -54,7 +56,7 @@ function StudentHome(props) {
 
   return (
     <div>
-      {/* <Navbar teacher={false} login={false} classCode={student.classCode}/> */}
+      <Navbar teacher={false} login={false} classCode={student.classCode}/>
       {/* <div className="container"> */}
       <div className="row">
         <div className="col s12">
@@ -131,11 +133,13 @@ function StudentHome(props) {
               <hr></hr>
             </div>
             {rewards.map((reward) => (
+              
               <div className="col s12">
                 <h5>
                   <FontAwesomeIcon icon={faStar} />
                   {reward.rewardCategory} ({reward.starCount} Stars)
                   <Modal
+                    key={reward._id}
                     redeemValue={redeemable(student, reward)}
                     reward={reward}
                     student={student}

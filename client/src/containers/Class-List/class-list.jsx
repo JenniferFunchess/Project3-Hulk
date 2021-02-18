@@ -11,6 +11,8 @@ const ViewClass = () => {
   console.log(teacherId);
   const [teacher, setTeacher] = useState("");
 
+  
+
   useEffect(() => {
     axios.get(`/api/signup/${teacherId}`)
     .then((response) => {
@@ -22,7 +24,8 @@ const ViewClass = () => {
       console.log(err);
     })
 }, [teacherId]);
-
+const teacherHomeString = '/teacherHome/' + teacherId;
+const addStudentString = '/add-student/' + teacherId;
   return (
     <div>
       <Navbar teacher={true} classCode={teacher.classCode} login={false}/>
@@ -31,7 +34,7 @@ const ViewClass = () => {
           <h1>Class List</h1>
           <a
             type="submit"
-            href="/teacherhome"
+            href={teacherHomeString}
             className="btn halfway-fab waves-effect waves-light red"
             // style={styles.button}
           >
@@ -40,7 +43,7 @@ const ViewClass = () => {
           </a>
           <a
             type="submit"
-            href="/add-student"
+            href={addStudentString}
             className="btn halfway-fab waves-effect waves-light red"
             // style={styles.button}
           >

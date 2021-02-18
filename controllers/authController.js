@@ -4,35 +4,6 @@ const Signup = require("../models/Signup");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
-// router.post("/", (req, res) => {
-//   bcrypt.hash(req.body.password, 10).then((hashedPassword) => {
-//     console.log(hashedPassword);
-//     const newUser = {
-//       email: req.body.email,
-//       password: hashedPassword,
-//     };
-//     User.create(newUser)
-//       .then((newUser) => {
-//         // TODO: Send back token.
-//         const token = jwt.sign(
-//           { _id: newUser._id },
-//           process.env.JWT_SIGNATURE,
-//           {
-//             expiresIn: 60 * 60,
-//           }
-//         );
-//         console.log(token);
-//         res.json({
-//           token: token,
-//         });
-//       })
-//       .catch((err) => {
-//         console.log(err);
-//         res.status(500).end();
-//       });
-//   });
-// });
-
 router.post("/login", (req, res) => {
   console.log(req.body);
   Signup.findOne({

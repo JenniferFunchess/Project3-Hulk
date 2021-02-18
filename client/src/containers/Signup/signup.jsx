@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 import "./signupstyle.css";
 import axios from "axios";
-// import { useHistory } from "react-router-dom";
 import { motion } from "framer-motion";
-// import jwt from "jsonwebtoken";
 
 const SignUp = () => {
   const [password, setPassword] = useState("");
@@ -11,7 +9,6 @@ const SignUp = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [teacherNickname, setTeacherNickname] = useState("");
-  // const history = useHistory();
 
   const generateClasscode = () => {
     const code = Math.floor(Math.random() * 90000) + 10000;
@@ -27,6 +24,7 @@ const SignUp = () => {
       .post("/api/signup", newTeacher)
       .then((response) => {
         console.log(response.data);
+        window.location.href = "/teacherlogin";
       })
       .catch((err) => {
         console.log(err);
@@ -165,18 +163,18 @@ const SignUp = () => {
                 </div>
                 <div className="row center-align">
                   <div className="col s12">
-                      <motion.button
-                        className="waves-effect red darken-1 btn"
-                        type = "submit"
-                        href = "/teacherlogin"
-                        whileHover={{
-                          scale: 1.5,
-                          textShadow: "0px 0px 8px rgb(255,255,255)",
-                          boxShadow: "0px 0px 8px rgb(255,255,255)",
-                        }}
-                      >
-                        SIGN UP
-                      </motion.button>
+                    <motion.button
+                      className="waves-effect red darken-1 btn"
+                      type="submit"
+                      href="/teacherlogin"
+                      whileHover={{
+                        scale: 1.5,
+                        textShadow: "0px 0px 8px rgb(255,255,255)",
+                        boxShadow: "0px 0px 8px rgb(255,255,255)",
+                      }}
+                    >
+                      SIGN UP
+                    </motion.button>
                   </div>
                 </div>
               </form>

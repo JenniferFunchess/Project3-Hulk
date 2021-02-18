@@ -3,16 +3,23 @@ import M from "materialize-css";
 import "materialize-css/dist/css/materialize.min.css";
 import "./modal.css";
 import axios from "axios";
+
 class Modal extends Component {
+  
   componentDidMount() {
     console.log(`startTotal: ${this.props.student.starTotal}`);
     console.log(`star count: ${this.props.reward.starCount}`);
-    console.log(`redeemValue: ${this.props.redeemValue}`);
+    console.log(this.props.redeemValue);
+    
     // const bool = this.props.student.starTotal - this.props.reward.starCount >= 0 ? true: false;
     const options = {
       onOpenStart: () => {
         console.log("Open Start");
         console.log(this.props.redeemValue);
+        console.log(`redeemValue: ${this.props.redeemValue}`);
+        console.log(`reward category: ${this.props.reward.rewardCategory}`);
+        console.log(`starTotal: ${this.props.student.starTotal}`);
+    console.log(`difference: ${this.props.student.starTotal - this.props.reward.starCount}`);
       },
       onOpenEnd: () => {
         console.log("Open End");
@@ -35,8 +42,29 @@ class Modal extends Component {
     // let instance = M.Modal.getInstance(this.Modal);
     // instance.open();
     // instance.close();
-    // instance.destroy();
+    // instance.destroy()
+    
   }
+
+  updateStudent(student, reward) {
+    const newStudent = student;
+    newStudent.starTotal = student.starTotal - reward.starCount;
+    axios
+      .put(
+        `/api/students/${this.props.student._id}`,
+        newStudent
+      )
+      .then((response) => {
+        console.log(response.data);
+        window.location.href=`/student-home/${response.data._id}`; //not sure if this is needed
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
+  
+  
 
   render() {
     return (
@@ -46,6 +74,7 @@ class Modal extends Component {
         <button
           className="waves-effect waves-light btn modal-trigger"
           data-target="modal1"
+          data-attribute = {this.props.reward.starCount}
         >
           Use Stars
         </button>
@@ -66,7 +95,7 @@ class Modal extends Component {
           >
             <span aria-hidden="true">×</span>
           </button>
-          {this.props.redeemValue && (
+          {/* {this.props.redeemValue &&  */}
             <div className="modal-content">
               <h4>Email Teacher?</h4>
               <p>Do you want to email your teacher to use your stars?</p>
@@ -75,7 +104,9 @@ class Modal extends Component {
                 type="submit"
                 method="POST"
                 action="SEND"
-                onClick={async () => {
+                onClick={this.updateStudent(this.props.student, this.props.reward)}
+                // onClick={async (student, reward) => {
+                
                   // axios
                   //   .post(
                   //     `/api/rewards/redeem/${this.props.reward._id}/student/${this.props.student._id}`,
@@ -84,19 +115,22 @@ class Modal extends Component {
                   //   .catch((err) => {
                   //     console.log(err);
                   //   });
-                  axios
-                    .put(
-                      `/api/students/${this.props.student._id}`,
-                      this.props.student
-                    )
-                    .then((response) => {
-                      console.log(response.data);
-                      // history.push(`/student-home/${response.data._id}`); //not sure if this is needed
-                    })
-                    .catch((err) => {
-                      console.log(err);
-                    });
-                }}
+                
+                  // const newStudent = student;
+                  // newStudent.starTotal = student.starTotal - reward.starCount;
+                  // axios
+                  //   .put(
+                  //     `/api/students/${this.props.student._id}`,
+                  //     newStudent
+                  //   )
+                  //   .then((response) => {
+                  //     console.log(response.data);
+                  //     window.location.href=`/student-home/${response.data._id}`; //not sure if this is needed
+                  //   })
+                  //   .catch((err) => {
+                  //     console.log(err);
+                  //   });
+                // }}
               >
                 Yes
               </a>
@@ -104,9 +138,9 @@ class Modal extends Component {
                 No
               </a>
             </div>
-          )}
+          {/* } */}
 
-          {/* {!this.props.redeemValue && (
+          {this.props.student.starTotal - this.props.reward.starCount < 0 && 
             <div className="modal-content">
               <p>You're almost there! Keep earning stars to redeem rewards!</p>
 
@@ -114,7 +148,7 @@ class Modal extends Component {
                 Ok!
               </a>
             </div>
-          )} */}
+          }
         </div>
       </div>
     );

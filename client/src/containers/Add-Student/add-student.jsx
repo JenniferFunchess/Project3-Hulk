@@ -28,7 +28,7 @@ const AddStudent = () => {
       });
   }, []);
 
-  const classCode = teacher.classCode;
+
 
   const handleFormSubmit = (e, students) => {
     console.log("Success");
@@ -47,7 +47,9 @@ const AddStudent = () => {
         // });
       });
   };
-
+const classCode = teacher.classCode;
+const teacherHomeString = '/teacherHome/' + teacherId;
+const classListString = '/classlist/' + teacherId;
   return (
     <>
       <Navbar teacher={true} classCode={teacher.classCode} login={false} />
@@ -118,7 +120,7 @@ const AddStudent = () => {
               </div>
               <a
                 type="submit"
-                href="/teacherhome"
+                href={teacherHomeString}
                 className="btn halfway-fab waves-effect waves-light red"
                 // style={styles.button}
               >
@@ -127,7 +129,7 @@ const AddStudent = () => {
               </a>
               <button
                 type="submit"
-                href= "/classlist" // FIX FOR LATER
+                href={classListString} // FIX FOR LATER
                 className="btn halfway-fab waves-effect waves-light red"
                 // style={styles.button}
               >

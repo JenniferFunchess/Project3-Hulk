@@ -5,7 +5,7 @@ import { Link, useHistory } from "react-router-dom";
 import { motion } from "framer-motion";
 import jwt from "jsonwebtoken";
 
-const SignUp = ({ setToken}) => {
+const SignUp = ({ setToken }) => {
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [firstName, setFirstName] = useState("");
@@ -27,18 +27,18 @@ const SignUp = ({ setToken}) => {
       .post("/api/signup", newTeacher)
       .then((response) => {
         console.log(response.data);
-        jwt.verify(
-          response.data.token,
-          process.env.REACT_APP_JWT_SIGNATURE,
-          (err, decoded) => {
-            if (err) {
-              console.log(err);
-            } else {
-              setToken(response.data.token);
-              history.push("/signup");
-            }
-          }
-        );
+        // jwt.verify(
+        //   response.data.token,
+        //   process.env.REACT_APP_JWT_SIGNATURE,
+        //   (err, decoded) => {
+        //     if (err) {
+        //       console.log(err);
+        //     } else {
+        //       setToken(response.data.token);
+        //       history.push("/signup");
+        //     }
+        //   }
+        // );
       })
       .catch((err) => {
         console.log(err);
@@ -177,18 +177,18 @@ const SignUp = ({ setToken}) => {
                 </div>
                 <div className="row center-align">
                   <div className="col s12">
-                    <Link to="/teacherlogin">
-                      <motion.button
-                        className="waves-effect red darken-1 btn"
-                        whileHover={{
-                          scale: 1.5,
-                          textShadow: "0px 0px 8px rgb(255,255,255)",
-                          boxShadow: "0px 0px 8px rgb(255,255,255)",
-                        }}
-                      >
-                        SIGN UP
-                      </motion.button>
-                    </Link>
+                    <motion.button
+                      href="/teacherlogin"
+                      type="submit"
+                      className="waves-effect red darken-1 btn"
+                      whileHover={{
+                        scale: 1.5,
+                        textShadow: "0px 0px 8px rgb(255,255,255)",
+                        boxShadow: "0px 0px 8px rgb(255,255,255)",
+                      }}
+                    >
+                      SIGN UP
+                    </motion.button>
                   </div>
                 </div>
               </form>

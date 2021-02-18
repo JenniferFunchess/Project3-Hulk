@@ -22,7 +22,7 @@
 
 #rewardCategory,
 #starCount {
-  color: white;
-  border-bottom: 3px solid #fff;
+  color: black;
+  border-bottom: 3px solid black;
   text-transform: uppercase;
 }

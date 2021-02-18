@@ -1,11 +1,33 @@
 import React, { useState } from "react";
 import "./teacherloginstyle.css";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { motion } from "framer-motion";
+import jwt from "jsonwebtoken";
+import axios from "axios";
 
-const TeacherLogin = ({ handleFormSubmit }) => {
+const TeacherLogin = ({ setToken }) => {
+  const [teacher, setTeacher] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
+  const history = useHistory();
+
+  const handleFormSubmit = (e) => {
+    console.log("Success");
+    e.preventDefault();
+    axios
+      .post("/api/auth/login", {
+        email: email,
+        password: password,
+      })
+      .then((response) => {
+        console.log(response.data);
+        setTeacher(response.data);
+        history.push(`/teacherhome/${response.data._id}`);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   const containerVariants = {
     hidden: {
@@ -27,6 +49,8 @@ const TeacherLogin = ({ handleFormSubmit }) => {
       },
     },
   };
+
+  const teacherHomeString = "/teacherhome" + teacher._id;
 
   return (
     <>
@@ -96,10 +120,11 @@ const TeacherLogin = ({ handleFormSubmit }) => {
                   </p>
                 </row>
                 <div className="row center-align">
-                <div className="col s12">
-                  <Link to="/teacher/id:">
+                  <div className="col s12">
                     <motion.button
                       className="waves-effect red darken-1 btn"
+                      type="submit"
+                      href={teacherHomeString}
                       whileHover={{
                         scale: 1.5,
                         textShadow: "0px 0px 8px rgb(255,255,255)",
@@ -108,9 +133,8 @@ const TeacherLogin = ({ handleFormSubmit }) => {
                     >
                       LOGIN
                     </motion.button>
-                  </Link>
+                  </div>
                 </div>
-              </div>
               </form>
             </div>
           </div>

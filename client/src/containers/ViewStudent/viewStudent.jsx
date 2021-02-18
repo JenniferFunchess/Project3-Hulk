@@ -103,13 +103,13 @@ const ViewStudentPage = () => {
           </div>
           <div className="col s9">
             <FormComponent>
-              <div class="row">
+              <div className="row">
                 <div className="col s6">
                   <ul>
                     <li className="star-categories">
                       ASKING A TOUGH QUESTION{" "}
                       <button
-                        class="waves-effect waves-light btn"
+                        className="waves-effect waves-light btn"
                         id="add-star-btn"
                         onClick={() => addStar(0)}
                       >
@@ -119,7 +119,7 @@ const ViewStudentPage = () => {
                     <li className="star-categories">
                       Zoom Camera on All Class
                       <button
-                        class="waves-effect waves-light btn"
+                        className="waves-effect waves-light btn"
                         id="add-star-btn"
                         onClick={() => addStar(1)}
                       >
@@ -129,7 +129,7 @@ const ViewStudentPage = () => {
                     <li className="star-categories">
                       Submitting Homework on Time
                       <button
-                        class="waves-effect waves-light btn"
+                        className="waves-effect waves-light btn"
                         id="add-star-btn"
                         onClick={() => addStar(2)}
                       >
@@ -139,7 +139,7 @@ const ViewStudentPage = () => {
                     <li className="star-categories">
                       Extra Credit
                       <button
-                        class="waves-effect waves-light btn"
+                        className="waves-effect waves-light btn"
                         id="add-star-btn"
                         onClick={() => addStar(3)}
                       >
@@ -149,7 +149,7 @@ const ViewStudentPage = () => {
                     <li className="star-categories">
                       Listening in Class
                       <button
-                        class="waves-effect waves-light btn"
+                        className="waves-effect waves-light btn"
                         id="add-star-btn"
                         onClick={() => addStar(4)}
                       >

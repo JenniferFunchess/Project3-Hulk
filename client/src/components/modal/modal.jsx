@@ -46,22 +46,22 @@ class Modal extends Component {
     
   }
 
-  updateStudent(student, reward) {
-    const newStudent = student;
-    newStudent.starTotal = student.starTotal - reward.starCount;
-    axios
-      .put(
-        `/api/students/${this.props.student._id}`,
-        newStudent
-      )
-      .then((response) => {
-        console.log(response.data);
-        window.location.href=`/student-home/${response.data._id}`; //not sure if this is needed
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }
+  // updateStudent(student, reward) {
+  //   const newStudent = student;
+  //   newStudent.starTotal = student.starTotal - reward.starCount;
+  //   axios
+  //     .put(
+  //       `/api/students/${this.props.student._id}`,
+  //       newStudent
+  //     )
+  //     .then((response) => {
+  //       console.log(response.data);
+  //       window.location.href=`/student-home/${response.data._id}`; //not sure if this is needed
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // }
 
   
   
@@ -104,7 +104,7 @@ class Modal extends Component {
                 type="submit"
                 method="POST"
                 action="SEND"
-                onClick={this.updateStudent(this.props.student, this.props.reward)}
+                // onClick={this.updateStudent(this.props.student, this.props.reward)}
                 // onClick={async (student, reward) => {
                 
                   // axios

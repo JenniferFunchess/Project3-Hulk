@@ -3,7 +3,7 @@ import "./signupstyle.css";
 import axios from "axios";
 import { motion } from "framer-motion";
 
-const SignUp = () => {
+const SignUp = ({ setToken }) => {
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [firstName, setFirstName] = useState("");

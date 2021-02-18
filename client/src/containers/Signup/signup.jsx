@@ -178,9 +178,9 @@ const SignUp = ({ setToken }) => {
                 <div className="row center-align">
                   <div className="col s12">
                     <motion.button
-                      href="/teacherlogin"
-                      type="submit"
                       className="waves-effect red darken-1 btn"
+                      type="submit"
+                      href="/teacherlogin"
                       whileHover={{
                         scale: 1.5,
                         textShadow: "0px 0px 8px rgb(255,255,255)",

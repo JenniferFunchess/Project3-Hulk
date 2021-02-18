@@ -1,25 +1,25 @@
-const mongoose = require("mongoose");
+// const mongoose = require("mongoose");
 
-const Schema = mongoose.Schema;
+// const Schema = mongoose.Schema;
 
-const userSchema = new Schema({
+// const userSchema = new Schema({
 
-  email: {
-    type: String,
-    trim: true,
-    required: "Enter an email address.",
-  },
-  password: {
-    type: String,
-    trim: true,
-    required: "Enter a password",
-  },
-});
-userSchema.pre("save", function (next) {
-  this.email = this.email.toLowerCase();
-  next();
-});
+//   email: {
+//     type: String,
+//     trim: true,
+//     required: "Enter an email address.",
+//   },
+//   password: {
+//     type: String,
+//     trim: true,
+//     required: "Enter a password",
+//   },
+// });
+// userSchema.pre("save", function (next) {
+//   this.email = this.email.toLowerCase();
+//   next();
+// });
 
-const User = mongoose.model("User", userSchema);
+// const User = mongoose.model("User", userSchema);
 
-module.exports = User;
+// module.exports = User;

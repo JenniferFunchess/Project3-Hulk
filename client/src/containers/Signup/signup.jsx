@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import "./signupstyle.css";
 import axios from "axios";
-import { Link, useHistory } from "react-router-dom";
+// import { useHistory } from "react-router-dom";
 import { motion } from "framer-motion";
-import jwt from "jsonwebtoken";
+// import jwt from "jsonwebtoken";
 
 const SignUp = ({ setToken }) => {
   const [password, setPassword] = useState("");
@@ -11,7 +11,7 @@ const SignUp = ({ setToken }) => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [teacherNickname, setTeacherNickname] = useState("");
-  const history = useHistory();
+  // const history = useHistory();
 
   const generateClasscode = () => {
     const code = Math.floor(Math.random() * 90000) + 10000;
@@ -27,18 +27,6 @@ const SignUp = ({ setToken }) => {
       .post("/api/signup", newTeacher)
       .then((response) => {
         console.log(response.data);
-        // jwt.verify(
-        //   response.data.token,
-        //   process.env.REACT_APP_JWT_SIGNATURE,
-        //   (err, decoded) => {
-        //     if (err) {
-        //       console.log(err);
-        //     } else {
-        //       setToken(response.data.token);
-        //       history.push("/signup");
-        //     }
-        //   }
-        // );
       })
       .catch((err) => {
         console.log(err);

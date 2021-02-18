@@ -1,18 +1,16 @@
 import React, { Component } from "react";
 import M from "materialize-css";
 import "materialize-css/dist/css/materialize.min.css";
-import "./modal.css";
+import "./Modal.css";
 import axios from "axios";
 class Modal extends Component {
   componentDidMount() {
     console.log(`startTotal: ${this.props.student.starTotal}`);
     console.log(`star count: ${this.props.reward.starCount}`);
-    console.log(`redeemValue: ${this.props.redeemValue}`);
     // const bool = this.props.student.starTotal - this.props.reward.starCount >= 0 ? true: false;
     const options = {
       onOpenStart: () => {
         console.log("Open Start");
-        console.log(this.props.redeemValue);
       },
       onOpenEnd: () => {
         console.log("Open End");
@@ -66,7 +64,7 @@ class Modal extends Component {
           >
             <span aria-hidden="true">×</span>
           </button>
-          {this.props.redeemValue && (
+          {/* {this.props.redeemValue && ( */}
             <div className="modal-content">
               <h4>Email Teacher?</h4>
               <p>Do you want to email your teacher to use your stars?</p>
@@ -84,18 +82,18 @@ class Modal extends Component {
                   //   .catch((err) => {
                   //     console.log(err);
                   //   });
-                  axios
-                    .put(
-                      `/api/students/${this.props.student._id}`,
-                      this.props.student
-                    )
-                    .then((response) => {
-                      console.log(response.data);
-                      // history.push(`/student-home/${response.data._id}`); //not sure if this is needed
-                    })
-                    .catch((err) => {
-                      console.log(err);
-                    });
+                  // axios
+                  //   .put(
+                  //     `/api/students/${this.props.student._id}`,
+                  //     this.props.student
+                  //   )
+                  //   .then((response) => {
+                  //     console.log(response.data);
+                  //     // history.push(`/student-home/${response.data._id}`); //not sure if this is needed
+                  //   })
+                  //   .catch((err) => {
+                  //     console.log(err);
+                  //   });
                 }}
               >
                 Yes
@@ -104,7 +102,7 @@ class Modal extends Component {
                 No
               </a>
             </div>
-          )}
+          {/* )} */}
 
           {/* {!this.props.redeemValue && (
             <div className="modal-content">

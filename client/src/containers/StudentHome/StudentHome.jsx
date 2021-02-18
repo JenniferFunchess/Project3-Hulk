@@ -4,25 +4,28 @@ import "./style.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import Navbar from "../../components/Navbar/Navbar";
-import Modal from "../../components/modal/modal";
+import Modal from "../../components/Modal/modal";
 
 function StudentHome(props) {
   const [student, setStudent] = useState("");
   const [rewards, setRewards] = useState([]);
+  const [map, setMap] = useState({});
 
   const url = window.location.href;
-  console.log(url);
+  // console.log(url);
   const urlArray = url.split("/");
   const studentId = urlArray[urlArray.length - 1];
-  console.log(studentId);
+  // console.log(studentId);
+  const tempMap = new Map();
 
   useEffect(() => {
     axios
       .get(`/api/students/${studentId}`)
       .then((response) => {
-        console.log("student worked");
-        console.log(response.data);
+        // console.log("student worked");
+        // console.log(response.data);
         setStudent(response.data);
+        // console.log(response.data);
       })
       .catch((err) => {
         console.log(err);
@@ -31,7 +34,19 @@ function StudentHome(props) {
     axios
       .get("/api/rewards")
       .then((response) => {
+        console.log(response.data);
         setRewards(response.data);
+        let redeemable;
+        for (let i = 0; i < response.data.length; i++) {
+          redeemable = false;
+          if (student.starTotal - response.data[i].starCount >= 0) {
+            redeemable = true;
+          } 
+          // let redeemable = student.starTotal - rewards[i].starCount >= 0 ? true: false;
+          tempMap.set(rewards[i]._id, redeemable);
+        }
+        console.log(tempMap);
+        setMap(tempMap);
       })
       .catch((err) => {
         console.log(err);
@@ -51,6 +66,10 @@ function StudentHome(props) {
     // setStudent(newStudent);
     return studentObj.starTotal - rewardObj.starCount >= 0 ? true : false;
   };
+
+  // for (let [key, value] of map) {
+  //   console.log(map.get(key));
+  // }
 
   return (
     <div>
@@ -131,18 +150,24 @@ function StudentHome(props) {
               <hr></hr>
             </div>
             {rewards.map((reward) => (
+              <>
+              
               <div className="col s12">
+                
                 <h5>
                   <FontAwesomeIcon icon={faStar} />
                   {reward.rewardCategory} ({reward.starCount} Stars)
+                  {map.get(reward._id) && 
                   <Modal
                     redeemValue={redeemable(student, reward)}
                     reward={reward}
                     student={student}
                   ></Modal>
+                  }
                   {/* redeemable(student, reward) */}
                 </h5>
               </div>
+              </>
             ))}
           </div>
         </div>

@@ -61,7 +61,9 @@ function StudentHome(props) {
     const newStudent = student;
     const newStarTotal = newStudent.starTotal - rewardStarCount;
     if (newStarTotal < 0) {
-      alert("You don't have enough stars");
+      alert(
+        "Almost there! Keep working hard, you're only a few stars away from earning this reward!"
+      );
       return;
     }
     newStudent.starTotal = newStarTotal;

@@ -3,42 +3,58 @@ html {
 }
 
 .school {
-  /* position: fixed; */
   left: 0;
   bottom: 0;
-  height: 60%;
+  height: auto;
   width: 50%;
 }
 
 #homeStars {
-  margin-top: 15%;
-  margin-left: 35%;
+  margin: auto;
+  text-align: center;
 }
 
 #homeWelcome {
   font-family: "Dancing Script", cursive;
   color: white;
   font-size: 75px;
-  margin-left: 15%;
 }
 
 #homeName {
   font-family: "Seymour One", sans-serif;
   color: #e53935;
   font-size: 55px;
-  margin-left: 15%;
-  margin-top: -7%;
 }
 
 #rowTagline {
   font-family: "Dancing Script", cursive;
   color: white;
-  font-size: 25px;
-  margin-left: 15%;
-  margin-top: -5%;
+  font-size: 30px;
   font-family: "Open Sans Condensed", sans-serif;
 }
 
-#signUpButton {
-  margin-left: 10%;
+#homeRight {
+  margin-top: 15%;
+}
+
+@media screen and (max-width: 992px) {
+  .school,
+  .school-container {
+    display: none;
+  } /* hide it elsewhere */
+}
+
+@media screen and (max-width: 992px) {
+  .home-row {
+    margin: auto !important;
+    text-align: center !important;
+  } /* hide it elsewhere */
+}
+
+@media screen and (max-width: 890px) {
+  #homeRight {
+    margin: auto;
+    text-align: center;
+    margin-top: 15%;
+  } /* hide it elsewhere */
 }

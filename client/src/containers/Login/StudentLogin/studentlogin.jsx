@@ -3,12 +3,13 @@ import "./studentloginstyle.css";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-// import { useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 const StudentLogin = ({ setToken }) => {
+  const [student, setStudent] = useState("");
   const [username, setUsername] = useState("");
   const [classcode, setClassCode] = useState("");
-  // const history = useHistory();
+  const history = useHistory();
 
   const handleFormSubmit = (e) => {
     console.log("Success");
@@ -20,6 +21,8 @@ const StudentLogin = ({ setToken }) => {
       })
       .then((response) => {
         console.log(response.data);
+        setStudent(response.data);
+        history.push(`/studenthome/${response.data._id}`);
       })
       .catch((err) => {
         console.log(err);
@@ -46,6 +49,8 @@ const StudentLogin = ({ setToken }) => {
       },
     },
   };
+
+  const studentHomeString = "/studenthome/" + student._id;
 
   return (
     <>
@@ -119,6 +124,8 @@ const StudentLogin = ({ setToken }) => {
                     <Link to="/student/id:">
                       <motion.button
                         className="waves-effect red darken-1 btn"
+                        type="submit"
+                        href={studentHomeString}
                         whileHover={{
                           scale: 1.5,
                           textShadow: "0px 0px 8px rgb(255,255,255)",

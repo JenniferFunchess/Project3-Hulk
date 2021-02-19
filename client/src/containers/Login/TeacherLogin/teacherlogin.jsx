@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 import { motion } from "framer-motion";
 import axios from "axios";
 import Navbar from "../../../components/Navbar/Navbar";
-// import jwt from "jsonwebtoken";
+import jwt from "jsonwebtoken";
 
 const TeacherLogin = ({ setToken }) => {
   const [teacher, setTeacher] = useState("");
@@ -24,18 +24,18 @@ const TeacherLogin = ({ setToken }) => {
         console.log(response.data);
         setTeacher(response.data);
         history.push(`/teacherhome/${response.data._id}`);
-        // jwt.verify(
-        //   response.data.token,
-        //   process.env.REACT_APP_JWT_SIGNATURE,
-        //   (err, decoded) => {
-        //     if (err) {
-        //       console.log(err);
-        //     } else {
-        //       setToken(response.data.token);
-        //       history.push("/");
-        //     }
-        //   }
-        // );
+        jwt.verify(
+          response.data.token,
+          process.env.REACT_APP_JWT_SIGNATURE,
+          (err, decoded) => {
+            if (err) {
+              console.log(err);
+            } else {
+              setToken(response.data.token);
+              history.push("/");
+            }
+          }
+        );
       })
       .catch((err) => {
         console.log(err);

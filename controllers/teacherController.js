@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
-const Teacher = require("../models/Teacher.js")
-
+const Teacher = require("../models/Teacher.js");
+const jwt = require("jsonwebtoken");
 
 // router.get("/", (req, res) => {
 //   Teacher.find()
@@ -26,16 +26,36 @@ router.get("/:id", (req, res) => {
 });
 
 router.post("/", (req, res) => {
-    console.log(req.body);
-    Teacher.create(req.body)
-    .then((newTeachers) => {
-      console.log(newTeachers);
-      console.log("Success");
-      res.json(newTeachers);
-    }).catch(err => {
+  bcrypt
+    .hash(req.body.password, 10)
+    .then((hashedPassword) => {
+      console.log(hashedPassword);
+      const newUser = {
+        email: req.body.email,
+        password: hashedPassword,
+      };
+      console.log(req.body);
+      Teacher.create(req.body).then((newTeachers) => {
+        console.log(newTeachers);
+        console.log("Success");
+        res.json(newTeachers);
+        // const token = jwt.sign(
+        //   { _id: newUser._id },
+        //   process.env.JWT_SIGNATURE,
+        //   {
+        //     expiresIn: 60 * 60,
+        //   }
+        // );
+        // console.log(token);
+        // res.json({
+        //   token: token,
+        // });
+      });
+    })
+    .catch((err) => {
       console.log(err);
       res.status(500).end();
-    })
+    });
 });
 
 router.put("/:id", (req, res) => {
@@ -51,7 +71,5 @@ router.put("/:id", (req, res) => {
 //     res.json(result);
 //   });
 // });
-
-
 
 module.exports = router;

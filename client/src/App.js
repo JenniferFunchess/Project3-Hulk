@@ -20,7 +20,13 @@ function App() {
     <div className="App">
       <Router>
         <Switch>
-          <Route exact path="/" component={home} />
+          <Route
+            exact
+            path="/"
+            component={home}
+            // token={token}
+            // setToken={setToken}
+          />
           <Route
             exact
             path="/signup"
@@ -40,12 +46,16 @@ function App() {
               <StudentLogin {...props} setToken={setToken} />
             )}
           />
-          <Route path="/teacherhome" component={TeacherHome} token={token} />
-          <Route path="/classlist" component={ViewList} />
-          <Route path="/student-home" component={StudentHome} />
-          <Route path="/add-student" component={AddStudent} />
-          <Route path="/view-student/" component={ViewStudent} />
-          <Route path="/rewards" component={Rewards} />
+          <ProtectedRoute
+            path="/teacherhome"
+            component={TeacherHome}
+            token={token}
+          />
+          <ProtectedRoute path="/classlist" component={ViewList} />
+          <ProtectedRoute path="/student-home" component={StudentHome} />
+          <ProtectedRoute path="/add-student" component={AddStudent} />
+          <ProtectedRoute path="/view-student/" component={ViewStudent} />
+          <ProtectedRoute path="/rewards" component={Rewards} />
         </Switch>
       </Router>
     </div>

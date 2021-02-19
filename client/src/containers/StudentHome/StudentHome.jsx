@@ -4,19 +4,20 @@ import "./style.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import Navbar from "../../components/Navbar/Navbar";
-import Modal from "../../components/Modal/modal";
+// import Modal from "../../components/Modal/modal";
 
 function StudentHome(props) {
+  // const initialMap = new Map();
   const [student, setStudent] = useState("");
   const [rewards, setRewards] = useState([]);
-  const [map, setMap] = useState({});
+  //   const [map, setMap] = useState();
+  const [teacher, setTeacher] = useState("");
 
   const url = window.location.href;
   // console.log(url);
   const urlArray = url.split("/");
   const studentId = urlArray[urlArray.length - 1];
   // console.log(studentId);
-  const tempMap = new Map();
 
   useEffect(() => {
     axios
@@ -36,40 +37,56 @@ function StudentHome(props) {
       .then((response) => {
         console.log(response.data);
         setRewards(response.data);
-        let redeemable;
-        for (let i = 0; i < response.data.length; i++) {
-          redeemable = false;
-          if (student.starTotal - response.data[i].starCount >= 0) {
-            redeemable = true;
-          }
-          // let redeemable = student.starTotal - rewards[i].starCount >= 0 ? true: false;
-          tempMap.set(rewards[i]._id, redeemable);
-        }
-        console.log(tempMap);
-        setMap(tempMap);
       })
       .catch((err) => {
         console.log(err);
       });
-  }, [rewards, student.starTotal, studentId]);
 
-  const redeemable = (studentObj, rewardObj) => {
-    const newStudent = {};
-    newStudent.username = studentObj.username;
-    newStudent.firstName = studentObj.firstName;
-    newStudent.lastName = studentObj.lastName;
-    newStudent.starTotal = studentObj.starTotal - rewardObj.starCount;
-    newStudent.imageUrl = studentObj.imageUrl;
-    newStudent.classCode = studentObj.classCode;
-    newStudent.tasksCompleted = studentObj.tasksCompleted;
+    console.log(student.classCode);
+    axios
+      .get(`/api/signup/teacher/${student.classCode}`) //add get route for teacher w/classcode
+      .then((response) => {
+        // console.log("student worked");
+        console.log("Teacher info:");
+        console.log(response.data);
+        setTeacher(response.data[0]);
+        // console.log(teacher);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
 
-    // setStudent(newStudent);
-    return studentObj.starTotal - rewardObj.starCount >= 0 ? true : false;
+  const handleButtonClick = (rewardStarCount, reward) => {
+    const newStudent = student;
+    const newStarTotal = newStudent.starTotal - rewardStarCount;
+    if (newStarTotal < 0) {
+      alert("You don't have enough stars");
+      return;
+    }
+    newStudent.starTotal = newStarTotal;
+    console.log(newStarTotal);
+    axios
+      .put(`/api/students/${newStudent._id}`, newStudent)
+      .then((response) => {
+        console.log(response.data);
+        setStudent(response.data); //make sure it updates star count
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+
+    const mailOptions = {
+      from: "ontrackteacher@gmail.com",
+      to: "ontrackteacher@gmail.com",
+      subject:
+        student.firstName + " " + student.lastName + " is Requesting a Reward",
+      text: "this worked",
+    };
+    axios.post(`/api/sendEmail`, mailOptions).then((response) => {
+      console.log(response);
+    });
   };
-
-  // for (let [key, value] of map) {
-  //   console.log(map.get(key));
-  // }
 
   return (
     <div>
@@ -150,23 +167,21 @@ function StudentHome(props) {
               <hr></hr>
             </div>
             {rewards.map((reward) => (
-              <>
-                <div className="col s12">
-                  <h5>
-                    <FontAwesomeIcon icon={faStar} />
-                    {reward.rewardCategory} ({reward.starCount} Stars)
-                    {map.get(reward._id) && (
-                      <Modal
-                        key={reward._id}
-                        redeemValue={redeemable(student, reward)}
-                        reward={reward}
-                        student={student}
-                      ></Modal>
-                    )}
-                    {/* redeemable(student, reward) */}
-                  </h5>
-                </div>
-              </>
+              <div className="col s12">
+                <h5>
+                  <FontAwesomeIcon icon={faStar} />
+                  {reward.rewardCategory} ({reward.starCount} Stars)
+                  {/* {map.get(reward._id) &&  */}
+                  <button
+                    onClick={() => handleButtonClick(reward.starCount)}
+                    key={reward._id}
+                    rewardStarCount={reward.starCount}
+                    reward={reward}
+                    studentObj={student}
+                  ></button>
+                  {/* } */}
+                </h5>
+              </div>
             ))}
           </div>
         </div>

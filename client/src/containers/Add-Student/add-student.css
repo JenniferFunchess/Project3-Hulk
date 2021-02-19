@@ -1,6 +1,6 @@
 h1 {
   text-align: center;
-  color: #d43d0e;
+  color: #E53935;
   font-weight: 800;
 }
 
@@ -28,7 +28,7 @@ h1 {
 }
 
 .input-field input[type="text"]:focus + label {
-  color: #d43d0e !important;
+  color: #E53935 !important;
 }
 
 .star-20 {

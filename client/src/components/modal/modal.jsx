@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import M from "materialize-css";
 import "materialize-css/dist/css/materialize.min.css";
 import "./modal.css";
-import axios from "axios";
 
 class Modal extends Component {
   componentDidMount() {
@@ -67,7 +66,7 @@ class Modal extends Component {
           Use Stars
         </button>
 
-        <a href="#" className="modal-trigger" data-target="modal1"></a>
+        <button className="modal-trigger" data-target="modal1"></button>
 
         <div
           ref={(Modal) => {

@@ -55,6 +55,8 @@ const Rewards = () => {
     setUpdateDate(new Date());
   };
 
+  const classListString = "/classlist/" + teacher._id;
+
   return (
     <div>
       <Navbar classCode={teacher.classCode} login={false} />
@@ -73,7 +75,7 @@ const Rewards = () => {
                       {" "}
                       ({reward.starCount} stars)
                     </h5>
-                    <a
+                    <button
                       className="btn-floating btn-small waves-effect waves-light red"
                       onClick={async () => {
                         const setrewardCategory = prompt(
@@ -98,8 +100,8 @@ const Rewards = () => {
                       }}
                     >
                       <FontAwesomeIcon icon={faEdit} />
-                    </a>
-                    <a
+                    </button>
+                    <button
                       className="btn-floating btn-small
                    waves-effect waves-light red"
                       onClick={async () => {
@@ -108,7 +110,7 @@ const Rewards = () => {
                       }}
                     >
                       <FontAwesomeIcon icon={faTrash} />
-                    </a>
+                    </button>
                   </li>
                 ))}
               </ul>
@@ -153,9 +155,21 @@ const Rewards = () => {
                   <div className="col s12">
                     <button className="waves-effect red darken-1 btn add-category-btn">
                       ADD CATEGORY
+                      <i className="material-icons">add</i>
                     </button>
                   </div>
                 </form>
+                <div className="col s12">
+                  <button
+                    onClick={() => {
+                      window.location.href = classListString;
+                    }}
+                    className="waves-effect red darken-1 btn add-category-btn"
+                  >
+                    CLASSLIST
+                    <i className="material-icons">people</i>
+                  </button>
+                </div>
               </div>
             </div>
           </div>

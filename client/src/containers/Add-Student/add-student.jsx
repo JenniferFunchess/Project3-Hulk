@@ -59,85 +59,85 @@ const classListString = '/classlist/' + teacherId;
         </div>
         <div className="container">
           <FormComponent>
-            <div className="row">
-              <form
-                className="col s12"
-                id="white-form"
-                onSubmit={(e) => {
-                  handleFormSubmit(e, {
-                    firstName,
-                    lastName,
-                    username,
-                    classCode,
-                  });
-                }}
+          <div className="row">
+            <form
+              className="col s12"
+              id="white-form"
+              onSubmit={(e) => {
+                handleFormSubmit(e, {
+                  firstName,
+                  lastName,
+                  username,
+                  classCode,
+                });
+              }}
+            >
+              <div className="row">
+                <div classNames="input-field col s12">
+                  <input
+                  placeholder="First Name"
+                    id="firstName"
+                    type="text"
+                    className="validate"
+                    value={firstName}
+                    onChange={(e) => {
+                      setfirstName(e.target.value);
+                    }}
+                  />
+                  <label htmlFor="firstName"></label>
+                </div>
+                <div className="input-field col s12">
+                  <input
+                  placeholder="Last Name"
+                    id="lastName"
+                    type="text"
+                    className="validate"
+                    value={lastName}
+                    onChange={(e) => {
+                      setlastName(e.target.value);
+                    }}
+                  />
+                  <label htmlFor="lastName"></label>
+                </div>
+              </div>
+              <div className="row">
+                <div className="input-field col s12">
+                  <input
+                    placeholder="Username"
+                    id="username"
+                    type="text"
+                    className="validate"
+                    value={username}
+                    onChange={(e) => {
+                      setusername(e.target.value);
+                    }}
+                  />
+                  <label htmlFor="username"></label>
+                  <div className="helper-text">
+                    {/* (Student will login with this) */}
+                  </div>
+                </div>
+              </div>
+              <a
+                type="submit"
+                href={teacherHomeString}
+                className="btn halfway-fab waves-effect waves-light red"
+                // style={styles.button}
               >
-                <div className="row">
-                  <div classNames="input-field col s12">
-                    <input
-                      placeholder="First Name"
-                      id="firstName"
-                      type="text"
-                      className="validate"
-                      value={firstName}
-                      onChange={(e) => {
-                        setfirstName(e.target.value);
-                      }}
-                    />
-                    <label htmlFor="firstName"></label>
-                  </div>
-                  <div className="input-field col s12">
-                    <input
-                      placeholder="Last Name"
-                      id="lastName"
-                      type="text"
-                      className="validate"
-                      value={lastName}
-                      onChange={(e) => {
-                        setlastName(e.target.value);
-                      }}
-                    />
-                    <label htmlFor="lastName"></label>
-                  </div>
-                </div>
-                <div className="row">
-                  <div className="input-field col s12">
-                    <input
-                      placeholder="Username"
-                      id="username"
-                      type="text"
-                      className="validate"
-                      value={username}
-                      onChange={(e) => {
-                        setusername(e.target.value);
-                      }}
-                    />
-                    <label htmlFor="username"></label>
-                    <div className="helper-text">
-                      {/* (Student will login with this) */}
-                    </div>
-                  </div>
-                </div>
-                <a
-                  type="submit"
-                  href={teacherHomeString}
-                  className="btn halfway-fab waves-effect waves-light red"
-                  // style={styles.button}
-                >
-                  Home
-                  <i className="material-icons">home</i>
-                </a>
-                <button
-                  type="submit"
-                  href={classListString} // FIX FOR LATER
-                  className="btn halfway-fab waves-effect waves-light red"
-                  // style={styles.button}
-                >
-                  Submit
-                  <i className="material-icons">check</i>
-                </button>
-              </form>
-            </div>
+                Home
+                <i className="material-icons">home</i>
+              </a>
+              <button
+                type="submit"
+                href={classListString} // FIX FOR LATER
+                className="btn halfway-fab waves-effect waves-light red"
+                // style={styles.button}
+              >
+                Submit
+                <i className="material-icons">check</i>
+              </button>
+            </form>
+          </div>
           </FormComponent>
         </div>
       </div>

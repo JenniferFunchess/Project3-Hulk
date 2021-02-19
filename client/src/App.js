@@ -40,16 +40,12 @@ function App() {
               <StudentLogin {...props} setToken={setToken} />
             )}
           />
-          <ProtectedRoute
-            path="/teacherhome"
-            component={TeacherHome}
-            token={token}
-          />
-          <ProtectedRoute path="/classlist" component={ViewList} />
-          <ProtectedRoute path="/student-home" component={StudentHome} />
-          <ProtectedRoute path="/add-student" component={AddStudent} />
-          <ProtectedRoute path="/view-student/" component={ViewStudent} />
-          <ProtectedRoute path="/rewards" component={Rewards} />
+          <Route path="/teacherhome" component={TeacherHome} token={token} />
+          <Route path="/classlist" component={ViewList} />
+          <Route path="/student-home" component={StudentHome} />
+          <Route path="/add-student" component={AddStudent} />
+          <Route path="/view-student/" component={ViewStudent} />
+          <Route path="/rewards" component={Rewards} />
         </Switch>
       </Router>
     </div>

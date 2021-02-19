@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import "./studentloginstyle.css";
 import axios from "axios";
-import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 // import { useHistory } from "react-router-dom";
 
-const StudentLogin = ({ setToken }) => {
+const StudentLogin = () => {
   const [student, setStudent] = useState("");
   const [username, setUsername] = useState("");
   const [classcode, setClassCode] = useState("");
@@ -15,14 +14,12 @@ const StudentLogin = ({ setToken }) => {
     console.log("Success");
     e.preventDefault();
     axios
-      .post("/api/auth/studentlogin", {
-        username: username,
-        classcode: classcode,
-      })
+      .get(`/api/students/login/${username}`)
       .then((response) => {
+        console.log(response.data[0]._id);
         console.log(response.data);
         setStudent(response.data);
-        // history.push(`/studenthome/${response.data._id}`);
+        window.location.href = `/student-home/${response.data[0]._id}`;
       })
       .catch((err) => {
         console.log(err);
@@ -50,7 +47,7 @@ const StudentLogin = ({ setToken }) => {
     },
   };
 
-  const studentHomeString = "/studenthome/" + student._id;
+  const studentHomeString = "/student-home/" + student._id;
 
   return (
     <>
@@ -124,7 +121,9 @@ const StudentLogin = ({ setToken }) => {
                     <motion.button
                       className="waves-effect red darken-1 btn"
                       type="submit"
-                      href={studentHomeString}
+                      // onClick={() => {
+                      //   window.location.href = studentHomeString;
+                      // }}
                       whileHover={{
                         scale: 1.5,
                         textShadow: "0px 0px 8px rgb(255,255,255)",

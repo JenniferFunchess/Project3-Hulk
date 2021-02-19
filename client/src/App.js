@@ -39,20 +39,14 @@ function App() {
               <TeacherLogin {...props} setToken={setToken} />
             )}
           />
-          <Route
-            exact
-            path="/studentlogin"
-            component={(props) => (
-              <StudentLogin {...props} setToken={setToken} />
-            )}
-          />
+          <Route exact path="/studentlogin" component={StudentLogin} />
           <ProtectedRoute
             path="/teacherhome"
             component={TeacherHome}
             token={token}
           />
           <ProtectedRoute path="/classlist" component={ViewList} />
-          <ProtectedRoute path="/student-home" component={StudentHome} />
+          <Route path="/student-home" component={StudentHome} />
           <ProtectedRoute path="/add-student" component={AddStudent} />
           <ProtectedRoute path="/view-student/" component={ViewStudent} />
           <ProtectedRoute path="/rewards" component={Rewards} />

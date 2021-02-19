@@ -13,6 +13,17 @@ const Student = require("../models/Student.js");
 //     });
 // });
 
+router.get("/login/:username", (req, res) => {
+  Student.find({ username: req.params.username })
+    .then((students) => {
+      res.json(students);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).end();
+    });
+});
+
 router.get("/:id", (req, res) => {
   Student.findById(req.params._id)
     .then((foundStudent) => {
@@ -25,12 +36,6 @@ router.get("/:id", (req, res) => {
 });
 
 router.post("/", (req, res) => {
-  bcrypt.hash(req.body.password, 10).then((hashedPassword) => {
-    console.log(hashedPassword);
-    const newUser = {
-      email: req.body.email,
-      password: hashedPassword,
-    };
   console.log(req.body);
   Student.create(req.body)
     .then((newStudents) => {

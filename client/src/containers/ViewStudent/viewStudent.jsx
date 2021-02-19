@@ -108,7 +108,7 @@ const ViewStudentPage = () => {
           <div className="col s9">
             <FormComponent>
               <div className="row">
-                <div className="col s6">
+                <div className="col s12">
                   <ul>
                     <li className="star-categories">
                       ASKING A TOUGH QUESTION{" "}

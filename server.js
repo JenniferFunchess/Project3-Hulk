@@ -1,7 +1,8 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const path = require("path");
-const sendMail = require("./utils/mailer");
+const nodemailer = require("nodemailer");
+require("dotenv").config();
 
 const app = express();
 
@@ -54,7 +55,36 @@ app.get("*", (req, res) => {
 });
 
 app.post("/api/sendEmail", (req, res) => {
-  sendMail(req, res);
+  let transporter = nodemailer.createTransport({
+    service: "gmail",
+    auth: {
+      user: process.env.EMAIL || "ontrackteacher@gmail.com", // TODO: your gmail account
+      pass: process.env.PASSWORD || "Teacher123", // TODO: your gmail password
+    },
+    tls: {
+      rejectUnauthorized: false,
+    },
+  });
+  
+  // setup email data with unicode symbols
+  // let mailOptions = {
+  //   from: "ontrackteacher@gmail.com", // TODO: email sender
+  //   to: "ontrackteacher@gmail.com", // TODO: email receiver
+  //   subject: "Nodemailer - Test",
+  //   text: "Wooohooo it works!!",
+  // };
+  
+  // send mail with defined transport object
+  transporter.sendMail(req.body, (error, info) => {
+    console.log(req);
+    if (error) {
+      return console.log(error);
+    }
+    console.log("Message sent: %s", info.messageId);
+    console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
+  
+    res.render("contact", { msg: "Email has been sent" });
+  });
 });
 
 app.listen(PORT, () => {

@@ -23,6 +23,17 @@ router.post("/", (req, res) => {
     });
 });
 
+router.get("/", (req, res) => {
+  Signup.find()
+    .then((teachers) => {
+      res.json(teachers);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).end();
+    });
+});
+
 router.get("/:id", (req, res) => {
   Signup.findById(req.params.id)
     .then((foundTeacher) => {
@@ -34,4 +45,16 @@ router.get("/:id", (req, res) => {
     });
 });
 
+router.get("/teacher/:classCode", (req, res) => {
+  Signup.find({classCode: req.params.classCode})
+    .then((teachers) => {
+      res.json(teachers);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).end();
+    });
+});
+
 module.exports = router;
+

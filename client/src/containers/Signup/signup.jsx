@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 import "./signupstyle.css";
 import axios from "axios";
-// import { useHistory } from "react-router-dom";
 import { motion } from "framer-motion";
-// import jwt from "jsonwebtoken";
 
 const SignUp = ({ setToken }) => {
   const [password, setPassword] = useState("");
@@ -11,7 +9,6 @@ const SignUp = ({ setToken }) => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [teacherNickname, setTeacherNickname] = useState("");
-  // const history = useHistory();
 
   const generateClasscode = () => {
     const code = Math.floor(Math.random() * 90000) + 10000;
@@ -27,6 +24,7 @@ const SignUp = ({ setToken }) => {
       .post("/api/signup", newTeacher)
       .then((response) => {
         console.log(response.data);
+        window.location.href = "/teacherlogin";
       })
       .catch((err) => {
         console.log(err);

@@ -1,6 +1,5 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import home from "./containers/Home/home";
-import signup from "./containers/Signup/signup";
 // import Navbar from "../src/components/Navbar/Navbar";
 import TeacherLogin from "./containers/Login/TeacherLogin/teacherlogin";
 import StudentLogin from "./containers/Login/StudentLogin/studentlogin";
@@ -11,6 +10,8 @@ import ViewList from "./containers/Class-List/class-list";
 import TeacherHome from "./containers/Teacher-Home/teacher-home";
 import StudentHome from "./containers/StudentHome/StudentHome";
 import React, { useState } from "react";
+import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
+import Signup from "./containers/Signup/signup";
 
 function App() {
   const [token, setToken] = useState("");
@@ -20,7 +21,11 @@ function App() {
       <Router>
         <Switch>
           <Route exact path="/" component={home} />
-          <Route exact path="/signup" component={signup} />
+          <Route
+            exact
+            path="/signup"
+            component={(props) => <Signup {...props} setToken={setToken} />}
+          />
           <Route
             exact
             path="/teacherlogin"
@@ -29,15 +34,17 @@ function App() {
             )}
           />
           <Route
-              exact
-              path="/studentlogin"
-              component={(props) => <StudentLogin {...props} setToken={setToken} />}
-            />
-          <Route path="/teacherhome" component={TeacherHome} token={token}/>
+            exact
+            path="/studentlogin"
+            component={(props) => (
+              <StudentLogin {...props} setToken={setToken} />
+            )}
+          />
+          <Route path="/teacherhome" component={TeacherHome} token={token} />
           <Route path="/classlist" component={ViewList} />
           <Route path="/student-home" component={StudentHome} />
           <Route path="/add-student" component={AddStudent} />
-          <Route path="/view-student/:id" component={ViewStudent} />
+          <Route path="/view-student/" component={ViewStudent} />
           <Route path="/rewards" component={Rewards} />
         </Switch>
       </Router>

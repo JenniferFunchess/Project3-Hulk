@@ -3,12 +3,14 @@ import axios from "axios";
 import FormComponent from "../../components/Form/form";
 import "./add-student.css";
 import Navbar from "../../components/Navbar/Navbar";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faStar } from "@fortawesome/free-solid-svg-icons";
 
 const AddStudent = () => {
   const url = window.location.href;
   const urlArray = url.split("/");
   const teacherId = urlArray[urlArray.length - 1];
-  console.log(teacherId);
+  // console.log(teacherId);
   const [teacher, setTeacher] = useState("");
   const [firstName, setfirstName] = useState("");
   const [lastName, setlastName] = useState("");
@@ -19,19 +21,17 @@ const AddStudent = () => {
     axios
       .get(`/api/signup/${teacherId}`)
       .then((response) => {
-        console.log("Teacher get route worked");
+        // console.log("Teacher get route worked");
         setTeacher(response.data);
-        console.log(response.data);
+        // console.log(response.data);
       })
       .catch((err) => {
         console.log(err);
       });
-  }, []);
-
-
+  }, [teacherId]);
 
   const handleFormSubmit = (e, students) => {
-    console.log("Success");
+    // console.log("Success");
     e.preventDefault();
     axios
       .post("/api/students", students)
@@ -47,9 +47,9 @@ const AddStudent = () => {
         // });
       });
   };
-const classCode = teacher.classCode;
-const teacherHomeString = '/teacherHome/' + teacherId;
-const classListString = '/classlist/' + teacherId;
+  const classCode = teacher.classCode;
+  const teacherHomeString = "/teacherHome/" + teacherId;
+  const classListString = "/classlist/" + teacherId;
   return (
     <>
       <Navbar teacher={true} classCode={teacher.classCode} login={false} />
@@ -72,6 +72,11 @@ const classListString = '/classlist/' + teacherId;
                   });
                 }}
               >
+                <h4 className="form-header">
+                  <FontAwesomeIcon icon={faStar} /> Students Will Be Added to
+                  Your Class List
+                  <FontAwesomeIcon icon={faStar} />
+                </h4>
                 <div className="row">
                   <div classNames="input-field col s12">
                     <input
@@ -100,44 +105,60 @@ const classListString = '/classlist/' + teacherId;
                     <label htmlFor="lastName"></label>
                   </div>
                 </div>
-                <div className="row">
-                  <div className="input-field col s12">
-                    <input
-                      placeholder="Username"
-                      id="username"
-                      type="text"
-                      className="validate"
-                      value={username}
-                      onChange={(e) => {
-                        setusername(e.target.value);
-                      }}
-                    />
-                    <label htmlFor="username"></label>
-                    <div className="helper-text">
-                      {/* (Student will login with this) */}
-                    </div>
+                <div className="input-field col s12">
+                  <input
+                  placeholder="Last Name"
+                    id="lastName"
+                    type="text"
+                    className="validate"
+                    value={lastName}
+                    onChange={(e) => {
+                      setlastName(e.target.value);
+                    }}
+                  />
+                  <label htmlFor="lastName"></label>
+                </div>
+              <div className="row">
+                <div className="input-field col s12">
+                  <input
+                    placeholder="Username"
+                    id="username"
+                    type="text"
+                    className="validate"
+                    value={username}
+                    onChange={(e) => {
+                      setusername(e.target.value);
+                    }}
+                  />
+                  <label htmlFor="username"></label>
+                  <div className="helper-text">
+                    {/* (Student will login with this) */}
                   </div>
                 </div>
-                <a
-                  type="submit"
-                  href={teacherHomeString}
-                  className="btn halfway-fab waves-effect waves-light red"
-                  // style={styles.button}
-                >
-                  Home
-                  <i className="material-icons">home</i>
-                </a>
-                <button
-                  type="submit"
-                  href={classListString} // FIX FOR LATER
-                  className="btn halfway-fab waves-effect waves-light red"
-                  // style={styles.button}
-                >
-                  Submit
-                  <i className="material-icons">check</i>
-                </button>
-              </form>
-            </div>
+              </div>
+              <a
+                type="submit"
+                href={teacherHomeString}
+                className="btn halfway-fab waves-effect waves-light red"
+                // style={styles.button}
+              >
+                Home
+                <i className="material-icons">home</i>
+              </a>
+              <button
+                type="submit"
+                onClick={() => {
+                  window.location.href = classListString;
+                }}
+                href={classListString} // FIX FOR LATER
+                className="btn halfway-fab waves-effect waves-light red"
+                // style={styles.button}
+              >
+                Submit
+                <i className="material-icons">check</i>
+              </button>
+            </form>
+          </div>
           </FormComponent>
         </div>
       </div>

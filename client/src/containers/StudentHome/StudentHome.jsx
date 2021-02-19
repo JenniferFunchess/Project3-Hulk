@@ -37,15 +37,12 @@ function StudentHome(props) {
       .then((response) => {
         console.log(response.data);
         setRewards(response.data);
-        console.log('student star total: ' + response.data.starTotal);
-        // const temporaryMap = makeMap(response.data, student.starTotal);
-        
-        // console.log(temporaryMap);
-        // setMap(temporaryMap);
+
       })
       .catch((err) => {
         console.log(err);
       });
+    
       console.log(student.classCode);
       axios
       .get(`/api/signup/teacher/${student.classCode}`) //add get route for teacher w/classcode
@@ -58,24 +55,8 @@ function StudentHome(props) {
       .catch((err) => {
         console.log(err);
       });    
-  }, []);
+  }, [rewards, student.starTotal, studentId]);
 
-  // const makeMap = (rewardArray, studentStars) => {
-  //   const map = new Map();
-  //   for(let i = 0; i < rewardArray.length; i++) {
-  //     console.log('index ' + i + ': ' + rewardArray[i].starCount);
-  //     let difference = studentStars - rewardArray[i].starCount;
-  //     console.log('StudentStarCount: ' + studentStars + ' - ' + 'Reward: ' + rewardArray[i].starCount + ' = ' + difference);
-  //     if (difference >= 0) {
-  //       map.set(rewardArray[i]._id, true);
-  //     } else {
-  //       map.set(rewardArray[i]._id, false);
-  //     }
-  //     console.log(map.get(rewardArray[i]._id));
-  //   }
-  //   // console.log(map);
-  //   return map;
-  // }
 
   const handleButtonClick = (rewardStarCount, reward) => {
     const newStudent = student;
@@ -110,7 +91,7 @@ function StudentHome(props) {
 const scopedMap = map;
   return (
     <div>
-      <Navbar teacher={false} login={false} classCode={student.classCode}/>
+      <Navbar teacher={false} login={false} classCode={student.classCode} />
       {/* <div className="container"> */}
       <div className="row">
         <div className="col s12">
@@ -187,6 +168,7 @@ const scopedMap = map;
               <hr></hr>
             </div>
             {rewards.map((reward) => (
+
               <div className="col s12">
                 <h5>
                   <FontAwesomeIcon icon={faStar} />
@@ -202,6 +184,7 @@ const scopedMap = map;
                   {/* } */}
                 </h5>
               </div>
+
             ))}
           </div>
         </div>

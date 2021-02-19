@@ -1,17 +1,10 @@
 import React, { Component } from "react";
 import M from "materialize-css";
 import "materialize-css/dist/css/materialize.min.css";
-import "./Modal.css";
-// import axios from "axios";
+
+import "./modal.css";
 
 class Modal extends Component {
-  // console.log(this.props.rewardStarCount);
-  // state = {
-  //   studentStarTotal: this.props.studentStarTotal,
-  //   rewardStarCount: this.props.rewardStarCount,
-  //   studentObj: this.props.studentObj,
-  // }
-  
   componentDidMount() {
   //  console.log(this.state.rewardStarCount);
     const options = {
@@ -35,6 +28,7 @@ class Modal extends Component {
       endingTop: "10%",
     };
     M.Modal.init(this.Modal, options);
+
     
   }
   
@@ -52,7 +46,7 @@ class Modal extends Component {
           Use Stars
         </button>
 
-        <a href="#" className="modal-trigger" data-target="modal1"></a>
+        <button className="modal-trigger" data-target="modal1"></button>
 
         <div
           ref={(Modal) => {
@@ -68,6 +62,7 @@ class Modal extends Component {
           >
             <span aria-hidden="true">×</span>
           </button>
+
 
             <div className="modal-content">
               <h4>Email Teacher?</h4>
@@ -91,10 +86,11 @@ class Modal extends Component {
             {/* <div className="modal-content">
               <p>You're almost there! Keep earning stars to redeem rewards!</p>
 
-              <a className="modal-close waves-effect waves-red btn-flat disagree-btn">
+              <button className="modal-close waves-effect waves-red btn-flat disagree-btn">
                 Ok!
               </a>
             </div> */}
+
         </div>
       </div>
     );

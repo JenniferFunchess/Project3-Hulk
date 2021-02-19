@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import "./signupstyle.css";
 import axios from "axios";
-// import { useHistory } from "react-router-dom";
 import { motion } from "framer-motion";
-// import jwt from "jsonwebtoken";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faStar } from "@fortawesome/free-solid-svg-icons";
 
 const SignUp = ({ setToken }) => {
   const [password, setPassword] = useState("");
@@ -11,7 +11,6 @@ const SignUp = ({ setToken }) => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [teacherNickname, setTeacherNickname] = useState("");
-  // const history = useHistory();
 
   const generateClasscode = () => {
     const code = Math.floor(Math.random() * 90000) + 10000;
@@ -27,6 +26,7 @@ const SignUp = ({ setToken }) => {
       .post("/api/signup", newTeacher)
       .then((response) => {
         console.log(response.data);
+        window.location.href = "/teacherlogin";
       })
       .catch((err) => {
         console.log(err);
@@ -90,6 +90,15 @@ const SignUp = ({ setToken }) => {
                   });
                 }}
               >
+                <h4 className="form-header">
+                  <FontAwesomeIcon icon={faStar} /> Welcome to On-Track!
+                  <FontAwesomeIcon icon={faStar} />
+                </h4>
+                <h4 className="instructions">
+                  With this app, you will be able to create and customize fun
+                  incentives so your students can stay motivated in class.
+                  Signup today and get started right away.
+                </h4>
                 <div className="row">
                   <div className="input-field col s6">
                     <input
@@ -102,7 +111,6 @@ const SignUp = ({ setToken }) => {
                         setFirstName(e.target.value);
                       }}
                     />
-                    <label htmlFor="firstName">First Name</label>
                   </div>
                   <div className="input-field col s6">
                     <input
@@ -115,7 +123,6 @@ const SignUp = ({ setToken }) => {
                         setLastName(e.target.value);
                       }}
                     />
-                    <label htmlFor="lastName">Last Name</label>
                   </div>
                 </div>
                 <div className="row">
@@ -130,7 +137,6 @@ const SignUp = ({ setToken }) => {
                         setEmail(e.target.value);
                       }}
                     />
-                    <label htmlFor="email">Enter Email</label>
                   </div>
                 </div>
                 <div className="row">
@@ -145,7 +151,6 @@ const SignUp = ({ setToken }) => {
                         setPassword(e.target.value);
                       }}
                     />
-                    <label htmlFor="password">Enter Password</label>
                   </div>
                 </div>
                 <div className="row">
@@ -160,7 +165,6 @@ const SignUp = ({ setToken }) => {
                         setTeacherNickname(e.target.value);
                       }}
                     />
-                    <label htmlFor="teacherNickname">Teacher Nickname</label>
                   </div>
                 </div>
                 <div className="row center-align">

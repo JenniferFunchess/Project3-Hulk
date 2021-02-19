@@ -1,8 +1,11 @@
+.instructions {
+  font-size: 22px;
+  font-weight: 600;
+}
+
 #studentlogincontainer {
   border-radius: 5px;
   background-color: white;
-  border-color: black;
-  border-style: ridge;
   border-width: 2px;
   padding-top: 3%;
   padding-left: 3%;

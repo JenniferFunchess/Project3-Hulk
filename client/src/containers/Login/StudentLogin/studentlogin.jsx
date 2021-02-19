@@ -3,6 +3,8 @@ import "./studentloginstyle.css";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faStar } from "@fortawesome/free-solid-svg-icons";
 // import { useHistory } from "react-router-dom";
 
 const StudentLogin = ({ setToken }) => {
@@ -73,6 +75,14 @@ const StudentLogin = ({ setToken }) => {
                   });
                 }}
               >
+                <h4 className="form-header">
+                  <FontAwesomeIcon icon={faStar} /> Welcome to On-Track!
+                  <FontAwesomeIcon icon={faStar} />
+                </h4>
+                <h4 className="instructions">
+                  Please use your username and classcode to login. If you don't
+                  remember your classcode or username, please ask your teacher.
+                </h4>
                 <div className="row">
                   <div className="input-field col s12">
                     <input
@@ -103,17 +113,6 @@ const StudentLogin = ({ setToken }) => {
                     <label htmlFor="classcode">Enter Classcode</label>
                   </div>
                 </div>
-                <row className="row">
-                  <div className="col s12">COPPA PRIVACY POLICY GOES HERE</div>
-                </row>
-                <row className="row">
-                  <p>
-                    <label>
-                      <input type="checkbox" />
-                      <span>Check to agree to Terms</span>
-                    </label>
-                  </p>
-                </row>
                 <div className="row center-align">
                   <div className="col s12">
                     <Link to="/student/id:">

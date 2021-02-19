@@ -1,15 +1,15 @@
 .display-name {
-  color: #E53935;
+  color: #e53935;
 }
 
 .btn {
   margin: 3px;
 }
 
-.star-categories {
+.add-star-header {
   text-transform: uppercase;
 }
 
-.add-star-header {
-  text-transform: uppercase;
+#delete-student-btn {
+  margin-top: 5px;
 }

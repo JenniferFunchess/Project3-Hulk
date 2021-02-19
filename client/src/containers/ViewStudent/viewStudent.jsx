@@ -8,10 +8,9 @@ import { faStar } from "@fortawesome/free-solid-svg-icons";
 import Navbar from "../../components/Navbar/Navbar";
 
 const ViewStudentPage = () => {
-
   const url = window.location.href;
-  const urlArray = url.split('/');
-  const studentId = urlArray[urlArray.length-1];
+  const urlArray = url.split("/");
+  const studentId = urlArray[urlArray.length - 1];
   // console.log(teacherId);
   const [student, setStudent] = useState({
     username: "",
@@ -21,7 +20,7 @@ const ViewStudentPage = () => {
   });
   const history = useHistory();
   const deleteStudent = (studentId) => {
-    console.log(studentId)
+    console.log(studentId);
     axios
       .delete(`/api/students/${studentId}`)
       .then(() => {
@@ -80,80 +79,76 @@ const ViewStudentPage = () => {
       <div>
         <h1>View Student</h1>
         <div className="row">
-          <div className="col s3">
-            <h1>{student.username}</h1>
-            <hr></hr>
-            <h3 className="display-name">
+          <div className="col s12 m3">
+            <h3 className="display-name redColor">
               {student.firstName} {student.lastName}
             </h3>
-            <div className="col s12">
-              <FontAwesomeIcon icon={faStar} />
-              <span>
+            <hr></hr>
+
+            <h3 className="redColor">{student.username}</h3>
+            <div className="col s12 center-align">
+              <FontAwesomeIcon icon={faStar} className="reward-star" />
+              <span className="rewards-length">
                 {student.tasksCompleted.reduce(
                   (total, index) => total + index,
                   0
                 )}
               </span>
             </div>
-            <button
-              className="waves-effect waves-light btn"
-              id="delete-student-btn"
-              onClick={() => {
-                deleteStudent(student._id);
-              }}
-            >
-              Delete
-            </button>
           </div>
-          <div className="col s9">
+          <div className="col s12 m9">
             <FormComponent>
               <div className="row">
                 <div className="col s12">
+                  <h4 className="form-header">
+                    <FontAwesomeIcon icon={faStar} /> Add Stars for Student
+                    <FontAwesomeIcon icon={faStar} />
+                  </h4>
                   <ul>
-                    <li className="star-categories">
+                    <li className="star-categories descriptionText">
                       ASKING A TOUGH QUESTION{" "}
                       <button
-                        className="waves-effect waves-light btn"
+                        className="waves-effect red darken-1 btn"
                         id="add-star-btn"
                         onClick={() => addStar(0)}
                       >
                         Add Star
                       </button>
                     </li>
-                    <li className="star-categories">
+                    <li className="star-categories descriptionText">
                       Zoom Camera on All Class
                       <button
-                        className="waves-effect waves-light btn"
+                        className="waves-effect red darken-1 btn"
                         id="add-star-btn"
                         onClick={() => addStar(1)}
                       >
                         Add Star
                       </button>
                     </li>
-                    <li className="star-categories">
+                    <li className="star-categories descriptionText">
                       Submitting Homework on Time
                       <button
-                        className="waves-effect waves-light btn"
+                        className="waves-effect red darken-1 btn"
                         id="add-star-btn"
                         onClick={() => addStar(2)}
                       >
                         Add Star
                       </button>
                     </li>
-                    <li className="star-categories">
+                    <li className="star-categories descriptionText">
                       Extra Credit
                       <button
-                        className="waves-effect waves-light btn"
+                        className="waves-effect red darken-1 btn"
                         id="add-star-btn"
                         onClick={() => addStar(3)}
                       >
                         Add Star
                       </button>
                     </li>
-                    <li className="star-categories">
+                    <li className="star-categories descriptionText">
                       Listening in Class
                       <button
-                        className="waves-effect waves-light btn"
+                        className="waves-effect red darken-1 btn"
                         id="add-star-btn"
                         onClick={() => addStar(4)}
                       >
@@ -187,6 +182,15 @@ const ViewStudentPage = () => {
             </FormComponent>
           </div>
         </div>
+        <button
+          className="waves-effect red darken-1 btn"
+          id="delete-student-btn"
+          onClick={() => {
+            deleteStudent(student._id);
+          }}
+        >
+          Delete
+        </button>
       </div>
     </>
   );

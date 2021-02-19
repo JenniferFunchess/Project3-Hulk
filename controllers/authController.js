@@ -12,24 +12,31 @@ router.post("/login", (req, res) => {
   })
     .then((foundUser) => {
       console.log(foundUser);
-      // bcrypt.compare(req.body.password, foundUser.password).then((result) => {
-      //   console.log(result);
-      //   if (result) {
-      //     const token = jwt.sign(
-      //       { _id: foundUser._id },
-      //       process.env.JWT_SIGNATURE,
-      //       {
-      //         expiresIn: 60 * 60,
-      //       }
-      //     );
-      //     console.log(token);
-      //     res.json({
-      //       token: token,
-      //     });
-      //   } else {
-      //     res.status(401).end();
-      //   }
-      // });
+      bcrypt.compare(req.body.password, foundUser.password).then((result) => {
+        console.log(result);
+        const token = jwt.sign(
+          { _id: newUser._id },
+          process.env.JWT_SIGNATURE,
+          {
+            expiresIn: 60 * 60,
+          }
+        );
+        if (result) {
+          const token = jwt.sign(
+            { _id: foundUser._id },
+            process.env.JWT_SIGNATURE,
+            {
+              expiresIn: 60 * 60,
+            }
+          );
+          console.log(token);
+          res.json({
+            token: token,
+          });
+        } else {
+          res.status(401).end();
+        }
+      });
       if (foundUser) {
         res.json(foundUser);
       } else {

@@ -1,6 +1,5 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import home from "./containers/Home/home";
-import signup from "./containers/Signup/signup";
 // import Navbar from "../src/components/Navbar/Navbar";
 import TeacherLogin from "./containers/Login/TeacherLogin/teacherlogin";
 import StudentLogin from "./containers/Login/StudentLogin/studentlogin";
@@ -49,7 +48,7 @@ function App() {
           <ProtectedRoute path="/classlist" component={ViewList} />
           <ProtectedRoute path="/student-home" component={StudentHome} />
           <ProtectedRoute path="/add-student" component={AddStudent} />
-          <ProtectedRoute path="/view-student/:id" component={ViewStudent} />
+          <ProtectedRoute path="/view-student/" component={ViewStudent} />
           <ProtectedRoute path="/rewards" component={Rewards} />
         </Switch>
       </Router>

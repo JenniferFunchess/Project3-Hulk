@@ -3,16 +3,7 @@ const router = express.Router();
 const Teacher = require("../models/Teacher.js")
 
 
-// router.get("/", (req, res) => {
-//   Teacher.find()
-//     .then((teachers) => {
-//       res.json(teachers);
-//     })
-//     .catch((err) => {
-//       console.log(err);
-//       res.status(500).end();
-//     });
-// });
+
 
 router.get("/:id", (req, res) => {
   Teacher.findById(req.params.id)
@@ -24,6 +15,17 @@ router.get("/:id", (req, res) => {
       res.status(404).end();
     });
 });
+
+// router.get("/classCode/:classCode", (req, res) => {
+//   Teacher.find({classCode: req.params.classCode})
+//     .then((teachers) => {
+//       res.json(teachers);
+//     })
+//     .catch((err) => {
+//       console.log(err);
+//       res.status(500).end();
+//     });
+// });
 
 router.post("/", (req, res) => {
     console.log(req.body);

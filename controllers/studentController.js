@@ -14,6 +14,18 @@ router.get("/", (req, res) => {
     });
 });
 
+
+router.get("/login", (req, res) => {
+  Student.find({username: req.username})
+    .then((students) => {
+      res.json(students);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).end();
+    });
+});
+
 router.get("/:_id", (req, res) => {
   Student.findById(req.params._id)
     .then((foundStudent) => {

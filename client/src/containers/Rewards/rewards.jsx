@@ -34,7 +34,7 @@ const Rewards = () => {
       const { data } = await axios.get("/api/rewards");
       setRewards(data);
     })();
-  }, [updateDate]);
+  }, [updateDate, teacherId]);
 
   const handleFormSubmit = (e, rewards) => {
     console.log("Success");
@@ -79,11 +79,9 @@ const Rewards = () => {
                       className="btn-floating btn-small waves-effect waves-light red"
                       onClick={async () => {
                         const setrewardCategory = prompt(
-                          "Please enter the new value"
+                          "Please enter a new category"
                         );
-                        const setstarCount = prompt(
-                          "Please enter the new value"
-                        );
+                        const setstarCount = prompt("Please enter a new value");
                         if (!Number(setstarCount)) {
                           alert("Your star count must be a number.");
                         } else {

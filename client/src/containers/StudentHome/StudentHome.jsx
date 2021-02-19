@@ -41,7 +41,7 @@ function StudentHome(props) {
           redeemable = false;
           if (student.starTotal - response.data[i].starCount >= 0) {
             redeemable = true;
-          } 
+          }
           // let redeemable = student.starTotal - rewards[i].starCount >= 0 ? true: false;
           tempMap.set(rewards[i]._id, redeemable);
         }
@@ -51,9 +51,7 @@ function StudentHome(props) {
       .catch((err) => {
         console.log(err);
       });
-  }, []);
-
-  
+  }, [rewards, student.starTotal, studentId]);
 
   const redeemable = (studentObj, rewardObj) => {
     const newStudent = {};
@@ -75,7 +73,7 @@ function StudentHome(props) {
 
   return (
     <div>
-      <Navbar teacher={false} login={false} classCode={student.classCode}/>
+      <Navbar teacher={false} login={false} classCode={student.classCode} />
       {/* <div className="container"> */}
       <div className="row">
         <div className="col s12">
@@ -153,21 +151,21 @@ function StudentHome(props) {
             </div>
             {rewards.map((reward) => (
               <>
-              <div className="col s12">
-                <h5>
-                  <FontAwesomeIcon icon={faStar} />
-                  {reward.rewardCategory} ({reward.starCount} Stars)
-                  {map.get(reward._id) && 
-                  <Modal
-                    key={reward._id}
-                    redeemValue={redeemable(student, reward)}
-                    reward={reward}
-                    student={student}
-                  ></Modal>
-                  }
-                  {/* redeemable(student, reward) */}
-                </h5>
-              </div>
+                <div className="col s12">
+                  <h5>
+                    <FontAwesomeIcon icon={faStar} />
+                    {reward.rewardCategory} ({reward.starCount} Stars)
+                    {map.get(reward._id) && (
+                      <Modal
+                        key={reward._id}
+                        redeemValue={redeemable(student, reward)}
+                        reward={reward}
+                        student={student}
+                      ></Modal>
+                    )}
+                    {/* redeemable(student, reward) */}
+                  </h5>
+                </div>
               </>
             ))}
           </div>

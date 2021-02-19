@@ -127,6 +127,7 @@ const Rewards = () => {
                   }}
                 >
                   <input
+                  placeholder="Reward Category"
                     id="rewardCategory"
                     type="text"
                     className="validate"
@@ -135,10 +136,10 @@ const Rewards = () => {
                       setrewardCategory(e.target.value);
                     }}
                   />
-                  <label htmlFor="rewardCategory">Reward Category</label>
 
                   <div className="input-field col s12">
                     <input
+                    placeholder="Star Count"
                       id="starCount"
                       type="text"
                       value={starCount}
@@ -147,7 +148,6 @@ const Rewards = () => {
                         setstarCount(e.target.value);
                       }}
                     />
-                    <label htmlFor="starCount">Star Count</label>
                   </div>
                   <div className="col s12">
                     <button className="waves-effect red darken-1 btn add-category-btn">

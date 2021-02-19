@@ -1,6 +1,14 @@
 .instructions {
   font-size: 22px;
-  font-weight: 600;
+  font-weight: 400;
+}
+
+.scroll-box {
+  width: 250px;
+  height: 200px;
+  overflow: scroll;
+  padding: 5px;
+  border: 1px black solid;
 }
 
 #studentlogincontainer {

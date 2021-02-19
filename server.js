@@ -58,14 +58,14 @@ app.post("/api/sendEmail", (req, res) => {
   let transporter = nodemailer.createTransport({
     service: "gmail",
     auth: {
-      user: process.env.EMAIL || "ontrackteacher@gmail.com", // TODO: your gmail account
-      pass: process.env.PASSWORD || "Teacher123", // TODO: your gmail password
+      user: process.env.EMAIL, // TODO: your gmail account
+      pass: process.env.PASSWORD, // TODO: your gmail password
     },
     tls: {
       rejectUnauthorized: false,
     },
   });
-  
+
   // setup email data with unicode symbols
   // let mailOptions = {
   //   from: "ontrackteacher@gmail.com", // TODO: email sender
@@ -73,7 +73,7 @@ app.post("/api/sendEmail", (req, res) => {
   //   subject: "Nodemailer - Test",
   //   text: "Wooohooo it works!!",
   // };
-  
+
   // send mail with defined transport object
   transporter.sendMail(req.body, (error, info) => {
     console.log(req);
@@ -82,7 +82,7 @@ app.post("/api/sendEmail", (req, res) => {
     }
     console.log("Message sent: %s", info.messageId);
     console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
-  
+
     res.render("contact", { msg: "Email has been sent" });
   });
 });

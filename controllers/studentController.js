@@ -2,16 +2,16 @@ const express = require("express");
 const router = express.Router();
 const Student = require("../models/Student.js");
 
-// router.get("/", (req, res) => {
-//   Student.find()
-//     .then((students) => {
-//       res.json(students);
-//     })
-//     .catch((err) => {
-//       console.log(err);
-//       res.status(500).end();
-//     });
-// });
+router.get("/", (req, res) => {
+  Student.find()
+    .then((students) => {
+      res.json(students);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).end();
+    });
+});
 
 router.get("/login/:username", (req, res) => {
   Student.find({ username: req.params.username })

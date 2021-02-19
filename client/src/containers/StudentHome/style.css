@@ -1,12 +1,19 @@
 .blueBox {
-  background-color: #0c91c4;
-  color: white;
   font-weight: 500;
+  padding: 3% !important;
+  background: white;
+}
+
+.my-stars {
+  font-weight: 500;
+  font-size: 30px;
 }
 
 .redColor {
   color: #e53935;
-  font-weight: 575;
+  font-weight: 700;
+  font-size: 60px;
+  text-align: center;
 }
 
 .centered {
@@ -19,9 +26,18 @@
 }
 
 .descriptionText {
-  font-size: 10px;
+  font-size: 1.64rem;
+  line-height: 2;
 }
 
 .email-modal {
   color: white;
+}
+
+.rewards-length {
+  font-size: 40px;
+}
+
+.reward-star {
+  font-size: 50px;
 }

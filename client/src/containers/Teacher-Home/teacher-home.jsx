@@ -64,9 +64,8 @@ const TeacherHome = () => {
               </div>
               <div className="card-content">
                 <h5 className="student-name flow-text">
+                  <FontAwesomeIcon icon={faStar} />
                   Add Student
-                  <FontAwesomeIcon icon={faStar} />{" "}
-                  <FontAwesomeIcon icon={faStar} />{" "}
                   <FontAwesomeIcon icon={faStar} />{" "}
                 </h5>
               </div>
@@ -93,9 +92,8 @@ const TeacherHome = () => {
               </div>
               <div className="card-content">
                 <h5 className="student-name flow-text">
+                  <FontAwesomeIcon icon={faStar} />
                   Class List <FontAwesomeIcon icon={faStar} />{" "}
-                  <FontAwesomeIcon icon={faStar} />{" "}
-                  <FontAwesomeIcon icon={faStar} />{" "}
                 </h5>
               </div>
             </div>
@@ -120,9 +118,8 @@ const TeacherHome = () => {
               </div>
               <div className="card-content">
                 <h5 className="student-name flow-text">
+                  <FontAwesomeIcon icon={faStar} />
                   Class Rewards <FontAwesomeIcon icon={faStar} />{" "}
-                  <FontAwesomeIcon icon={faStar} />{" "}
-                  <FontAwesomeIcon icon={faStar} />{" "}
                 </h5>
               </div>
             </div>

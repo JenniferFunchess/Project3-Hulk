@@ -26,7 +26,7 @@ const AddStudent = () => {
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, [teacherId]);
 
 
 
@@ -129,6 +129,9 @@ const classListString = '/classlist/' + teacherId;
               </a>
               <button
                 type="submit"
+                onClick={() => {
+                  window.location.href = classListString;
+                }}
                 href={classListString} // FIX FOR LATER
                 className="btn halfway-fab waves-effect waves-light red"
                 // style={styles.button}

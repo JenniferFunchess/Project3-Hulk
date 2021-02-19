@@ -55,7 +55,7 @@ const Rewards = () => {
     setUpdateDate(new Date());
   };
 
-  const classListString = "/classlist/" + teacher._id;
+  const teacherHomeString = "/teacherhome/" + teacher._id;
 
   return (
     <div>
@@ -162,12 +162,12 @@ const Rewards = () => {
                 <div className="col s12">
                   <button
                     onClick={() => {
-                      window.location.href = classListString;
+                      window.location.href = teacherHomeString;
                     }}
                     className="waves-effect red darken-1 btn add-category-btn"
                   >
-                    CLASSLIST
-                    <i className="material-icons">people</i>
+                    Teacher Home
+                    <i className="material-icons">home</i>
                   </button>
                 </div>
               </div>

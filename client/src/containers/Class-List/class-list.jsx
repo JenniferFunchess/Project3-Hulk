@@ -24,7 +24,7 @@ const ViewClass = () => {
       console.log(err);
     })
 }, [teacherId]);
-const teacherHomeString = '/teacherHome/' + teacherId;
+const teacherHomeString = '/teacherhome/' + teacherId;
 const addStudentString = '/add-student/' + teacherId;
   return (
     <div>

@@ -10,7 +10,7 @@ import ViewList from "./containers/Class-List/class-list";
 import TeacherHome from "./containers/Teacher-Home/teacher-home";
 import StudentHome from "./containers/StudentHome/StudentHome";
 import React, { useState } from "react";
-import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
+// import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 import Signup from "./containers/Signup/signup";
 
 function App() {

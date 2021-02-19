@@ -1,7 +1,7 @@
 import React from "react";
 import starIcon from "../../images/star-45px.png";
 import schoolIcon from "../../images/school.png";
-import loginBtnIcon from "../../images/login-btn.png";
+// import loginBtnIcon from "../../images/login-btn.png";
 import "./homestyle.css";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";

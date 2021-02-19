@@ -40,16 +40,12 @@ function App() {
             )}
           />
           <Route exact path="/studentlogin" component={StudentLogin} />
-          <ProtectedRoute
-            path="/teacherhome"
-            component={TeacherHome}
-            token={token}
-          />
-          <ProtectedRoute path="/classlist" component={ViewList} />
+          <Route path="/teacherhome" component={TeacherHome} token={token} />
+          <Route path="/classlist" component={ViewList} />
           <Route path="/student-home" component={StudentHome} />
-          <ProtectedRoute path="/add-student" component={AddStudent} />
-          <ProtectedRoute path="/view-student/" component={ViewStudent} />
-          <ProtectedRoute path="/rewards" component={Rewards} />
+          <Route path="/add-student" component={AddStudent} />
+          <Route path="/view-student/" component={ViewStudent} />
+          <Route path="/rewards" component={Rewards} />
         </Switch>
       </Router>
     </div>

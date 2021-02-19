@@ -4,7 +4,7 @@ import "./style.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import Navbar from "../../components/Navbar/Navbar";
-import Modal from "../../components/Modal/Modal";
+import Modal from "../../components/Modal/modal";
 
 function StudentHome(props) {
   const [student, setStudent] = useState("");
@@ -51,7 +51,7 @@ function StudentHome(props) {
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, [rewards, student.starTotal, studentId]);
 
   const redeemable = (studentObj, rewardObj) => {
     const newStudent = {};

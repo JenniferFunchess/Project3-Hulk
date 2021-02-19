@@ -2,18 +2,17 @@ import React, { useEffect, useState } from "react";
 import Backpack from "../../images/backpack-icon.png";
 import Medal from "../../images/medal-icon.png";
 import School from "../../images/school-icon.png";
-import { Link } from "react-router-dom";
-import Navbar from "../../components/Navbar/Navbar";
-import axios from "axios";
 import "./teacher-home.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEdit, faTrash, faStar } from "@fortawesome/free-solid-svg-icons";
+import { faStar } from "@fortawesome/free-solid-svg-icons";
+import Navbar from "../../components/Navbar/Navbar";
+import axios from "axios";
 
 const TeacherHome = () => {
   const url = window.location.href;
   const urlArray = url.split("/");
   const teacherId = urlArray[urlArray.length - 1];
-  console.log(teacherId);
+  // console.log(teacherId);
 
   const [teacher, setTeacher] = useState("");
 
@@ -21,14 +20,14 @@ const TeacherHome = () => {
     axios
       .get(`/api/signup/${teacherId}`)
       .then((response) => {
-        console.log("Teacher get route worked");
+        // console.log("Teacher get route worked");
         setTeacher(response.data);
-        console.log(response.data);
+        // console.log(response.data);
       })
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, [teacherId]);
   const classListString = "/classlist/" + teacher._id;
   const addStudentString = "/add-student/" + teacher._id;
   const addRewardString = "/rewards/" + teacher._id;

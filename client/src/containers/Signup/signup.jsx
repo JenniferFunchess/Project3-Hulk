@@ -111,7 +111,6 @@ const SignUp = ({ setToken }) => {
                         setFirstName(e.target.value);
                       }}
                     />
-                    <label htmlFor="firstName">First Name</label>
                   </div>
                   <div className="input-field col s6">
                     <input
@@ -124,7 +123,6 @@ const SignUp = ({ setToken }) => {
                         setLastName(e.target.value);
                       }}
                     />
-                    <label htmlFor="lastName">Last Name</label>
                   </div>
                 </div>
                 <div className="row">
@@ -139,7 +137,6 @@ const SignUp = ({ setToken }) => {
                         setEmail(e.target.value);
                       }}
                     />
-                    <label htmlFor="email">Enter Email</label>
                   </div>
                 </div>
                 <div className="row">
@@ -154,7 +151,6 @@ const SignUp = ({ setToken }) => {
                         setPassword(e.target.value);
                       }}
                     />
-                    <label htmlFor="password">Enter Password</label>
                   </div>
                 </div>
                 <div className="row">
@@ -169,7 +165,6 @@ const SignUp = ({ setToken }) => {
                         setTeacherNickname(e.target.value);
                       }}
                     />
-                    <label htmlFor="teacherNickname">Teacher Nickname</label>
                   </div>
                 </div>
                 <div className="row center-align">

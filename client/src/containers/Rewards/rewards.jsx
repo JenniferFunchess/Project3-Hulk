@@ -5,39 +5,34 @@ import Navbar from "../../components/Navbar/Navbar";
 import FormComponent from "../../components/Form/form";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit, faTrash, faStar } from "@fortawesome/free-solid-svg-icons";
-
 const Rewards = () => {
   const url = window.location.href;
   const urlArray = url.split("/");
   const teacherId = urlArray[urlArray.length - 1];
-  console.log(teacherId);
+  // console.log(teacherId);
   const [teacher, setTeacher] = useState("");
-
   const [rewardCategory, setrewardCategory] = useState("");
   const [starCount, setstarCount] = useState("");
   const [rewards, setRewards] = useState([]);
   const [updateDate, setUpdateDate] = useState(new Date());
-
   useEffect(() => {
     axios
       .get(`/api/signup/${teacherId}`)
       .then((response) => {
-        console.log("Teacher get route worked");
+        // console.log("Teacher get route worked");
         setTeacher(response.data);
-        console.log(response.data);
+        // console.log(response.data);
       })
       .catch((err) => {
         console.log(err);
       });
-
     (async () => {
       const { data } = await axios.get("/api/rewards");
       setRewards(data);
     })();
-  }, [updateDate]);
-
+  }, [updateDate, teacherId]);
   const handleFormSubmit = (e, rewards) => {
-    console.log("Success");
+    // console.log("Success");
     e.preventDefault();
     axios
       .post("/api/rewards", rewards)
@@ -54,20 +49,15 @@ const Rewards = () => {
       });
     setUpdateDate(new Date());
   };
-
+  const teacherHomeString = "/teacherhome/" + teacher._id;
   return (
     <div>
       <Navbar classCode={teacher.classCode} login={false} />
       <h1>Rewards + Add Rewards</h1>
       <div className="container">
         <FormComponent>
-          <h4 className="form-header">
-            <FontAwesomeIcon icon={faStar} /> Create and Edit Rewards
-            <FontAwesomeIcon icon={faStar} />
-          </h4>
           <div className="row">
-            <div className="col s12 m6">
-              <h5 id="reward-count">Reward Categories</h5>
+            <div className="col s6">
               <ul>
                 {rewards.map((reward) => (
                   <li key={reward._id}>
@@ -78,15 +68,13 @@ const Rewards = () => {
                       {" "}
                       ({reward.starCount} stars)
                     </h5>
-                    <a
+                    <button
                       className="btn-floating btn-small waves-effect waves-light red"
                       onClick={async () => {
                         const setrewardCategory = prompt(
-                          "Please enter the new value"
+                          "Please enter a new category"
                         );
-                        const setstarCount = prompt(
-                          "Please enter the new value"
-                        );
+                        const setstarCount = prompt("Please enter a new value");
                         if (!Number(setstarCount)) {
                           alert("Your star count must be a number.");
                         } else {
@@ -103,8 +91,8 @@ const Rewards = () => {
                       }}
                     >
                       <FontAwesomeIcon icon={faEdit} />
-                    </a>
-                    <a
+                    </button>
+                    <button
                       className="btn-floating btn-small
                    waves-effect waves-light red"
                       onClick={async () => {
@@ -113,13 +101,13 @@ const Rewards = () => {
                       }}
                     >
                       <FontAwesomeIcon icon={faTrash} />
-                    </a>
+                    </button>
                   </li>
                 ))}
               </ul>
             </div>
-            <div className="col s12 m6">
-              <h5 id="reward-count">Add a New Reward + Star Count</h5>
+            <div className="col s6">
+              <h5>Add a Reward Category and How Many Stars</h5>
               <div className="input-field col s12">
                 <form
                   onSubmit={(e) => {
@@ -133,8 +121,8 @@ const Rewards = () => {
                   }}
                 >
                   <input
-                    id="rewardCategory"
                     placeholder="Reward Category"
+                    id="rewardCategory"
                     type="text"
                     className="validate"
                     value={rewardCategory}
@@ -142,11 +130,10 @@ const Rewards = () => {
                       setrewardCategory(e.target.value);
                     }}
                   />
-
                   <div className="input-field col s12">
                     <input
-                      id="starCount"
                       placeholder="Star Count"
+                      id="starCount"
                       type="text"
                       value={starCount}
                       className="validate"
@@ -158,9 +145,21 @@ const Rewards = () => {
                   <div className="col s12">
                     <button className="waves-effect red darken-1 btn add-category-btn">
                       ADD CATEGORY
+                      <i className="material-icons">add</i>
                     </button>
                   </div>
                 </form>
+                <div className="col s12">
+                  <button
+                    onClick={() => {
+                      window.location.href = teacherHomeString;
+                    }}
+                    className="waves-effect red darken-1 btn add-category-btn"
+                  >
+                    Teacher Home
+                    <i className="material-icons">home</i>
+                  </button>
+                </div>
               </div>
             </div>
           </div>
@@ -169,5 +168,4 @@ const Rewards = () => {
     </div>
   );
 };
-
 export default Rewards;

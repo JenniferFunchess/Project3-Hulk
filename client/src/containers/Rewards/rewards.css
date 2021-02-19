@@ -2,6 +2,10 @@
   padding: 0px;
 } */
 
+h1 {
+  font-family: "Seymour One", sans-serif;
+}
+
 .btn-floating {
   margin: 1%;
 }
@@ -21,8 +25,13 @@
 }
 
 #rewardCategory,
-#starCount {
+#starCount,
+#classcode {
   color: black;
   border-bottom: 3px solid black;
   text-transform: uppercase;
+}
+
+#reward-count {
+  font-weight: 600;
 }

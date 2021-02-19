@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import "./signupstyle.css";
 import axios from "axios";
 import { motion } from "framer-motion";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faStar } from "@fortawesome/free-solid-svg-icons";
 
 const SignUp = ({ setToken }) => {
   const [password, setPassword] = useState("");
@@ -88,6 +90,15 @@ const SignUp = ({ setToken }) => {
                   });
                 }}
               >
+                <h4 className="form-header">
+                  <FontAwesomeIcon icon={faStar} /> Welcome to On-Track!
+                  <FontAwesomeIcon icon={faStar} />
+                </h4>
+                <h4 className="instructions">
+                  With this app, you will be able to create and customize fun
+                  incentives so your students can stay motivated in class.
+                  Signup today and get started right away.
+                </h4>
                 <div className="row">
                   <div className="input-field col s6">
                     <input

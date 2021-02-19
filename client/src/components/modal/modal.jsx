@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import M from "materialize-css";
 import "materialize-css/dist/css/materialize.min.css";
-import "./modal.css";
+import "./Modal.css";
 import axios from "axios";
 
 class Modal extends Component {

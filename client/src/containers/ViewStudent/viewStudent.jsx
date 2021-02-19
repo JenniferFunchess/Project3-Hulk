@@ -8,6 +8,11 @@ import { faStar } from "@fortawesome/free-solid-svg-icons";
 import Navbar from "../../components/Navbar/Navbar";
 
 const ViewStudentPage = () => {
+
+  const url = window.location.href;
+  const urlArray = url.split('/');
+  const studentId = urlArray[urlArray.length-1];
+  // console.log(teacherId);
   const [student, setStudent] = useState({
     username: "",
     firstName: "",
@@ -16,9 +21,10 @@ const ViewStudentPage = () => {
   });
   const { id } = useParams();
   const history = useHistory();
-  const deleteStudent = (studentid) => {
+  const deleteStudent = (studentId) => {
+    console.log(studentId)
     axios
-      .delete(`/api/students/${studentid}`)
+      .delete(`/api/students/${studentId}`)
       .then(() => {
         history.push("/classlist");
       })
@@ -28,7 +34,7 @@ const ViewStudentPage = () => {
   };
   const getStudent = useCallback(() => {
     axios
-      .get(`/api/students/${id}`)
+      .get(`/api/students/${studentId}`)
       .then((response) => {
         setStudent(response.data);
       })
@@ -41,7 +47,6 @@ const ViewStudentPage = () => {
   }, [getStudent]);
   const addStar = (index) => {
     const newStudent = {};
-    
 
     const tempArray = [...student.tasksCompleted];
     tempArray[index] = tempArray[index] + 1;
@@ -54,7 +59,7 @@ const ViewStudentPage = () => {
     newStudent.classCode = student.classCode;
     newStudent.tasksCompleted = tempArray;
     axios
-      .put(`/api/students/${id}`, newStudent)
+      .put(`/api/students/${studentId}`, newStudent)
       .then(() => {
         getStudent();
       })
@@ -72,7 +77,7 @@ const ViewStudentPage = () => {
   };
   return (
     <>
-    <Navbar teacher={true} login={false} classCode={student.classCode}/>
+      <Navbar teacher={true} login={false} classCode={student.classCode} />
       <div>
         <h1>View Student</h1>
         <div className="row">

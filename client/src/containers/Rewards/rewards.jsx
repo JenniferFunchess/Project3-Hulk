@@ -37,7 +37,7 @@ const Rewards = () => {
   }, [updateDate, teacherId]);
 
   const handleFormSubmit = (e, rewards) => {
-    console.log("Success");
+    // console.log("Success");
     e.preventDefault();
     axios
       .post("/api/rewards", rewards)

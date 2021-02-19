@@ -8,7 +8,7 @@ const AddStudent = () => {
   const url = window.location.href;
   const urlArray = url.split("/");
   const teacherId = urlArray[urlArray.length - 1];
-  console.log(teacherId);
+  // console.log(teacherId);
   const [teacher, setTeacher] = useState("");
   const [firstName, setfirstName] = useState("");
   const [lastName, setlastName] = useState("");
@@ -19,9 +19,9 @@ const AddStudent = () => {
     axios
       .get(`/api/signup/${teacherId}`)
       .then((response) => {
-        console.log("Teacher get route worked");
+        // console.log("Teacher get route worked");
         setTeacher(response.data);
-        console.log(response.data);
+        // console.log(response.data);
       })
       .catch((err) => {
         console.log(err);
@@ -31,7 +31,7 @@ const AddStudent = () => {
 
 
   const handleFormSubmit = (e, students) => {
-    console.log("Success");
+    // console.log("Success");
     e.preventDefault();
     axios
       .post("/api/students", students)

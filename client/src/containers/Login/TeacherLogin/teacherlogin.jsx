@@ -3,6 +3,8 @@ import "./teacherloginstyle.css";
 import { useHistory } from "react-router-dom";
 import { motion } from "framer-motion";
 import axios from "axios";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faStar } from "@fortawesome/free-solid-svg-icons";
 // import jwt from "jsonwebtoken";
 
 const TeacherLogin = ({ setToken }) => {
@@ -90,6 +92,11 @@ const TeacherLogin = ({ setToken }) => {
                   });
                 }}
               >
+                <h4 className="form-header">
+                  <FontAwesomeIcon icon={faStar} /> Login to Access Your Class
+                  <FontAwesomeIcon icon={faStar} />
+                </h4>
+
                 <div className="row">
                   <div className="input-field col s12">
                     <input
@@ -125,7 +132,7 @@ const TeacherLogin = ({ setToken }) => {
                   <p>
                     <label>
                       <input type="checkbox" />
-                      <span>Check to agree to Terms</span>
+                      <span>Check to Agree to Terms</span>
                     </label>
                   </p>
                 </row>

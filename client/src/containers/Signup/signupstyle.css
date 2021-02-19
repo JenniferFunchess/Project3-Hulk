@@ -6,6 +6,12 @@
   color: black;
 } */
 
+.form-header {
+  margin: 0 auto;
+  text-align: center;
+  padding-bottom: 10px;
+}
+
 #teachersignup {
   font-family: "Seymour One", sans-serif;
 }
@@ -13,8 +19,6 @@
 #signupcontainer {
   border-radius: 5px;
   background-color: white;
-  border-color: black;
-  border-style: ridge;
   border-width: 2px;
   padding-top: 3%;
   padding-left: 3%;

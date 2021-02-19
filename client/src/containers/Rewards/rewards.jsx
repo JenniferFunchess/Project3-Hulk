@@ -5,19 +5,16 @@ import Navbar from "../../components/Navbar/Navbar";
 import FormComponent from "../../components/Form/form";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit, faTrash, faStar } from "@fortawesome/free-solid-svg-icons";
-
 const Rewards = () => {
   const url = window.location.href;
   const urlArray = url.split("/");
   const teacherId = urlArray[urlArray.length - 1];
   // console.log(teacherId);
   const [teacher, setTeacher] = useState("");
-
   const [rewardCategory, setrewardCategory] = useState("");
   const [starCount, setstarCount] = useState("");
   const [rewards, setRewards] = useState([]);
   const [updateDate, setUpdateDate] = useState(new Date());
-
   useEffect(() => {
     axios
       .get(`/api/signup/${teacherId}`)
@@ -29,13 +26,11 @@ const Rewards = () => {
       .catch((err) => {
         console.log(err);
       });
-
     (async () => {
       const { data } = await axios.get("/api/rewards");
       setRewards(data);
     })();
   }, [updateDate, teacherId]);
-
   const handleFormSubmit = (e, rewards) => {
     // console.log("Success");
     e.preventDefault();
@@ -54,9 +49,7 @@ const Rewards = () => {
       });
     setUpdateDate(new Date());
   };
-
   const teacherHomeString = "/teacherhome/" + teacher._id;
-
   return (
     <div>
       <Navbar classCode={teacher.classCode} login={false} />
@@ -137,7 +130,6 @@ const Rewards = () => {
                       setrewardCategory(e.target.value);
                     }}
                   />
-
                   <div className="input-field col s12">
                     <input
                       placeholder="Star Count"
@@ -176,5 +168,4 @@ const Rewards = () => {
     </div>
   );
 };
-
 export default Rewards;

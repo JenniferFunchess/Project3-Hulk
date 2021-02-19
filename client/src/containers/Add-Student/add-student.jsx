@@ -3,6 +3,8 @@ import axios from "axios";
 import FormComponent from "../../components/Form/form";
 import "./add-student.css";
 import Navbar from "../../components/Navbar/Navbar";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faStar } from "@fortawesome/free-solid-svg-icons";
 
 const AddStudent = () => {
   const url = window.location.href;
@@ -28,8 +30,6 @@ const AddStudent = () => {
       });
   }, [teacherId]);
 
-
-
   const handleFormSubmit = (e, students) => {
     // console.log("Success");
     e.preventDefault();
@@ -47,9 +47,9 @@ const AddStudent = () => {
         // });
       });
   };
-const classCode = teacher.classCode;
-const teacherHomeString = '/teacherHome/' + teacherId;
-const classListString = '/classlist/' + teacherId;
+  const classCode = teacher.classCode;
+  const teacherHomeString = "/teacherHome/" + teacherId;
+  const classListString = "/classlist/" + teacherId;
   return (
     <>
       <Navbar teacher={true} classCode={teacher.classCode} login={false} />
@@ -59,32 +59,51 @@ const classListString = '/classlist/' + teacherId;
         </div>
         <div className="container">
           <FormComponent>
-          <div className="row">
-            <form
-              className="col s12"
-              id="white-form"
-              onSubmit={(e) => {
-                handleFormSubmit(e, {
-                  firstName,
-                  lastName,
-                  username,
-                  classCode,
-                });
-              }}
-            >
-              <div className="row">
-                <div classNames="input-field col s12">
-                  <input
-                  placeholder="First Name"
-                    id="firstName"
-                    type="text"
-                    className="validate"
-                    value={firstName}
-                    onChange={(e) => {
-                      setfirstName(e.target.value);
-                    }}
-                  />
-                  <label htmlFor="firstName"></label>
+            <div className="row">
+              <form
+                className="col s12"
+                id="white-form"
+                onSubmit={(e) => {
+                  handleFormSubmit(e, {
+                    firstName,
+                    lastName,
+                    username,
+                    classCode,
+                  });
+                }}
+              >
+                <h4 className="form-header">
+                  <FontAwesomeIcon icon={faStar} /> Students Will Be Added to
+                  Your Class List
+                  <FontAwesomeIcon icon={faStar} />
+                </h4>
+                <div className="row">
+                  <div classNames="input-field col s12">
+                    <input
+                      placeholder="First Name"
+                      id="firstName"
+                      type="text"
+                      className="validate"
+                      value={firstName}
+                      onChange={(e) => {
+                        setfirstName(e.target.value);
+                      }}
+                    />
+                    <label htmlFor="firstName"></label>
+                  </div>
+                  <div className="input-field col s12">
+                    <input
+                      placeholder="Last Name"
+                      id="lastName"
+                      type="text"
+                      className="validate"
+                      value={lastName}
+                      onChange={(e) => {
+                        setlastName(e.target.value);
+                      }}
+                    />
+                    <label htmlFor="lastName"></label>
+                  </div>
                 </div>
                 <div className="input-field col s12">
                   <input
@@ -99,7 +118,6 @@ const classListString = '/classlist/' + teacherId;
                   />
                   <label htmlFor="lastName"></label>
                 </div>
-              </div>
               <div className="row">
                 <div className="input-field col s12">
                   <input

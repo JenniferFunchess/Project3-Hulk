@@ -1,5 +1,10 @@
 import React, { useEffect, useState } from "react";
-import StudentProfile from "../../images/school.png";
+import Backpack from "../../images/backpack-icon.png";
+import Medal from "../../images/medal-icon.png";
+import School from "../../images/school-icon.png";
+import "./teacher-home.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faStar } from "@fortawesome/free-solid-svg-icons";
 import Navbar from "../../components/Navbar/Navbar";
 import axios from "axios";
 
@@ -41,11 +46,12 @@ const TeacherHome = () => {
         <div className="row">
           <div className="col s12 m4">
             <div className="card">
-              <div className="card-image">
+              <div className="card-image valign-wrapper addstudent-cat">
                 <img
-                  src={StudentProfile}
+                  src={Backpack}
+                  className="img-icon"
                   alt="Student Profile"
-                  style={{ width: "100%" }}
+                  style={{ width: "150px" }}
                 />
                 <button
                   onClick={() => {
@@ -57,17 +63,23 @@ const TeacherHome = () => {
                 </button>
               </div>
               <div className="card-content">
-                <p className="student-name">Add A Student</p>
+                <h5 className="student-name flow-text">
+                  Add Student
+                  <FontAwesomeIcon icon={faStar} />{" "}
+                  <FontAwesomeIcon icon={faStar} />{" "}
+                  <FontAwesomeIcon icon={faStar} />{" "}
+                </h5>
               </div>
             </div>
           </div>
           <div className="col s12 m4">
             <div className="card">
-              <div className="card-image">
+              <div className="card-image valign-wrapper studentlist-cat">
                 <img
-                  src={StudentProfile}
+                  src={School}
+                  className="img-icon"
                   alt="Student Profile"
-                  style={{ width: "100%" }}
+                  style={{ width: "150px" }}
                 />
                 <button
                   onClick={() => {
@@ -80,17 +92,22 @@ const TeacherHome = () => {
                 </button>
               </div>
               <div className="card-content">
-                <p className="student-name">Class List</p>
+                <h5 className="student-name flow-text">
+                  Class List <FontAwesomeIcon icon={faStar} />{" "}
+                  <FontAwesomeIcon icon={faStar} />{" "}
+                  <FontAwesomeIcon icon={faStar} />{" "}
+                </h5>
               </div>
             </div>
           </div>
           <div className="col s12 m4">
             <div className="card">
-              <div className="card-image">
+              <div className="card-image valign-wrapper reward-cat">
                 <img
-                  src={StudentProfile}
+                  src={Medal}
+                  className="img-icon"
                   alt="Student Profile"
-                  style={{ width: "100%" }}
+                  style={{ width: "150px" }}
                 />
                 <button
                   onClick={() => {
@@ -102,7 +119,11 @@ const TeacherHome = () => {
                 </button>
               </div>
               <div className="card-content">
-                <p className="student-name">Class Rewards</p>
+                <h5 className="student-name flow-text">
+                  Class Rewards <FontAwesomeIcon icon={faStar} />{" "}
+                  <FontAwesomeIcon icon={faStar} />{" "}
+                  <FontAwesomeIcon icon={faStar} />{" "}
+                </h5>
               </div>
             </div>
           </div>

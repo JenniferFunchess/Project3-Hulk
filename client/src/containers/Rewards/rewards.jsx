@@ -56,8 +56,14 @@ const Rewards = () => {
       <h1>Rewards + Add Rewards</h1>
       <div className="container">
         <FormComponent>
+          <h4 className="form-header">
+            <FontAwesomeIcon icon={faStar} /> Create and Edit Rewards
+            <FontAwesomeIcon icon={faStar} />
+          </h4>
+
           <div className="row">
-            <div className="col s6">
+            <div className="col s12 m6">
+              <h5 id="reward-count">Reward Categories</h5>
               <ul>
                 {rewards.map((reward) => (
                   <li key={reward._id}>
@@ -106,8 +112,8 @@ const Rewards = () => {
                 ))}
               </ul>
             </div>
-            <div className="col s6">
-              <h5>Add a Reward Category and How Many Stars</h5>
+            <div className="col s12 m6">
+              <h5 id="reward-count">Add a New Reward + Star Count</h5>
               <div className="input-field col s12">
                 <form
                   onSubmit={(e) => {

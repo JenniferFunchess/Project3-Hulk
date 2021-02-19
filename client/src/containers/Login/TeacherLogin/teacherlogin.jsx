@@ -3,6 +3,8 @@ import "./teacherloginstyle.css";
 import { useHistory } from "react-router-dom";
 import { motion } from "framer-motion";
 import axios from "axios";
+import Navbar from "../../../components/Navbar/Navbar";
+import jwt from "jsonwebtoken";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 // import jwt from "jsonwebtoken";
@@ -25,18 +27,18 @@ const TeacherLogin = ({ setToken }) => {
         console.log(response.data);
         setTeacher(response.data);
         history.push(`/teacherhome/${response.data._id}`);
-        // jwt.verify(
-        //   response.data.token,
-        //   process.env.REACT_APP_JWT_SIGNATURE,
-        //   (err, decoded) => {
-        //     if (err) {
-        //       console.log(err);
-        //     } else {
-        //       setToken(response.data.token);
-        //       history.push("/");
-        //     }
-        //   }
-        // );
+        jwt.verify(
+          response.data.token,
+          process.env.REACT_APP_JWT_SIGNATURE,
+          (err, decoded) => {
+            if (err) {
+              console.log(err);
+            } else {
+              setToken(response.data.token);
+              history.push("/");
+            }
+          }
+        );
       })
       .catch((err) => {
         console.log(err);
@@ -64,10 +66,15 @@ const TeacherLogin = ({ setToken }) => {
     },
   };
 
-  const teacherHomeString = "/teacherhome" + teacher._id;
+  const teacherHomeString = "/teacherhome/" + teacher._id;
 
   return (
     <>
+      <Navbar
+        teacher={true}
+        classcode={teacher.classcode}
+        login={false}
+      ></Navbar>
       <div className="row">
         <div className="col m12" id="teacherlogin">
           <h1>Teacher Login</h1>

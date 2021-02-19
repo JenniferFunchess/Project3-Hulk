@@ -10,7 +10,7 @@ function StudentHome(props) {
   // const initialMap = new Map();
   const [student, setStudent] = useState("");
   const [rewards, setRewards] = useState([]);
-  const [map, setMap] = useState();
+  //   const [map, setMap] = useState();
   const [teacher, setTeacher] = useState("");
 
   const url = window.location.href;
@@ -32,31 +32,30 @@ function StudentHome(props) {
         console.log(err);
       });
 
-      axios
+    axios
       .get("/api/rewards")
       .then((response) => {
         console.log(response.data);
         setRewards(response.data);
-
       })
       .catch((err) => {
         console.log(err);
       });
-    
-      console.log(student.classCode);
-      axios
+
+    console.log(student.classCode);
+    axios
       .get(`/api/signup/teacher/${student.classCode}`) //add get route for teacher w/classcode
       .then((response) => {
         // console.log("student worked");
-        console.log('Teacher info:');
+        console.log("Teacher info:");
         console.log(response.data);
         setTeacher(response.data[0]);
+        // console.log(teacher);
       })
       .catch((err) => {
         console.log(err);
-      });    
-  }, [rewards, student.starTotal, studentId]);
-
+      });
+  }, []);
 
   const handleButtonClick = (rewardStarCount, reward) => {
     const newStudent = student;
@@ -67,28 +66,28 @@ function StudentHome(props) {
     }
     newStudent.starTotal = newStarTotal;
     console.log(newStarTotal);
-    axios.put(`/api/students/${newStudent._id}`, newStudent)
-    .then((response) => {
-      console.log(response.data);
-      setStudent(response.data); //make sure it updates star count
-    }).catch((err) => {
-      console.log(err);
-    });
+    axios
+      .put(`/api/students/${newStudent._id}`, newStudent)
+      .then((response) => {
+        console.log(response.data);
+        setStudent(response.data); //make sure it updates star count
+      })
+      .catch((err) => {
+        console.log(err);
+      });
 
     const mailOptions = {
-    from: "ontrackteacher@gmail.com",
-    to: "ontrackteacher@gmail.com",
-    subject: student.firstName + ' ' + student.lastName + ' is Requesting a Reward',
-    text: 'this worked'
+      from: "ontrackteacher@gmail.com",
+      to: "ontrackteacher@gmail.com",
+      subject:
+        student.firstName + " " + student.lastName + " is Requesting a Reward",
+      text: "this worked",
     };
-    axios.post(`/api/sendEmail`, mailOptions)
-    .then((response) => {
+    axios.post(`/api/sendEmail`, mailOptions).then((response) => {
       console.log(response);
-    })
+    });
+  };
 
-  }
-
-const scopedMap = map;
   return (
     <div>
       <Navbar teacher={false} login={false} classCode={student.classCode} />
@@ -168,7 +167,6 @@ const scopedMap = map;
               <hr></hr>
             </div>
             {rewards.map((reward) => (
-
               <div className="col s12">
                 <h5>
                   <FontAwesomeIcon icon={faStar} />
@@ -178,13 +176,12 @@ const scopedMap = map;
                     onClick={() => handleButtonClick(reward.starCount)}
                     key={reward._id}
                     rewardStarCount={reward.starCount}
-                    reward = {reward}
+                    reward={reward}
                     studentObj={student}
                   ></button>
                   {/* } */}
                 </h5>
               </div>
-
             ))}
           </div>
         </div>

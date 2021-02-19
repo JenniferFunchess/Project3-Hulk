@@ -91,7 +91,7 @@ const AddStudent = () => {
                     />
                     <label htmlFor="firstName"></label>
                   </div>
-                  <div className="input-field col s12">
+                  {/* <div className="input-field col s12">
                     <input
                       placeholder="Last Name"
                       id="lastName"
@@ -103,11 +103,11 @@ const AddStudent = () => {
                       }}
                     />
                     <label htmlFor="lastName"></label>
-                  </div>
+                  </div> */}
                 </div>
                 <div className="input-field col s12">
                   <input
-                  placeholder="Last Name"
+                    placeholder="Last Name"
                     id="lastName"
                     type="text"
                     className="validate"
@@ -118,47 +118,47 @@ const AddStudent = () => {
                   />
                   <label htmlFor="lastName"></label>
                 </div>
-              <div className="row">
-                <div className="input-field col s12">
-                  <input
-                    placeholder="Username"
-                    id="username"
-                    type="text"
-                    className="validate"
-                    value={username}
-                    onChange={(e) => {
-                      setusername(e.target.value);
-                    }}
-                  />
-                  <label htmlFor="username"></label>
-                  <div className="helper-text">
-                    {/* (Student will login with this) */}
+                <div className="row">
+                  <div className="input-field col s12">
+                    <input
+                      placeholder="Username"
+                      id="username"
+                      type="text"
+                      className="validate"
+                      value={username}
+                      onChange={(e) => {
+                        setusername(e.target.value);
+                      }}
+                    />
+                    <label htmlFor="username"></label>
+                    <div className="helper-text">
+                      {/* (Student will login with this) */}
+                    </div>
                   </div>
                 </div>
-              </div>
-              <a
-                type="submit"
-                href={teacherHomeString}
-                className="btn halfway-fab waves-effect waves-light red"
-                // style={styles.button}
-              >
-                Home
-                <i className="material-icons">home</i>
-              </a>
-              <button
-                type="submit"
-                onClick={() => {
-                  window.location.href = classListString;
-                }}
-                href={classListString} // FIX FOR LATER
-                className="btn halfway-fab waves-effect waves-light red"
-                // style={styles.button}
-              >
-                Submit
-                <i className="material-icons">check</i>
-              </button>
-            </form>
-          </div>
+                <a
+                  type="submit"
+                  href={teacherHomeString}
+                  className="btn halfway-fab waves-effect waves-light red"
+                  // style={styles.button}
+                >
+                  Home
+                  <i className="material-icons">home</i>
+                </a>
+                <button
+                  type="submit"
+                  onClick={() => {
+                    window.location.href = classListString;
+                  }}
+                  href={classListString} // FIX FOR LATER
+                  className="btn halfway-fab waves-effect waves-light red"
+                  // style={styles.button}
+                >
+                  Submit
+                  <i className="material-icons">check</i>
+                </button>
+              </form>
+            </div>
           </FormComponent>
         </div>
       </div>

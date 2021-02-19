@@ -1,6 +1,5 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import home from "./containers/Home/home";
-// import Navbar from "../src/components/Navbar/Navbar";
 import TeacherLogin from "./containers/Login/TeacherLogin/teacherlogin";
 import StudentLogin from "./containers/Login/StudentLogin/studentlogin";
 import AddStudent from "./containers/Add-Student/add-student";
@@ -10,7 +9,7 @@ import ViewList from "./containers/Class-List/class-list";
 import TeacherHome from "./containers/Teacher-Home/teacher-home";
 import StudentHome from "./containers/StudentHome/StudentHome";
 import React, { useState } from "react";
-import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
+// import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 import Signup from "./containers/Signup/signup";
 
 function App() {
@@ -20,7 +19,13 @@ function App() {
     <div className="App">
       <Router>
         <Switch>
-          <Route exact path="/" component={home} />
+          <Route
+            exact
+            path="/"
+            component={home}
+            // token={token}
+            // setToken={setToken}
+          />
           <Route
             exact
             path="/signup"
@@ -33,13 +38,7 @@ function App() {
               <TeacherLogin {...props} setToken={setToken} />
             )}
           />
-          <Route
-            exact
-            path="/studentlogin"
-            component={(props) => (
-              <StudentLogin {...props} setToken={setToken} />
-            )}
-          />
+          <Route exact path="/studentlogin" component={StudentLogin} />
           <Route path="/teacherhome" component={TeacherHome} token={token} />
           <Route path="/classlist" component={ViewList} />
           <Route path="/student-home" component={StudentHome} />

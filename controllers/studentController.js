@@ -1,10 +1,20 @@
 const express = require("express");
 const router = express.Router();
-const Student = require("../models/Student.js")
+const Student = require("../models/Student.js");
 
+// router.get("/", (req, res) => {
+//   Student.find()
+//     .then((students) => {
+//       res.json(students);
+//     })
+//     .catch((err) => {
+//       console.log(err);
+//       res.status(500).end();
+//     });
+// });
 
-router.get("/", (req, res) => {
-  Student.find()
+router.get("/login/:username", (req, res) => {
+  Student.find({ username: req.params.username })
     .then((students) => {
       res.json(students);
     })
@@ -14,9 +24,8 @@ router.get("/", (req, res) => {
     });
 });
 
-
 router.get("/login", (req, res) => {
-  Student.find({username: req.username})
+  Student.find({ username: req.username })
     .then((students) => {
       res.json(students);
     })
@@ -38,16 +47,17 @@ router.get("/:_id", (req, res) => {
 });
 
 router.post("/", (req, res) => {
-    console.log(req.body);
-    Student.create(req.body)
+  console.log(req.body);
+  Student.create(req.body)
     .then((newStudents) => {
       console.log(newStudents);
       console.log("Success");
       res.json(newStudents);
-    }).catch(err => {
+    })
+    .catch((err) => {
       console.log(err);
       res.status(500).end();
-    })
+    });
 });
 
 router.put("/:id", (req, res) => {
@@ -59,18 +69,20 @@ router.put("/:id", (req, res) => {
 });
 
 router.put("/:id/stars", (req, res) => {
-  Student.findByIdAndUpdate(req.params.id, {$set: {tasksCompleted: req.body}}, { new: true }).then(
-    (updatedObject) => {
-      console.log(updatedObject);
-      res.json(updatedObject);
-    }
-  );
-});
-
-router.delete("/:id", (req, res) => {
-  Student.findByIdAndDelete(req.params.id).then((result) => {
-    res.json(result);
+  Student.findByIdAndUpdate(
+    req.params.id,
+    { $set: { tasksCompleted: req.body } },
+    { new: true }
+  ).then((updatedObject) => {
+    console.log(updatedObject);
+    res.json(updatedObject);
   });
 });
+
+// router.delete("/:id", (req, res) => {
+//   Student.findByIdAndDelete(req.params.id).then((result) => {
+//     res.json(result);
+//   });
+// });
 
 module.exports = router;

@@ -11,7 +11,6 @@ const Card = () => {
     axios
       .get("/api/students")
       .then((response) => {
-        console.log("Successfully tested");
         setStudents(response.data);
       })
       .catch((err) => {

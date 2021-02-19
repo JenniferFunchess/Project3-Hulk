@@ -8,7 +8,7 @@ const ViewClass = () => {
   const url = window.location.href;
   const urlArray = url.split('/');
   const teacherId = urlArray[urlArray.length-1];
-  console.log(teacherId);
+  // console.log(teacherId);
   const [teacher, setTeacher] = useState("");
 
   
@@ -16,15 +16,15 @@ const ViewClass = () => {
   useEffect(() => {
     axios.get(`/api/signup/${teacherId}`)
     .then((response) => {
-      console.log('Teacher get route worked');
+      // console.log('Teacher get route worked');
       setTeacher(response.data);
-      console.log(response.data);
+      // console.log(response.data);
     })
     .catch((err) => {
       console.log(err);
     })
 }, [teacherId]);
-const teacherHomeString = '/teacherHome/' + teacherId;
+const teacherHomeString = '/teacherhome/' + teacherId;
 const addStudentString = '/add-student/' + teacherId;
   return (
     <div>

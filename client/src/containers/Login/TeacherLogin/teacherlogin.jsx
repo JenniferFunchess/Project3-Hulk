@@ -102,7 +102,6 @@ const TeacherLogin = ({ setToken }) => {
                         setEmail(e.target.value);
                       }}
                     />
-                    <label htmlFor="email">Enter Email</label>
                   </div>
                 </div>
                 <div className="row">
@@ -117,7 +116,6 @@ const TeacherLogin = ({ setToken }) => {
                         setPassword(e.target.value);
                       }}
                     />
-                    <label htmlFor="password">Enter Password</label>
                   </div>
                 </div>
                 <row className="row">

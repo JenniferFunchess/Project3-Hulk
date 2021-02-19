@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import M from "materialize-css";
 import "materialize-css/dist/css/materialize.min.css";
 import "./modal.css";
-import axios from "axios";
 
 class Modal extends Component {
   componentDidMount() {
@@ -67,7 +66,7 @@ class Modal extends Component {
           Use Stars
         </button>
 
-        <a href="#" className="modal-trigger" data-target="modal1"></a>
+        <button className="modal-trigger" data-target="modal1"></button>
 
         <div
           ref={(Modal) => {
@@ -88,7 +87,7 @@ class Modal extends Component {
           <div className="modal-content">
             <h4>Email Teacher?</h4>
             <p>Do you want to email your teacher to use your stars?</p>
-            <a
+            <button
               className="modal-close waves-effect waves-green btn-flat"
               type="submit"
               method="POST"
@@ -121,10 +120,10 @@ class Modal extends Component {
               // }}
             >
               Yes
-            </a>
-            <a className="modal-close waves-effect waves-red btn-flat disagree-btn">
+            </button>
+            <button className="modal-close waves-effect waves-red btn-flat disagree-btn">
               No
-            </a>
+            </button>
           </div>
           {/* )} */}
 
@@ -132,9 +131,9 @@ class Modal extends Component {
             <div className="modal-content">
               <p>You're almost there! Keep earning stars to redeem rewards!</p>
 
-              <a className="modal-close waves-effect waves-red btn-flat disagree-btn">
+              <button className="modal-close waves-effect waves-red btn-flat disagree-btn">
                 Ok!
-              </a>
+              </button>
             </div>
           )}
         </div>

@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from "react";
-import { useHistory, useParams } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import axios from "axios";
 import FormComponent from "../../components/Form/form";
 import "./viewStudent.css";
@@ -8,17 +8,22 @@ import { faStar } from "@fortawesome/free-solid-svg-icons";
 import Navbar from "../../components/Navbar/Navbar";
 
 const ViewStudentPage = () => {
+
+  const url = window.location.href;
+  const urlArray = url.split('/');
+  const studentId = urlArray[urlArray.length-1];
+  // console.log(teacherId);
   const [student, setStudent] = useState({
     username: "",
     firstName: "",
     lastName: "",
     tasksCompleted: [],
   });
-  const { id } = useParams();
   const history = useHistory();
-  const deleteStudent = (studentid) => {
+  const deleteStudent = (studentId) => {
+    console.log(studentId)
     axios
-      .delete(`/api/students/${studentid}`)
+      .delete(`/api/students/${studentId}`)
       .then(() => {
         history.push("/classlist");
       })
@@ -28,20 +33,19 @@ const ViewStudentPage = () => {
   };
   const getStudent = useCallback(() => {
     axios
-      .get(`/api/students/${id}`)
+      .get(`/api/students/${studentId}`)
       .then((response) => {
         setStudent(response.data);
       })
       .catch((err) => {
         console.log(err);
       });
-  }, [id]);
+  }, [studentId]);
   useEffect(() => {
     getStudent();
   }, [getStudent]);
   const addStar = (index) => {
     const newStudent = {};
-    
 
     const tempArray = [...student.tasksCompleted];
     tempArray[index] = tempArray[index] + 1;
@@ -54,7 +58,7 @@ const ViewStudentPage = () => {
     newStudent.classCode = student.classCode;
     newStudent.tasksCompleted = tempArray;
     axios
-      .put(`/api/students/${id}`, newStudent)
+      .put(`/api/students/${studentId}`, newStudent)
       .then(() => {
         getStudent();
       })
@@ -72,7 +76,7 @@ const ViewStudentPage = () => {
   };
   return (
     <>
-    <Navbar teacher={true} login={false} classCode={student.classCode}/>
+      <Navbar teacher={true} login={false} classCode={student.classCode} />
       <div>
         <h1>View Student</h1>
         <div className="row">
@@ -104,7 +108,7 @@ const ViewStudentPage = () => {
           <div className="col s9">
             <FormComponent>
               <div className="row">
-                <div className="col s6">
+                <div className="col s12">
                   <ul>
                     <li className="star-categories">
                       ASKING A TOUGH QUESTION{" "}

@@ -1,6 +1,5 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import home from "./containers/Home/home";
-// import Navbar from "../src/components/Navbar/Navbar";
 import TeacherLogin from "./containers/Login/TeacherLogin/teacherlogin";
 import StudentLogin from "./containers/Login/StudentLogin/studentlogin";
 import AddStudent from "./containers/Add-Student/add-student";

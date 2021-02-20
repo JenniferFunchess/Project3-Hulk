@@ -15,10 +15,15 @@ const TeacherLogin = ({ setToken }) => {
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const history = useHistory();
+  const [box, setBox] = useState(false);
 
   const handleFormSubmit = (e) => {
     console.log("Success");
     e.preventDefault();
+    if (box === false) {
+      alert("Please agree to the Privacy Policy.");
+      return;
+    };
     axios
       .post("/api/auth/login", {
         email: email,
@@ -68,6 +73,15 @@ const TeacherLogin = ({ setToken }) => {
   };
 
   const teacherHomeString = "/teacherhome/" + teacher._id;
+
+  const handleCheckBoxToggle = () => {
+    if (box === false) {
+      setBox(true);
+    } else {
+      setBox(false);
+    }
+    console.log(box);
+  }
 
   return (
     <>
@@ -148,6 +162,7 @@ const TeacherLogin = ({ setToken }) => {
                         className="validate"
                         required=""
                         aria-required="true"
+                        onClick={() => handleCheckBoxToggle()}
                       />
                       <span>Check to Agree to Terms</span>
                     </label>

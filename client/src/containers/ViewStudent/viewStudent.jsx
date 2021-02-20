@@ -11,6 +11,7 @@ const ViewStudentPage = () => {
 
   const teacherId = JSON.parse(localStorage.getItem("teacherId"));
   const classListString = "/classlist/" + teacherId;
+  console.log(classListString);
   const url = window.location.href;
   const urlArray = url.split('/');
   const studentId = urlArray[urlArray.length-1];
@@ -26,7 +27,8 @@ const ViewStudentPage = () => {
     console.log(studentId)
     axios
       .delete(`/api/students/${studentId}`)
-      .then(() => {
+      .then((res) => {
+        console.log(res);
         history.push(classListString);
         // window.location.href = classListString;
       })
@@ -103,6 +105,8 @@ const ViewStudentPage = () => {
               id="delete-student-btn"
               onClick={() => {
                 deleteStudent(student._id);
+                // window.location.href={classListString}
+                // history.push(classListString);
               }}
             >
               Delete

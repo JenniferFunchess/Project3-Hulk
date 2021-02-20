@@ -15,11 +15,11 @@ const pathVariants = {
   visible: {
     opacity: 1,
     pathLength: 1,
-    transition: { 
+    transition: {
       duration: 2,
       ease: "easeInOut",
-    }
-  }
+    },
+  },
 };
 
 const home = () => {
@@ -27,14 +27,17 @@ const home = () => {
     <>
     <Navbar teacher={false} login={true}/>
     <div className="container" id="homebackground">
-      <div className="row">
+      <div className="row home-row">
         <motion.div
-          className="col s6"
+          className="col s12 l6 school-container"
           animate={{ rotate: 360, scale: 3, x: 200, y: 350 }}
         >
-          <img src={schoolIcon} className="school" alt="yellow school" />
+          {/* <img src={schoolIcon} className="school" alt="yellow school" /> */}
         </motion.div>
-        <div className="col s6" id="homeRight">
+        <div>
+          <img src={schoolIcon} className="school" alt="yellow school" />
+        </div>
+        <div className="col s12 l6" id="homeRight">
           <motion.div
             className="row"
             id="homeStars"
@@ -54,7 +57,7 @@ const home = () => {
           <div className="row center-align" id="homeName">
             ON-TRACK
           </div>
-          <div className="row center-align" id="rowTagline">
+          <div className="row center-align flow-text" id="rowTagline">
             Reward students for positive behavior in class
           </div>
           <div className="row center-align" id="signUpButton">

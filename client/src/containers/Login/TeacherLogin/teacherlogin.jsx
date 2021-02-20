@@ -7,6 +7,7 @@ import Navbar from "../../../components/Navbar/Navbar";
 import jwt from "jsonwebtoken";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
+import PrivacyPolicy from "../../../components/PrivacyPolicy/PrivacyPolicy";
 // import jwt from "jsonwebtoken";
 
 const TeacherLogin = ({ setToken }) => {
@@ -133,12 +134,21 @@ const TeacherLogin = ({ setToken }) => {
                   </div>
                 </div>
                 <row className="row">
-                  <div className="col s12">COPPA PRIVACY POLICY GOES HERE</div>
+                  <div className="col s12 scroll-box">
+                    {/* <div className="scroll-box"> */}
+                    <PrivacyPolicy></PrivacyPolicy>
+                    {/* </div> */}
+                  </div>
                 </row>
                 <row className="row">
                   <p>
                     <label>
-                      <input type="checkbox" />
+                      <input
+                        type="checkbox"
+                        className="validate"
+                        required=""
+                        aria-required="true"
+                      />
                       <span>Check to Agree to Terms</span>
                     </label>
                   </p>

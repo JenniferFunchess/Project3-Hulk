@@ -98,7 +98,7 @@ function StudentHome(props) {
         </div>
       </div>
       <div className="row">
-        <div className="col s3">
+        <div className="col s12 m3">
           <div className="row">
             <div className="col s12 second-row">
               <h3 className="redColor second-row">
@@ -115,51 +115,10 @@ function StudentHome(props) {
             </div>
           </div>
         </div>
-        <div className="col m7 blueBox">
-          <div className="col s6">
-            {/* <div className="row"> */}
+        <div className="col m8 blueBox">
+          <div className="col s12 m6">
             <div className="col s12">
-              <button className="waves-effect waves-light btn uploadButton">
-                Upload Image
-              </button>
-            </div>
-            {/* </div> */}
-            {/* <div className="row"> */}
-            <div className="col s12">
-              <h5>My Stars!!!</h5>
-            </div>
-            {/* </div> */}
-            <div className="col s12 greenColor">
-              <span className="descriptionText">ASKING A TOUGH QUESTION</span>
-              <FontAwesomeIcon icon={faStar} />
-              <span>2</span>
-            </div>
-            <div className="col s12 greenColor">
-              <span className="descriptionText">Zoom Camera on All Class</span>
-              <FontAwesomeIcon icon={faStar} />
-              <span>2</span>
-            </div>
-            <div className="col s12 greenColor">
-              <span className="descriptionText">
-                Submitting Homework on Time
-              </span>
-              <FontAwesomeIcon icon={faStar} />
-              <span>1</span>
-            </div>
-            <div className="col s12 greenColor">
-              <span className="descriptionText">Extra Credit</span>
-              <FontAwesomeIcon icon={faStar} />
-              <span>3</span>
-            </div>
-            <div className="col s12 greenColor">
-              <span className="descriptionText">Listening in Class</span>
-              <FontAwesomeIcon icon={faStar} />
-              <span>3</span>
-            </div>
-          </div>
-          <div className="col s6">
-            <div className="col s12">
-              <FontAwesomeIcon icon={faStar} />
+              <FontAwesomeIcon icon={faStar} className="reward-star" />
               <span className="rewards-length">{student.starTotal}</span>
             </div>
             <div className="col s12">
@@ -178,11 +137,55 @@ function StudentHome(props) {
                     rewardStarCount={reward.starCount}
                     reward={reward}
                     studentObj={student}
-                  ></button>
+                    className="waves-effect red darken-1 btn"
+                  >
+                    REDEEM
+                  </button>
                   {/* } */}
                 </h5>
               </div>
             ))}
+          </div>
+          <div className="col s12 m6">
+            {/* <div className="row"> */}
+            {/* <div className="col s12">
+              <button className="waves-effect waves-light btn uploadButton">
+                Upload Image
+              </button>
+            </div> */}
+            {/* </div> */}
+            {/* <div className="row"> */}
+            <div className="col s12">
+              <h5 className="my-stars">My Stars!!!</h5>
+            </div>
+            {/* </div> */}
+            <div className="col s12 greenColor">
+              <span className="descriptionText">Asking a Tough Question </span>
+              <FontAwesomeIcon icon={faStar} className="my-stars" />
+              <span className="my-stars">2</span>
+            </div>
+            <div className="col s12 greenColor">
+              <span className="descriptionText">Zoom Camera on All Class </span>
+              <FontAwesomeIcon icon={faStar} className="my-stars" />
+              <span className="my-stars">2</span>
+            </div>
+            <div className="col s12 greenColor">
+              <span className="descriptionText">
+                Submitting Homework on Time
+              </span>
+              <FontAwesomeIcon icon={faStar} className="my-stars" />
+              <span className="my-stars">1</span>
+            </div>
+            <div className="col s12 greenColor">
+              <span className="descriptionText">Extra Credit </span>
+              <FontAwesomeIcon icon={faStar} className="my-stars" />
+              <span className="my-stars">3</span>
+            </div>
+            <div className="col s12 greenColor">
+              <span className="descriptionText">Listening in Class </span>
+              <FontAwesomeIcon icon={faStar} className="my-stars" />
+              <span className="my-stars">3</span>
+            </div>
           </div>
         </div>
       </div>

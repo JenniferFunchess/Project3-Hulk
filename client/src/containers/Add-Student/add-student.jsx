@@ -73,8 +73,8 @@ const AddStudent = () => {
                 }}
               >
                 <h4 className="form-header">
-                  <FontAwesomeIcon icon={faStar} /> Students Will Be Added to
-                  Your Class List
+                  <FontAwesomeIcon icon={faStar} />
+                  Students Will Be Added to Your Class List
                   <FontAwesomeIcon icon={faStar} />
                 </h4>
                 <div className="row">

@@ -9,6 +9,7 @@ import ViewList from "./containers/Class-List/class-list";
 import TeacherHome from "./containers/Teacher-Home/teacher-home";
 import StudentHome from "./containers/StudentHome/StudentHome";
 import React, { useState } from "react";
+import Footer from "./components/Footer/Footer";
 // import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 import Signup from "./containers/Signup/signup";
 
@@ -47,6 +48,7 @@ function App() {
           <Route path="/rewards" component={Rewards} />
         </Switch>
       </Router>
+      <Footer></Footer>
     </div>
   );
 }

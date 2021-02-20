@@ -17,3 +17,11 @@
 .card-image {
   height: 300px;
 }
+
+.student-name {
+  text-align: center;
+}
+
+.teacher-card {
+  height: 100px;
+}

@@ -36,10 +36,16 @@ const Card = () => {
                 <i className="material-icons">add</i>
               </Link>
             </div>
-            <div className="card-content">
-              <p className="first-name">First Name: {student.firstName}</p>
-              <p className="last-name">Last Name: {student.lastName}</p>
-              <p className="user-name">User Name: {student.username}</p>
+            <div className="card-content class-list-card">
+              <p className="first-name student-name">
+                First Name: {student.firstName}
+              </p>
+              <p className="last-name student-name">
+                Last Name: {student.lastName}
+              </p>
+              <p className="user-name student-name">
+                User Name: {student.username}
+              </p>
             </div>
           </div>
         </div>

@@ -1,0 +1,11 @@
+footer {
+  bottom: 0;
+  position: fixed;
+  width: 100%;
+  text-align: center !important;
+  margin: 0;
+}
+.page-footer {
+  background-color: #ff914d;
+  padding-top: 0px;
+}

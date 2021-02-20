@@ -58,8 +58,8 @@ app.post("/api/sendEmail", (req, res) => {
   let transporter = nodemailer.createTransport({
     service: "gmail",
     auth: {
-      user: process.env.EMAIL, // TODO: your gmail account
-      pass: process.env.PASSWORD, // TODO: your gmail password
+      user: process.env.EMAIL || "ontrackteacher@gmail.com", // TODO: your gmail account
+      pass: process.env.PASSWORD || "Teacher123", // TODO: your gmail password
     },
     tls: {
       rejectUnauthorized: false,

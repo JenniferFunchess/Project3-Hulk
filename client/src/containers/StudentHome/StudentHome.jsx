@@ -80,8 +80,8 @@ function StudentHome(props) {
       from: "ontrackteacher@gmail.com",
       to: "ontrackteacher@gmail.com",
       subject:
-        student.firstName + " " + student.lastName + " is Requesting a Reward",
-      text: "this worked",
+        student.firstName + " " + student.lastName + " is Requesting a Reward through On-Track-App",
+      text: "Please talk to " + student.firstName + " " + student.lastName + " to give them their reward!",
     };
     axios.post(`/api/sendEmail`, mailOptions).then((response) => {
       console.log(response);

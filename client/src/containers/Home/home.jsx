@@ -5,6 +5,7 @@ import schoolIcon from "../../images/school.png";
 import "./homestyle.css";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import Navbar from '../../components/Navbar/Navbar';
 
 const pathVariants = {
   hidden: {
@@ -23,6 +24,8 @@ const pathVariants = {
 
 const home = () => {
   return (
+    <>
+    <Navbar teacher={false} login={true}/>
     <div className="container" id="homebackground">
       <div className="row home-row">
         <motion.div
@@ -75,6 +78,7 @@ const home = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

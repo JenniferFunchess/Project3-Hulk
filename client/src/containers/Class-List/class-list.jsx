@@ -10,6 +10,8 @@ const ViewClass = () => {
   // console.log(teacherId);
   const [teacher, setTeacher] = useState("");
 
+  localStorage.setItem("teacherId", JSON.stringify(teacherId));
+
   useEffect(() => {
     axios
       .get(`/api/signup/${teacherId}`)

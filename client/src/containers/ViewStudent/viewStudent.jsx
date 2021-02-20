@@ -8,6 +8,9 @@ import { faStar } from "@fortawesome/free-solid-svg-icons";
 import Navbar from "../../components/Navbar/Navbar";
 
 const ViewStudentPage = () => {
+
+  const teacherId = JSON.parse(localStorage.getItem("teacherId"));
+  const classListString = "/classlist/" + teacherId;
   const url = window.location.href;
   const urlArray = url.split("/");
   const studentId = urlArray[urlArray.length - 1];
@@ -24,7 +27,8 @@ const ViewStudentPage = () => {
     axios
       .delete(`/api/students/${studentId}`)
       .then(() => {
-        history.push("/classlist");
+        history.push(classListString);
+        // window.location.href = classListString;
       })
       .catch((err) => {
         console.log(err);

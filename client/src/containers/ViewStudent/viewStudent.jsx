@@ -44,9 +44,11 @@ const ViewStudentPage = () => {
         console.log(err);
       });
   }, [studentId]);
+
   useEffect(() => {
     getStudent();
   }, [getStudent]);
+
   const addStar = (index) => {
     const newStudent = {};
 
@@ -60,10 +62,12 @@ const ViewStudentPage = () => {
     newStudent.imageUrl = student.imageUrl;
     newStudent.classCode = student.classCode;
     newStudent.tasksCompleted = tempArray;
+    setStudent(newStudent);
+
     axios
       .put(`/api/students/${studentId}`, newStudent)
       .then(() => {
-        getStudent();
+        // getStudent();
       })
       .catch((err) => {
         console.log(err);
@@ -93,10 +97,11 @@ const ViewStudentPage = () => {
             <div className="col s12 center-align">
               <FontAwesomeIcon icon={faStar} className="reward-star" />
               <span className="rewards-length">
-                {student.tasksCompleted.reduce(
+                {student.starTotal}
+                {/* {student.tasksCompleted.reduce(
                   (total, index) => total + index,
                   0
-                )}
+                )} */}
               </span>
             </div>
           </div>

@@ -29,8 +29,11 @@ const home = () => {
           className="col s12 l6 school-container"
           animate={{ rotate: 360, scale: 3, x: 200, y: 350 }}
         >
-          <img src={schoolIcon} className="school" alt="yellow school" />
+          {/* <img src={schoolIcon} className="school" alt="yellow school" /> */}
         </motion.div>
+        <div>
+          <img src={schoolIcon} className="school" alt="yellow school" />
+        </div>
         <div className="col s12 l6" id="homeRight">
           <motion.div
             className="row"

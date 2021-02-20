@@ -3,10 +3,9 @@ html {
 }
 
 .school {
-  left: 0;
-  bottom: 0;
-  height: auto;
-  width: 50%;
+  position: fixed;
+  bottom: 0px;
+  right: 50%;
 }
 
 #homeStars {

@@ -79,10 +79,10 @@ router.put("/:id/stars", (req, res) => {
   });
 });
 
-// router.delete("/:id", (req, res) => {
-//   Student.findByIdAndDelete(req.params.id).then((result) => {
-//     res.json(result);
-//   });
-// });
+router.delete("/:id", (req, res) => {
+  Student.findByIdAndDelete(req.params.id).then((result) => {
+    res.json(result);
+  });
+});
 
 module.exports = router;

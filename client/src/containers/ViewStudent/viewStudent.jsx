@@ -83,7 +83,7 @@ const ViewStudentPage = () => {
   };
   return (
     <>
-      <Navbar teacher={true} login={false} classCode={student.classCode} />
+      <Navbar teacher={true} teacherId={teacherId} login={false} classCode={student.classCode} />
       <div>
         <h1>View Student</h1>
         <div className="row">

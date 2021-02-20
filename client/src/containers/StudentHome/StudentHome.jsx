@@ -162,29 +162,29 @@ function StudentHome(props) {
             <div className="col s12 greenColor">
               <span className="descriptionText">Asking a Tough Question </span>
               <FontAwesomeIcon icon={faStar} className="my-stars" />
-              <span className="my-stars">2</span>
+              <span className="my-stars"></span>
             </div>
             <div className="col s12 greenColor">
               <span className="descriptionText">Zoom Camera on All Class </span>
               <FontAwesomeIcon icon={faStar} className="my-stars" />
-              <span className="my-stars">2</span>
+              <span className="my-stars"></span>
             </div>
             <div className="col s12 greenColor">
               <span className="descriptionText">
                 Submitting Homework on Time
               </span>
               <FontAwesomeIcon icon={faStar} className="my-stars" />
-              <span className="my-stars">1</span>
+              <span className="my-stars"></span>
             </div>
             <div className="col s12 greenColor">
               <span className="descriptionText">Extra Credit </span>
               <FontAwesomeIcon icon={faStar} className="my-stars" />
-              <span className="my-stars">3</span>
+              <span className="my-stars"></span>
             </div>
             <div className="col s12 greenColor">
               <span className="descriptionText">Listening in Class </span>
               <FontAwesomeIcon icon={faStar} className="my-stars" />
-              <span className="my-stars">3</span>
+              <span className="my-stars"></span>
             </div>
           </div>
         </div>

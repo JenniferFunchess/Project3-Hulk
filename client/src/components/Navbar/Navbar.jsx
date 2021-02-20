@@ -3,11 +3,13 @@ import '../Navbar/style.css';
 
 function Navbar(props) {
 
+    const teacherHomeString = "/teacherhome/" + props.teacherId;
+
     return (
         <nav>
             {props.teacher && 
             <div className="nav-wrapper">
-            <a href="/" className="left logo">On-Track App</a>
+            <a href={teacherHomeString} className="left logo">On-Track App</a>
             {props.login &&
             <ul id="nav-mobile" className="right hide-on-med-and-down">
                 <li><a className="nav-link" href="/teacherlogin">Teacher Login</a></li>

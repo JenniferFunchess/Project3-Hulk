@@ -25,7 +25,7 @@ const pathVariants = {
 const home = () => {
   return (
     <>
-    <Navbar teacher={false} classCode={} login={true}/>
+    <Navbar teacher={false} login={true}/>
     <div className="container" id="homebackground">
       <div className="row">
         <motion.div

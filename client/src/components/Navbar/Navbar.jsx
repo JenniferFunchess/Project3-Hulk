@@ -10,8 +10,8 @@ function Navbar(props) {
             <a href="/" className="left logo">On-Track App</a>
             {props.login &&
             <ul id="nav-mobile" className="right hide-on-med-and-down">
-                <li><a className="nav-link" href="/Teacher-Login">Teacher Login</a></li>
-                <li><a className="nav-link" href="/Student-Login">Student Login</a></li>
+                <li><a className="nav-link" href="/teacherlogin">Teacher Login</a></li>
+                <li><a className="nav-link" href="/studentlogin">Student Login</a></li>
             </ul>
             }
             {!props.login &&
@@ -27,8 +27,8 @@ function Navbar(props) {
             <h3 className="left logo">On-Track App</h3>
             {props.login &&
             <ul id="nav-mobile" className="right hide-on-med-and-down">
-                <li><a className="nav-link" href="/Teacher-Login">Teacher Login</a></li>
-                <li><a className="nav-link" href="/Student-Login">Student Login</a></li>
+                <li><a className="nav-link" href="/teacherlogin">Teacher Login</a></li>
+                <li><a className="nav-link" href="/studentlogin">Student Login</a></li>
             </ul>
             }
             {!props.login &&
